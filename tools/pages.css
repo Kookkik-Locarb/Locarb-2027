@@ -262,3 +262,10 @@ a:hover .cv::before,button:hover .cv::before{transform:scale(1.08)}
 .ui .lt{background:#F3D9D3;color:#9A2B1A}
 .ui .meter{height:8px;border-radius:999px;background:var(--sand);overflow:hidden}
 .ui .meter i{display:block;height:100%;border-radius:999px;background:var(--forest)}
+
+.stats5{grid-template-columns:repeat(5,minmax(0,1fr));margin-top:8px;border-top:1.5px solid #000}
+.stats5 .stat{padding:24px 18px 0 0}
+.stats5 .stat+.stat{padding-left:18px;border-left:1px solid var(--line)}
+.stats5 .stat span{display:block;margin-top:10px;max-width:20ch}
+.believe{max-width:900px}
+@media (max-width:1080px){.stats5{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:24px}.stats5 .stat:nth-child(odd){padding-left:0;border-left:0}}

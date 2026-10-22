@@ -2,23 +2,22 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>LO-CARB · Home</title>
-<script src="./vendor/react.js"></script>
-<script src="./vendor/react-dom.js"></script>
+<title>LO-CARB | Sustainability Consultancy in Thailand – IFRS S1 &amp; S2, Carbon Accounting &amp; ESG</title>
+<meta name="description" content="LO-CARB is a sustainability consultancy in Thailand and Thailand’s first IFRS Sustainability Alliance member. IFRS S1 &amp; S2 advisory, CarbonCal carbon accounting, ISSB training and ESG reporting.">
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
 <style>
-@font-face{font-family:"Termina";src:url("./assets/9fb178ba6f9daea36a34511f8a265178.ttf") format("truetype");font-weight:400 900;font-style:normal;font-display:swap}
-@font-face{font-family:"STIX Two Text";src:url("./assets/e009331117efdcc84dc4c4f2195e56ba.ttf") format("truetype");font-weight:400 900;font-style:italic;font-display:swap}
-@font-face{font-family:"Anakotmai";src:url("./assets/904f0c47f229d3340fd3a33b19da40f2.ttf") format("truetype");font-weight:300;font-style:normal;font-display:swap}
-@font-face{font-family:"Anakotmai";src:url("./assets/f2289eea7b63302ea5693e65e8453833.ttf") format("truetype");font-weight:500;font-style:normal;font-display:swap}
-@font-face{font-family:"Anakotmai";src:url("./assets/9e67dcb734b0f661633d4b4d1d358eab.ttf") format("truetype");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Termina";src:url("/_blob/9fb178ba6f9daea36a34511f8a265178") format("truetype");font-weight:400 900;font-style:normal;font-display:swap}
+@font-face{font-family:"STIX Two Text";src:url("/_blob/e009331117efdcc84dc4c4f2195e56ba") format("truetype");font-weight:400 900;font-style:italic;font-display:swap}
+@font-face{font-family:"Anakotmai";src:url("/_blob/904f0c47f229d3340fd3a33b19da40f2") format("truetype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Anakotmai";src:url("/_blob/f2289eea7b63302ea5693e65e8453833") format("truetype");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Anakotmai";src:url("/_blob/9e67dcb734b0f661633d4b4d1d358eab") format("truetype");font-weight:700;font-style:normal;font-display:swap}
 body{margin:0;background:#F3F0DF}
 a{color:#0EA552}a:hover{color:#000000}
-.lc{--green:#0EA552;--forest:#0EA552;--forest-d:#000000;--mint:#0EA552;--paper:#F3F0DF;--card:#FBFAF3;--sand:#E9E5CF;--ink:#000000;--muted:#4A4A42;--line:rgba(0,0,0,.13);
+.lc{--green:#0EA552;--forest:#0A7D3F;--forest-d:#000000;--mint:#0EA552;--paper:#F3F0DF;--card:#FBFAF3;--sand:#E9E5CF;--ink:#000000;--muted:#4A4A42;--line:rgba(0,0,0,.13);
   font-family:"Anakotmai",sans-serif;font-weight:300;color:var(--ink);background:var(--paper);font-size:calc(16px*var(--s));line-height:1.6;position:relative;overflow-x:clip}
 .lc *{box-sizing:border-box}
 .lc ::selection{background:#0EA552;color:#F3F0DF}
@@ -927,8 +926,10 @@ ol.steps{list-style:none;padding:0}
 .ld{position:fixed;inset:0;z-index:200;background:#F2F0DA;display:flex;align-items:center;justify-content:center}
 .ld-img{width:min(380px,58vw);height:auto;display:block}
 .ld.full{animation:ldOut .9s cubic-bezier(.4,0,.2,1) 6.1s forwards}
-.ld.quick{animation:ldOut .55s cubic-bezier(.4,0,.2,1) .45s forwards}
-.ld.quick .ld-still{animation:ldIn .45s cubic-bezier(.2,.7,.2,1) both}
+.ld.gone{display:none}
+.ld.wait{opacity:0;pointer-events:none;animation:ldWait .3s ease .7s forwards}
+@keyframes ldWait{to{opacity:1}}
+.ld.wait .ld-still{animation:ldIn .45s cubic-bezier(.2,.7,.2,1) .7s both}
 .ld.skip{animation:ldOut .35s ease forwards}
 @keyframes ldOut{to{opacity:0;visibility:hidden}}
 @keyframes ldIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
@@ -1193,6 +1194,310 @@ ol.steps{list-style:none;padding:0}
 .hx8 .hctas{margin-top:38px}
 @media (hover:none){.hx8{--co:.4}}
 @media (max-width:680px){.hero.hx8{min-height:0;padding:72px 0 150px}.hx8-bg::after{background:linear-gradient(0deg,rgba(0,0,0,.75),rgba(0,0,0,.35))}.hx8-bg img{object-position:70% 50%}}
+/* Blog v5 — categories in the header, category pill per card, no topics row */
+.bx-nav{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.bx-tabs{display:inline-flex;gap:2px;padding:4px;border-radius:999px;background:rgba(0,0,0,.05)}
+.bx-tabs a{display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border-radius:999px;font-family:"Termina",sans-serif;font-weight:700;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:background .25s,color .25s}
+.bx-tabs a:hover{background:#000;color:#F3F0DF}
+.bx-c{position:relative}
+.bx-catpill{position:absolute;left:14px;top:14px;margin:0;z-index:2;padding:6px 12px;border-radius:999px;background:rgba(243,240,223,.94);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.bx-catpill:hover{text-decoration:none;background:#000;color:#F3F0DF}
+.bx-c .bx-t{margin-top:18px}
+@media (max-width:680px){.bx-tabs{display:none}}
+/* Blog v5.1 — feature left, three horizontal cards right; covers keep 3:2 */
+.bx .bx-row{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);grid-template-rows:repeat(3,auto);gap:22px 40px;align-items:start}
+.bx .bx-feat{grid-row:1/4}
+.bx .bx-feat .bx-img,.bx .bx-c:not(.bx-feat) .bx-img{height:auto;aspect-ratio:3/2}
+.bx .bx-c:not(.bx-feat){display:grid;grid-template-columns:200px minmax(0,1fr);grid-template-rows:auto auto 1fr;column-gap:20px;align-content:start;padding-bottom:22px;border-bottom:1px solid var(--line)}
+.bx .bx-c:not(.bx-feat):last-child{border-bottom:0;padding-bottom:0}
+.bx .bx-c:not(.bx-feat) .bx-img{grid-row:1/4;border-radius:16px}
+.bx .bx-c:not(.bx-feat) .bx-catpill{position:static;grid-column:2;justify-self:start;padding:0;background:none;backdrop-filter:none;-webkit-backdrop-filter:none;margin-top:2px}
+.bx .bx-c:not(.bx-feat) .bx-catpill:hover{background:none;color:var(--forest);text-decoration:underline}
+.bx .bx-c:not(.bx-feat) .bx-t{grid-column:2;margin-top:8px;font-size:calc(14px*var(--s))}
+.bx .bx-c:not(.bx-feat) .bx-meta{grid-column:2;align-self:end}
+.bx .bx-c:not(.bx-feat) .bx-go{width:34px;height:34px;right:10px;bottom:10px}
+.bx .bx-img{box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.bx .bx-img::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);pointer-events:none}
+/* Nav utilities — quieter text-size and language controls */
+.navtools .seg{background:transparent;padding:0;gap:0;border-radius:0}
+.navtools .seg button{position:relative;min-width:22px;height:30px;padding:0 5px;border-radius:6px;background:transparent;color:#8C887A;font-size:11px;letter-spacing:.02em}
+.navtools .seg button:hover{color:#000;background:transparent}
+.navtools .seg button.on{background:transparent;color:#000}
+.navtools .seg button.on::after{content:"";position:absolute;left:50%;bottom:2px;width:4px;height:4px;margin-left:-2px;border-radius:999px;background:var(--green)}
+.navtools .seg.size button{font-family:"Termina",sans-serif;line-height:1}
+.navtools .seg.size button:nth-child(1){font-size:9.5px}
+.navtools .seg.size button:nth-child(2){font-size:12px}
+.navtools .seg.size button:nth-child(3){font-size:14.5px}
+.navtools .seg+.seg{margin-left:6px;padding-left:10px;border-left:1px solid var(--line)}
+.navtools .seg:not(.size) button+button::before{content:"/";position:absolute;left:-3px;top:50%;transform:translateY(-50%);color:#C9C4B0;font-weight:500}
+.navtools .seg button:focus-visible{outline:2px solid var(--green);outline-offset:1px}
+/* Nav utilities — standard dropdowns (text size "Aa", language globe) */
+.nu{display:flex;align-items:center;gap:2px}
+.nu-dd{position:relative}
+.nu-btn{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 10px;border:1px solid transparent;border-radius:999px;background:transparent;color:#000;font-family:"Termina",sans-serif;font-weight:700;font-size:11px;letter-spacing:.04em;cursor:pointer;transition:background .2s,border-color .2s}
+.nu-btn:hover{background:rgba(0,0,0,.05)}
+.nu-btn.open{border-color:var(--line);background:#FBFAF3}
+.nu-btn:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.nu-aa{font-family:"Termina",sans-serif;font-size:15px;line-height:1;display:inline-flex;align-items:baseline}
+.nu-aa small{font-size:10px;margin-left:1px}
+.nu-chev{color:#8C887A;transition:transform .2s}
+.nu-btn.open .nu-chev{transform:rotate(180deg)}
+.nu-menu{position:absolute;right:0;top:calc(100% + 8px);z-index:70;min-width:196px;padding:6px;border-radius:16px;background:#FBFAF3;border:1px solid var(--line);box-shadow:0 22px 44px -22px rgba(0,0,0,.4);animation:rise .18s ease both}
+.nu-menu::before{content:"";position:absolute;left:0;right:0;top:-10px;height:10px}
+.nu-h{margin:6px 10px 6px;font-family:"Termina",sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#8C887A}
+.nu-opt{display:flex;align-items:center;gap:12px;width:100%;min-height:42px;padding:0 10px;border:0;border-radius:10px;background:transparent;font-family:"Anakotmai",sans-serif;font-weight:500;font-size:14px;color:#000;text-align:left;cursor:pointer;transition:background .15s}
+.nu-opt:hover,.nu-opt:focus-visible{background:var(--sand);outline:none}
+.nu-a{width:26px;display:inline-flex;justify-content:center;font-family:"Termina",sans-serif;font-weight:700;line-height:1;color:#000}
+.nu-code{font-size:10.5px;letter-spacing:.06em;color:#8C887A}
+.nu-ck{margin-left:auto;color:var(--green);opacity:0}
+.nu-opt.on .nu-ck{opacity:1}
+.nu-opt.on{font-weight:700}
+@media (max-width:680px){.nu-btn{padding:0 8px}.nu-menu{right:-40px}}
+/* HERO v9 — calm editorial headline (no per-letter motion) */
+.hx9-k{display:flex;align-items:center;gap:14px;margin:0 0 26px;font-family:"Termina",sans-serif;font-weight:700;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(243,240,223,.75)}
+.hx9-k span{width:40px;height:1.5px;background:var(--green)}
+.hx8 .hx9-h{margin:0;font-size:calc(clamp(56px,7vw,116px)*var(--s));line-height:.95;letter-spacing:-.025em;color:#F3F0DF;translate:none}
+.hx9-l{display:block;overflow:hidden;padding-bottom:.06em}
+.hx9-l>span{display:inline-block;animation:hx9Up 1s cubic-bezier(.2,.75,.15,1) both;animation-delay:calc(var(--intro,0s) + .15s)}
+.hx9-l+.hx9-l>span{animation-delay:calc(var(--intro,0s) + .3s)}
+@keyframes hx9Up{from{transform:translateY(105%)}to{transform:none}}
+.hx9-h .it{color:var(--green);font-size:1.06em;letter-spacing:-.01em}
+.hx9-dot{color:var(--green)}
+.hx8 .hx9-k.rise{animation-delay:calc(var(--intro,0s) + .05s)}
+.hx8 .hlead{margin-top:30px}
+.hx8 .hx-mark{animation-delay:calc(var(--intro,0s) + 1.1s)}
+.hx8-glow{opacity:calc(.25 + var(--co) * .45)}
+/* Our solutions — expanding panels (hover/focus to open) */
+.acc{list-style:none;margin:44px 0 0;padding:0;display:flex;gap:12px;height:clamp(420px,46vw,500px)}
+.acc-p{position:relative;flex:1 1 0;min-width:0;border-radius:28px;overflow:hidden;isolation:isolate;padding:26px;display:flex;flex-direction:column;justify-content:space-between;transition:flex-grow .7s cubic-bezier(.2,.8,.2,1),background .4s;cursor:pointer}
+.acc:not(:hover):not(:focus-within) .acc-p:first-child,.acc-p:hover,.acc-p:focus-within{flex-grow:3.4}
+.acc-link{position:absolute;inset:0;z-index:3}
+.acc-t a{position:relative;z-index:4;color:inherit;text-decoration:none}
+.t-green{background:var(--green);color:#F3F0DF}
+.t-black{background:#000;color:#F3F0DF}
+.t-paper{background:#FBFAF3;color:#000;box-shadow:inset 0 0 0 1px var(--line)}
+.t-forest{background:#E9E5CF;color:#000}
+.acc-n{font-family:"STIX Two Text",serif;font-style:italic;font-weight:700;font-size:22px;line-height:1;opacity:.85}
+.acc-ic{position:absolute;right:22px;top:22px;width:52px;height:52px;border-radius:999px;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;opacity:.9;transition:transform .5s cubic-bezier(.3,1.5,.4,1)}
+.acc-p:hover .acc-ic{transform:rotate(-12deg) scale(1.06)}
+.acc-body{position:relative;z-index:2}
+.acc-tag{display:inline-block;padding:5px 11px;border-radius:999px;border:1px solid currentColor;font-family:"Termina",sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.acc-t{margin:14px 0 0;font-family:"Termina",sans-serif;font-weight:700;font-size:calc(15px*var(--s));line-height:1.25;text-transform:uppercase;letter-spacing:-.005em;transition:font-size .5s}
+.acc-d,.acc-go{max-height:0;opacity:0;overflow:hidden;transform:translateY(10px);transition:opacity .35s ease,transform .45s ease,max-height .5s ease}
+.acc-d{margin:12px 0 0;font-size:calc(15.5px*var(--s));line-height:1.55;max-width:40ch}
+.acc-go{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-family:"Termina",sans-serif;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.acc:not(:hover):not(:focus-within) .acc-p:first-child .acc-d,.acc-p:hover .acc-d,.acc-p:focus-within .acc-d{max-height:120px;opacity:.9;transform:none;transition-delay:.2s}
+.acc:not(:hover):not(:focus-within) .acc-p:first-child .acc-go,.acc-p:hover .acc-go,.acc-p:focus-within .acc-go{max-height:40px;opacity:1;transform:none;transition-delay:.28s}
+.acc:not(:hover):not(:focus-within) .acc-p:first-child .acc-t,.acc-p:hover .acc-t,.acc-p:focus-within .acc-t{font-size:calc(clamp(20px,1.9vw,28px)*var(--s))}
+.acc-big{position:absolute;right:-30px;bottom:-40px;z-index:1;opacity:0;transform:translate(20px,20px) rotate(8deg);transition:opacity .5s,transform .7s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.acc-big svg{display:block;stroke-width:.8}
+.t-green .acc-big,.t-black .acc-big{color:rgba(243,240,223,.14)}
+.t-paper .acc-big,.t-forest .acc-big{color:rgba(14,165,82,.16)}
+.acc:not(:hover):not(:focus-within) .acc-p:first-child .acc-big,.acc-p:hover .acc-big,.acc-p:focus-within .acc-big{opacity:1;transform:none}
+.acc-t{font-size:calc(13px*var(--s));overflow-wrap:anywhere;hyphens:auto}
+.acc-p.t-green+.acc-p.t-green{background:#0B8F47}
+/* Polish pass — official logo, accessible greens, solution hints */
+.navlogo{display:inline-flex;align-items:center}
+.navlogo img{height:42px;width:auto;display:block}
+.f2-logo{height:56px;width:auto;display:block}
+.btn-p{background:var(--forest)}
+.ifx{background:var(--forest)}
+.ifx2-sub{color:#F3F0DF}
+.t-green,.acc-p.t-green+.acc-p.t-green{background:var(--forest)}
+.acc-plus{position:absolute;right:22px;bottom:22px;z-index:2;width:36px;height:36px;border-radius:999px;border:1.5px solid currentColor;opacity:.75;transition:opacity .3s,transform .4s}
+.acc-plus::before,.acc-plus::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;margin:-.75px 0 0 -6px;background:currentColor}
+.acc-plus::after{transform:rotate(90deg)}
+.acc:not(:hover):not(:focus-within) .acc-p:first-child .acc-plus,.acc-p:hover .acc-plus,.acc-p:focus-within .acc-plus{opacity:0;transform:rotate(90deg) scale(.6)}
+.acc-t{font-size:calc(14px*var(--s))}
+/* Our solutions — bento grid: all five visible, IFRS leads */
+.sbento{list-style:none;margin:44px 0 0;padding:0;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:minmax(220px,auto);gap:16px}
+.sb{position:relative;isolation:isolate;overflow:hidden;border-radius:28px;padding:26px 26px 24px;display:flex;flex-direction:column;transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s}
+.sb:hover{transform:translateY(-4px);box-shadow:0 30px 60px -36px rgba(0,0,0,.45)}
+.sb-ifrs{grid-column:1/8;grid-row:span 2;padding:34px}
+.sb-cc{grid-column:8/13}
+.sb-cs{grid-column:8/13}
+.sb-issb{grid-column:1/7}
+.sb-esg{grid-column:7/13}
+.t-forestbg{background:var(--forest);color:#F3F0DF}
+.sb-link{position:absolute;inset:0;z-index:3}
+.sb-t a{color:inherit;text-decoration:none}
+.sb-top{display:flex;justify-content:space-between;align-items:flex-start}
+.sb-n{font-family:"STIX Two Text",serif;font-style:italic;font-weight:700;font-size:22px;line-height:1;opacity:.85}
+.sb-ic{width:52px;height:52px;border-radius:999px;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;transition:transform .5s cubic-bezier(.3,1.5,.4,1),background .3s,color .3s}
+.sb:hover .sb-ic{transform:rotate(-12deg)}
+.sb-body{margin-top:auto;padding-top:22px;position:relative;z-index:2}
+.sb-tag{display:inline-block;padding:5px 11px;border-radius:999px;border:1px solid currentColor;font-family:"Termina",sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.sb-t{margin:12px 0 0;font-family:"Termina",sans-serif;font-weight:700;font-size:calc(19px*var(--s));line-height:1.2;text-transform:uppercase;letter-spacing:-.005em}
+.sb-ifrs .sb-t{font-size:calc(clamp(28px,2.8vw,42px)*var(--s));line-height:1.05}
+.sb-d{margin:10px 0 0;font-size:calc(14.5px*var(--s));line-height:1.55;opacity:.88;max-width:44ch}
+.sb-ifrs .sb-d{font-size:calc(17px*var(--s));max-width:40ch}
+.sb-go{position:relative;z-index:2;display:inline-flex;align-items:center;gap:10px;margin-top:18px;font-family:"Termina",sans-serif;font-weight:700;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase}
+.sb-go i{width:34px;height:34px;border-radius:999px;border:1.5px solid currentColor;display:inline-flex;align-items:center;justify-content:center;transition:background .3s,color .3s,transform .3s}
+.t-forestbg:hover .sb-go i,.t-black:hover .sb-go i{background:#F3F0DF;color:#000;border-color:#F3F0DF}
+.t-paper:hover .sb-go i{background:#000;color:#F3F0DF;border-color:#000}
+.sb:hover .sb-go i{transform:rotate(45deg)}
+.sb-big{position:absolute;right:-36px;bottom:-46px;z-index:1;pointer-events:none;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.sb-big svg{display:block;stroke-width:.8}
+.sb:not(.sb-ifrs) .sb-big svg{width:170px;height:170px}
+.t-forestbg .sb-big,.t-black .sb-big{color:rgba(243,240,223,.12)}
+.t-paper .sb-big{color:rgba(10,125,63,.12)}
+.sb:hover .sb-big{transform:translate(-8px,-8px) rotate(-6deg)}
+/* Footer v3 — contact-first, quiet link rows, brand mark */
+.f3{padding-top:88px}
+.f3-top{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:72px;align-items:start;padding-bottom:56px;border-bottom:1px solid rgba(243,240,223,.12)}
+.f3 .f2-logo{height:64px}
+.f3-desc{margin:22px 0 0;font-size:calc(15px*var(--s));line-height:1.65;color:#B9B6A3;max-width:46ch}
+.f3-badge{display:inline-flex;align-items:center;gap:12px;margin-top:24px;padding:6px 16px 6px 6px;border-radius:999px;border:1px solid rgba(243,240,223,.18);color:#E7EDE4;text-decoration:none;font-size:12.5px;transition:border-color .3s}
+.f3-badge:hover{border-color:var(--green);color:#E7EDE4}
+.f3-k{margin:0 0 12px;font-family:"Termina",sans-serif;font-weight:700;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--green)}
+.f3-big{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid rgba(243,240,223,.14);font-family:"Termina",sans-serif;font-weight:700;font-size:calc(clamp(20px,2.2vw,32px)*var(--s));letter-spacing:-.01em;color:#F3F0DF;text-decoration:none;transition:color .3s,padding .3s}
+.f3-big:hover{color:var(--green);padding-left:8px}
+.f3-go{flex:none;width:44px;height:44px;border-radius:999px;border:1.5px solid rgba(243,240,223,.3);display:flex;align-items:center;justify-content:center;transition:background .3s,color .3s,transform .3s,border-color .3s}
+.f3-big:hover .f3-go{background:var(--green);border-color:var(--green);color:#F3F0DF;transform:rotate(45deg)}
+.f3-addr{margin:18px 0 0;font-style:normal;font-size:calc(14px*var(--s));line-height:1.6;color:#B9B6A3;max-width:52ch}
+.f3-soc{display:flex;gap:8px;margin-top:18px}
+.f3-soc a{width:42px;height:42px;border-radius:999px;border:1px solid rgba(243,240,223,.22);display:inline-flex;align-items:center;justify-content:center;color:#F3F0DF;transition:background .25s,color .25s}
+.f3-soc a:hover{background:#F3F0DF;color:#000}
+.f3-links{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;padding:44px 0}
+.f3-col h4{margin:0 0 16px;font-family:"Termina",sans-serif;font-weight:700;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#7D7A6A}
+.f3-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+.f3-col a{color:#D9D6C4;text-decoration:none;font-size:calc(14.5px*var(--s));transition:color .2s}
+.f3-col a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--green)}
+.f3-bot{position:relative;z-index:2;padding-bottom:36px}
+.f3-bot .f2-right{gap:18px}
+.f3-mark{position:relative;height:clamp(70px,11vw,170px);overflow:hidden;margin-top:-10px;pointer-events:none}
+.f3-mark img{position:absolute;left:50%;top:0;transform:translateX(-50%);width:min(92vw,1300px);height:auto;opacity:.07}
+/* Footer v3.1 — calmer scale */
+.f3{padding-top:72px}
+.f3-top{gap:56px;padding-bottom:44px}
+.f3 .f2-logo{height:48px}
+.f3-desc{margin-top:18px;font-size:calc(14px*var(--s))}
+.f3-badge{margin-top:18px}
+.f3-big{padding:11px 0;font-size:calc(17px*var(--s));letter-spacing:0}
+.f3-big:hover{padding-left:4px}
+.f3-go{width:32px;height:32px;border-width:1px}
+.f3-go svg{width:14px;height:14px}
+.f3-addr{margin-top:14px;font-size:calc(13.5px*var(--s))}
+.f3-soc{margin-top:14px}
+.f3-soc a{width:36px;height:36px}
+.f3-soc a svg{width:15px;height:15px}
+.f3-links{padding:36px 0}
+.f3-col a{font-size:calc(14px*var(--s))}
+.f3 .f2-seal em{color:#F3F0DF;font-size:8px}
+/* Our solutions — one compact row (fits one screen); stacked list on mobile */
+.solutions{padding-top:88px;padding-bottom:96px}
+.solrow{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.sr{position:relative;display:flex;flex-direction:column;min-height:330px;padding:22px 20px 20px;border-radius:24px;background:#FBFAF3;border:1px solid var(--line);color:#000;transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s,background .3s,border-color .3s}
+.sr:hover{transform:translateY(-6px);box-shadow:0 26px 50px -30px rgba(0,0,0,.45);border-color:transparent}
+.sr-lead{background:var(--forest);border-color:var(--forest);color:#F3F0DF}
+.sr:not(.sr-lead):hover{background:#000;color:#F3F0DF}
+.sr-link{position:absolute;inset:0;z-index:3;border-radius:inherit}
+.sr-t a{color:inherit;text-decoration:none}
+.sr-top{display:flex;justify-content:space-between;align-items:flex-start}
+.sr-ic{width:46px;height:46px;border-radius:14px;background:var(--sand);color:var(--forest);display:flex;align-items:center;justify-content:center;transition:background .3s,color .3s,transform .45s cubic-bezier(.3,1.5,.4,1)}
+.sr-ic svg{width:24px;height:24px}
+.sr-lead .sr-ic{background:rgba(243,240,223,.16);color:#F3F0DF}
+.sr:not(.sr-lead):hover .sr-ic{background:var(--green);color:#F3F0DF}
+.sr:hover .sr-ic{transform:rotate(-8deg)}
+.sr-n{font-family:"STIX Two Text",serif;font-style:italic;font-weight:700;font-size:18px;opacity:.6}
+.sr-tag{margin-top:auto;padding-top:22px;font-family:"Termina",sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--forest);transition:color .3s}
+.sr-lead .sr-tag,.sr:hover .sr-tag{color:var(--green)}
+.sr-lead .sr-tag{color:#BFE9CF}
+.sr-t{margin:8px 0 0;font-family:"Termina",sans-serif;font-weight:700;font-size:calc(15px*var(--s));line-height:1.25;text-transform:uppercase}
+.sr-d{margin:8px 0 0;font-size:calc(13.5px*var(--s));line-height:1.5;opacity:.82;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.sr-go{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-family:"Termina",sans-serif;font-weight:700;font-size:10px;letter-spacing:.06em;text-transform:uppercase}
+.sr-go svg{transition:transform .3s}
+.sr:hover .sr-go svg{transform:translate(2px,-2px)}
+@media (max-width:1180px){.solrow{grid-template-columns:repeat(3,minmax(0,1fr))}.sr{min-height:280px}}
+@media (max-width:760px){
+ .solrow{grid-template-columns:minmax(0,1fr);gap:10px}
+ .sr{min-height:0;display:grid;grid-template-columns:46px minmax(0,1fr) auto;grid-template-areas:"ic tag n" "ic t t" "ic d d";column-gap:14px;row-gap:2px;padding:16px;border-radius:18px}
+ .sr-top{display:contents}.sr-ic{grid-area:ic}.sr-n{grid-area:n;font-size:15px}
+ .sr-tag{grid-area:tag;margin:0;padding:0}.sr-t{grid-area:t;margin-top:4px;font-size:calc(14px*var(--s))}
+ .sr-d{grid-area:d;-webkit-line-clamp:2;margin-top:4px}.sr-go{display:none}
+ .sr:hover{transform:none}
+}
+.solutions .display.h2,.solutions h2.display{font-size:calc(clamp(26px,2.5vw,40px)*var(--s))}
+/* HERO v10 — light editorial, SEO-friendly H1 */
+.hero.hx10{position:relative;overflow:hidden;isolation:isolate;background:var(--sand);padding:72px 0 170px;min-height:max(680px,calc(100vh - 80px));display:flex;align-items:center}
+.hero.hx10::before{display:none}
+.hx10-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:40px;align-items:center;width:100%}
+.hx10-h{margin:0;font-weight:400}
+.hx10-tag{display:block;font-family:"Termina",sans-serif;font-weight:700;text-transform:uppercase;font-size:calc(clamp(52px,6.6vw,108px)*var(--s));line-height:.95;letter-spacing:-.025em;color:#000}
+.hx10-tag .it{font-family:"STIX Two Text",serif;font-style:italic;text-transform:none;color:var(--forest);font-size:1.06em;letter-spacing:-.01em}
+.hx10-tag .hx9-dot{color:var(--forest)}
+.hx10-sub{display:block;margin-top:26px;max-width:34ch;font-family:"Termina",sans-serif;font-weight:700;font-size:calc(clamp(14px,1.15vw,17px)*var(--s));line-height:1.45;letter-spacing:.01em;text-transform:uppercase;color:#000;padding-left:16px;border-left:3px solid var(--green)}
+.hx10-lead{margin:22px 0 0;font-size:calc(17px*var(--s));line-height:1.65;color:var(--muted);max-width:52ch}
+.hx10-lead .hx-mark{color:#000;animation-delay:calc(var(--intro,0s) + 1.1s)}
+.hx10 .hctas{justify-content:flex-start;margin-top:30px}
+.hx10-vis{position:relative;align-self:end;display:flex;justify-content:flex-end;align-items:flex-end;margin:0 -8% -70px 0}
+.hx10-vis img{position:relative;z-index:1;height:auto;width:118%;max-width:none;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 16%),linear-gradient(0deg,transparent 0%,#000 14%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0%,#000 16%),linear-gradient(0deg,transparent 0%,#000 14%);mask-composite:intersect;filter:drop-shadow(0 30px 40px rgba(0,0,0,.12));animation:hx10In 1.4s cubic-bezier(.2,.75,.15,1) both,hx10Float 9s ease-in-out infinite;animation-delay:calc(var(--intro,0s) + .2s),calc(var(--intro,0s) + 1.6s)}
+.hx10-glow{position:absolute;left:50%;top:18%;width:78%;aspect-ratio:1;transform:translateX(-50%);border-radius:999px;background:radial-gradient(closest-side,rgba(14,165,82,.28),rgba(14,165,82,0));z-index:0}
+@keyframes hx10In{from{opacity:0;transform:translateY(40px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes hx10Float{50%{transform:translateY(-10px)}}
+.hx10 .hx-curve path{fill:#000}
+.ab3-photo img{object-position:22% 50%}
+/* Section rhythm: Hero (sand) → What we do (black) → About (paper) → Clients (sand) → IFRS (green) */
+.wwd{background:var(--paper);padding:56px 0 88px}
+.wwd-chips a:hover{background:var(--green);border-color:var(--green);color:#F3F0DF}
+.story.ab3{background:var(--sand)}
+.tb2.tbm{background:var(--paper)}
+.tbm .tm-c{background:#FBFAF3}
+.tbm .tbm-m{-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+/* HERO v11 — animated wind farm, spotlight, parallax; readable copy */
+.hero.hx11{--mx:72%;--my:46%;--dx:0;--dy:0;--co:0;position:relative;overflow:hidden;isolation:isolate;background:#010805;color:#F3F0DF;min-height:max(720px,calc(100vh - 80px));padding:96px 0 200px;display:flex;align-items:center}
+.hero.hx11::before{display:none}
+.hx11-bg{position:absolute;inset:0;z-index:-1;animation:hx8In 1.6s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--intro,0s) - .4s)}
+.hx11-scene{position:absolute;inset:-30px -40px 0 -40px;width:calc(100% + 80px);height:calc(100% + 30px)}
+.hx-l{transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.hx-l.far{transform:translate(calc(var(--dx) * -8px),calc(var(--dy) * -4px))}
+.hx-l.mid{transform:translate(calc(var(--dx) * -18px),calc(var(--dy) * -8px))}
+.hx-l.near{transform:translate(calc(var(--dx) * -34px),calc(var(--dy) * -12px))}
+.tb-r{transform-box:view-box;transform-origin:0 0;animation:hxSpin2 8s linear infinite}
+.hx11:hover .tb-r{animation-duration:4s !important}
+@keyframes hxSpin2{to{transform:rotate(360deg)}}
+.hx-sun{animation:hxSun 8s ease-in-out infinite alternate}
+@keyframes hxSun{from{opacity:.75}to{opacity:1}}
+.hx-pt{fill:#BFE9CF;opacity:0;animation:hxPt 12s linear infinite}
+@keyframes hxPt{0%{opacity:0;transform:translateY(0)}15%{opacity:.7}85%{opacity:.5}100%{opacity:0;transform:translateY(-140px)}}
+.hx11-spot{position:absolute;left:var(--mx);top:var(--my);width:720px;height:720px;margin:-360px 0 0 -360px;border-radius:999px;background:radial-gradient(closest-side,rgba(191,233,207,.28),rgba(14,165,82,.14) 45%,rgba(14,165,82,0) 75%);mix-blend-mode:screen;opacity:calc(.25 + var(--co) * .75);transition:opacity .5s,left .25s ease-out,top .25s ease-out;pointer-events:none}
+.hx11-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(1,8,5,.88) 0%,rgba(1,8,5,.62) 34%,rgba(1,8,5,.12) 60%,rgba(1,8,5,0) 75%);pointer-events:none}
+.hx11-in{width:100%}
+.hx11-copy{max-width:620px}
+.hx11 .hx10-tag{color:#F3F0DF}
+.hx11 .hx10-tag .it,.hx11 .hx10-tag .hx9-dot{color:var(--green)}
+.hx11 .hx10-sub{color:#F3F0DF;border-left-color:var(--green)}
+.hx11 .hx11-lead{color:rgba(243,240,223,.82);font-size:calc(17.5px*var(--s));line-height:1.65}
+.hx11 .hx11-lead .hx-mark{color:#F3F0DF}
+.hx11 .hctas{margin-top:32px;justify-content:flex-start}
+.hx11 .hx-curve path{fill:#F3F0DF}
+/* HERO v11.1 — real brand photo with slow motion */
+.hx11-photo{position:absolute;inset:-30px;translate:calc(var(--dx) * -18px) calc(var(--dy) * -10px);transition:translate 1s cubic-bezier(.2,.7,.2,1)}
+.hx11-photo img{width:100%;height:100%;object-fit:cover;object-position:28% 50%;display:block;filter:brightness(.62) saturate(1.05);animation:hxKen 22s ease-in-out infinite alternate}
+@keyframes hxKen{from{transform:scaleX(-1) scale(1.12)}to{transform:scaleX(-1) scale(1.0) translateX(2%)}}
+.hx11-spot{background:radial-gradient(closest-side,rgba(243,240,223,.22),rgba(14,165,82,.16) 45%,rgba(14,165,82,0) 75%)}
+@media (max-width:680px){.hx11-photo img{object-position:20% 50%}}
+@media (prefers-reduced-motion:reduce){.hx11-photo img{animation:none;transform:scaleX(-1)}}
+/* HERO v11.2 — real video background (wind + solar), silent seamless loop */
+.hx11-video img,.hx11-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%;display:block;filter:brightness(.7) saturate(1.05);animation:none;transform:none}
+.hx11-video video{z-index:1}
+.hero.hx11 .hx11-shade{background:linear-gradient(90deg,rgba(1,8,5,.9) 0%,rgba(1,8,5,.72) 32%,rgba(1,8,5,.2) 62%,rgba(1,8,5,0) 80%),linear-gradient(0deg,rgba(1,8,5,.45) 0%,rgba(1,8,5,0) 30%)}
+@media (max-width:1080px){.hero.hx11 .hx11-shade{background:linear-gradient(0deg,rgba(1,8,5,.35),rgba(1,8,5,.82) 70%)}}
+@media (prefers-reduced-motion:reduce){.hx11-video video{display:none}}
+@media (max-width:1080px){.hx11-shade{background:linear-gradient(0deg,rgba(1,8,5,.2),rgba(1,8,5,.75) 70%)}}
+@media (max-width:680px){.hero.hx11{min-height:0;padding:64px 0 170px}.hx11-scene{inset:auto -260px 0 -60px;width:calc(100% + 320px);height:100%}}
+@media (prefers-reduced-motion:reduce){.tb-r,.hx-pt,.hx-sun{animation:none}}
+@media (max-width:1080px){.hx10-grid{grid-template-columns:minmax(0,1fr)}.hx10-vis{margin:20px -20px -50px 0}.hx10-vis img{width:100%}.hero.hx10{min-height:0;padding:56px 0 130px}}
+@media (max-width:680px){.hx10-vis{margin:10px -20px -40px 0}.hx10-sub{font-size:calc(13px*var(--s))}}
+.th-root .hx10-sub{text-transform:none;font-size:calc(17px*var(--s))}
+@media (max-width:1080px){.f3-top{grid-template-columns:minmax(0,1fr);gap:44px}.f3-links{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:680px){.f3-links{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}.f3-bot{flex-direction:column;align-items:flex-start}}
+@media (max-width:1080px){.sb-ifrs,.sb-cc,.sb-cs,.sb-issb,.sb-esg{grid-column:1/-1;grid-row:auto}.sbento{grid-auto-rows:auto}}
+@media (max-width:1080px){.acc-plus{display:none}}
+@media (max-width:1080px){.acc{flex-direction:column;height:auto}.acc-p{flex:none;min-height:0;gap:18px}.acc-d,.acc-go{max-height:none;opacity:1;transform:none}.acc-t{font-size:calc(19px*var(--s)) !important}.acc-big{display:none}}
+@media (prefers-reduced-motion:reduce){.acc-p,.acc-d,.acc-go,.acc-big{transition:none}}
+@media (max-width:1080px){.bx .bx-row{grid-template-columns:minmax(0,1fr)}.bx .bx-feat{grid-row:auto}}
+@media (max-width:680px){.bx .bx-c:not(.bx-feat){grid-template-columns:120px minmax(0,1fr)}}
 @media (max-width:1080px){.hx6-ring,.hx6-leaves{display:none}}
 @media (max-width:1080px){.hx6 .hx-bg{width:100%;border-radius:0;opacity:.45}.hx6 .hx-copy{max-width:640px}.hx6 .hx-cue{display:none}}
 @media (max-width:1080px){.tb2-certs4 .tb2-cl{grid-template-columns:repeat(2,minmax(0,1fr))}.tb2-certs4 .tb2-cl li:nth-child(3){border-left:0}.tb2-certs4 .tb2-cl li:nth-child(4){border-left:1px solid rgba(243,240,223,.14)}}
@@ -1296,8 +1601,8 @@ ol.steps{list-style:none;padding:0}
 <div class="lc" style="--s: {{scale}}; --intro: {{introDelay}}">
 <!-- loader -->
 <div class="ld {{ldCls}}" aria-hidden="true">
-<sc-if value="{{ldFull}}" hint-placeholder-val="{{ false }}"><img class="ld-img" src="./assets/2a4d37028983e1d83c792be2ab6c3eff.webp?v={{ldNonce}}" alt=""><button type="button" class="ld-skip" onClick="{{skipIntro}}">{{skipLabel}}</button></sc-if>
-<sc-if value="{{ldQuick}}" hint-placeholder-val="{{ true }}"><img class="ld-img ld-still" src="./assets/288706c2de7e68518f3e992220e72c92.webp" alt=""></sc-if>
+<sc-if value="{{ldFull}}" hint-placeholder-val="{{ false }}"><img class="ld-img" src="/_blob/2a4d37028983e1d83c792be2ab6c3eff?v={{ldNonce}}" alt=""><button type="button" class="ld-skip" onClick="{{skipIntro}}">{{skipLabel}}</button></sc-if>
+<sc-if value="{{ldQuick}}" hint-placeholder-val="{{ true }}"><img class="ld-img ld-still" src="/_blob/288706c2de7e68518f3e992220e72c92" alt=""></sc-if>
 </div>
 <!-- /loader -->
 <sc-if value="{{isEN}}" hint-placeholder-val="{{ true }}">
@@ -1305,21 +1610,14 @@ ol.steps{list-style:none;padding:0}
 <!-- 0 · NAV — full menu, search, text size and language in one bar -->
 <header class="nav">
 <div class="wrap">
-<a href="#top" aria-label="LO-CARB home" style="display:inline-flex;color:#0EA552">
-<svg width="62" height="44" viewBox="0 0 140 100" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" aria-hidden="true">
-<rect x="4" y="4" width="20" height="44" rx="10"></rect><circle cx="44" cy="36" r="12"></circle>
-<path d="M27.2 70.8A13 13 0 1 0 27.2 89.2"></path><circle cx="52" cy="80" r="13"></circle><path d="M65 67V93"></path>
-<path d="M78 93V67M78 80Q78 67 91 67"></path><path d="M98 48V93"></path><circle cx="111" cy="80" r="13"></circle>
-<circle cx="133" cy="90" r="5" fill="#000000" stroke="none"></circle>
-</svg>
-</a>
+<a href="#top" aria-label="LO-CARB home" class="navlogo"><img src="/_blob/6fb07855b3a66662efda15fb53c6e65f" alt="LO-CARB" width="62" height="42"></a>
 <nav class="navlinks" aria-label="Main">
 <div class="dd"><a href="About-Story.dc.html" aria-haspopup="true">About Us <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></a>
 <div class="menu"><div class="mpanel"><div class="mintro"><small>About Us</small><strong>Who we are</strong><p>Thailand's first IFRS Sustainability Alliance member.</p><a href="About-Story.dc.html" class="mlink">Our story →</a></div><div class="mlist">
 <a href="About-Story.dc.html" class="mi2"><span class="mico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"></path><path d="M5 19l7-7"></path></svg></span><span class="mtx"><span class="mt">LO-CARB's story</span><span class="md">Mission, history and key numbers</span></span><span class="mgo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a><a href="About-Certificates.dc.html" class="mi2"><span class="mico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"></circle><path d="M8.5 14l-1.5 8 5-3 5 3-1.5-8"></path></svg></span><span class="mtx"><span class="mt">Certificates</span><span class="md">IFRS Sustainability Alliance and more</span></span><span class="mgo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a><a href="About-Board.dc.html" class="mi2"><span class="mico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"></circle><circle cx="17" cy="9" r="2.5"></circle><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15 20c0-2.4 1.6-4.5 4-5"></path></svg></span><span class="mtx"><span class="mt">Board of directors</span><span class="md">The people who lead LO-CARB</span></span><span class="mgo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
 </div></div></div></div>
 <div class="dd"><a href="Main.dc.html" aria-haspopup="true">Our Solutions <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></a>
-<div class="menu"><div class="mpanel wide"><div class="mintro"><small>Our Solutions</small><strong>Five ways we cut carbon</strong><p>From IFRS disclosure to supplier data. Not sure where to start?</p><a href="Contact.dc.html" class="mlink">Talk to a specialist →</a></div><div class="mlist two">
+<div class="menu"><div class="mpanel wide"><div class="mintro"><small>Our Solutions</small><strong>Five ways we cut carbon</strong><p>From IFRS disclosure to farmland carbon. Not sure where to start?</p><a href="Contact.dc.html" class="mlink">Talk to a specialist →</a></div><div class="mlist two">
 <a href="Solution-IFRS.dc.html" class="mi2"><span class="mico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"></path><path d="M14 3v5h5M10 13h6M10 17h4"></path></svg></span><span class="mtx"><span class="mt">IFRS Standards</span><span class="md">S1 &amp; S2 advisory, end to end</span></span><span class="mgo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a><a href="Solution-CarbonCal.dc.html" class="mi2"><span class="mico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"></path></svg></span><span class="mtx"><span class="mt">CarbonCal + Camp</span><span class="md">Carbon accounting and training</span></span><span class="mgo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a><a href="Solution-ISSB.dc.html" class="mi2"><span class="mico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"></path><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"></path></svg></span><span class="mtx"><span class="mt">ISSB training</span><span class="md">From Thailand's first ISSB training partner</span></span><span class="mgo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a><a href="Solution-CarbonScout.dc.html" class="mi2"><span class="mico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="4"></circle><path d="M12 3v3M12 18v3M3 12h3M18 12h3"></path></svg></span><span class="mtx"><span class="mt">Carbon Scout</span><span class="md">Farmland carbon for carbon credits</span></span><span class="mgo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a><a href="Solution-Reporting.dc.html" class="mi2"><span class="mico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"></path><path d="M8 15l3-3 2 2 3-4"></path></svg></span><span class="mtx"><span class="mt">Reporting &amp; consulting</span><span class="md">ESG reports to Net Zero pathway</span></span><span class="mgo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
 </div></div></div></div>
 <div class="dd"><a href="Blog.dc.html" aria-haspopup="true">Blog <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></a>
@@ -1329,14 +1627,24 @@ ol.steps{list-style:none;padding:0}
 </nav>
 <div class="navtools">
 <button class="icbtn" aria-label="Search" onClick="{{openSearch}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></button>
-<div class="seg size" role="group" aria-label="Text size">
-<button class="{{szS}}" onClick="{{setS}}" aria-label="Smaller text">A−</button>
-<button class="{{szM}}" onClick="{{setM}}" aria-label="Default text size">A</button>
-<button class="{{szL}}" onClick="{{setL}}" aria-label="Larger text">A+</button>
+<div class="nu" onMouseLeave="{{closeMenus}}">
+<div class="nu-dd">
+<button type="button" class="nu-btn {{sizeBtn}}" onClick="{{toggleSize}}" aria-haspopup="true" aria-expanded="{{sizeExp}}" aria-label="Text size"><span class="nu-aa" aria-hidden="true">A<small>A</small></span><svg class="nu-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
+<sc-if value="{{sizeOpen}}" hint-placeholder-val="{{ false }}"><div class="nu-menu" role="menu" aria-label="Text size">
+<p class="nu-h">Text size</p>
+<button type="button" role="menuitemradio" class="nu-opt {{szS}}" onClick="{{pickS}}"><span class="nu-a" style="font-size:12px">A</span>Small<svg class="nu-ck" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></button>
+<button type="button" role="menuitemradio" class="nu-opt {{szM}}" onClick="{{pickM}}"><span class="nu-a" style="font-size:15px">A</span>Default<svg class="nu-ck" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></button>
+<button type="button" role="menuitemradio" class="nu-opt {{szL}}" onClick="{{pickL}}"><span class="nu-a" style="font-size:19px">A</span>Large<svg class="nu-ck" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></button>
+</div></sc-if>
 </div>
-<div class="seg" role="group" aria-label="Language">
-<button class="{{thOn}}" onClick="{{setTH}}" aria-label="ภาษาไทย" lang="th">TH</button>
-<button class="{{enOn}}" onClick="{{setEN}}" aria-label="English">EN</button>
+<div class="nu-dd">
+<button type="button" class="nu-btn {{langBtn}}" onClick="{{toggleLang}}" aria-haspopup="true" aria-expanded="{{langExp}}" aria-label="Language"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.6 2.7 3.9 5.7 3.9 9s-1.3 6.3-3.9 9c-2.6-2.7-3.9-5.7-3.9-9S9.4 5.7 12 3z"></path></svg><b>{{langCode}}</b><svg class="nu-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
+<sc-if value="{{langOpen}}" hint-placeholder-val="{{ false }}"><div class="nu-menu" role="menu" aria-label="Language">
+<p class="nu-h">Language</p>
+<button type="button" role="menuitemradio" class="nu-opt {{thOn}}" onClick="{{pickTH}}" lang="th"><span class="nu-a nu-code">TH</span>ไทย<svg class="nu-ck" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></button>
+<button type="button" role="menuitemradio" class="nu-opt {{enOn}}" onClick="{{pickEN}}"><span class="nu-a nu-code">EN</span>English<svg class="nu-ck" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></button>
+</div></sc-if>
+</div>
 </div>
 <a href="Contact.dc.html" class="btn btn-p hide-m" style="min-height:46px;padding:0 22px"><span class="bl"><span>Contact Us</span></span></a>
 <button class="icbtn menubtn" aria-label="Open menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"></path></svg></button>
@@ -1347,7 +1655,7 @@ ol.steps{list-style:none;padding:0}
 <sc-if value="{{searchOpen}}" hint-placeholder-val="{{ false }}">
 <div class="srch" role="dialog" aria-modal="true" aria-label="Search" onClick="{{closeSearch}}">
 <div class="srch-panel" onClick="{{stopS}}">
-<div class="srch-bar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><input class="srch-in" type="search" placeholder="Search solutions, articles and pages" value="{{q}}" onInput="{{onQ}}" onKeyDown="{{onKey}}" autofocus="" aria-label="Search the site"><kbd>ESC</kbd><button class="srch-x" onClick="{{closeSearch}}" aria-label="Close search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
+<div class="srch-bar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><input class="srch-in" type="search" placeholder="Search solutions, articles and pages" value="{{q}}" onInput="{{onQ}}" onKeyDown="{{onKey}}" autofocus aria-label="Search the site"><kbd>ESC</kbd><button class="srch-x" onClick="{{closeSearch}}" aria-label="Close search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
 <div class="srch-body">
 <sc-if value="{{showSuggest}}" hint-placeholder-val="{{ true }}">
 <div class="srch-sec"><p class="srch-h">Popular searches</p><div class="srch-chips"><sc-for list="{{suggest}}" as="c" hint-placeholder-count="5"><button class="chip" onClick="{{c.pick}}">{{c.label}}</button></sc-for></div></div>
@@ -1373,17 +1681,13 @@ ol.steps{list-style:none;padding:0}
 
 <!-- /search -->
 
-<!-- 1 · HERO — essentials only: headline, message, CTAs; cursor spotlight lights up the photo -->
-<section class="hero hx hx8" id="top" onMouseMove="{{heroMove}}" onMouseLeave="{{heroLeave}}">
-<div class="hx8-bg" aria-hidden="true"><img class="hx8-base" src="./assets/76a10b9728d986483bbe8ab87e4dd874.webp" alt=""><img class="hx8-lit" src="./assets/76a10b9728d986483bbe8ab87e4dd874.webp" alt=""><span class="hx8-glow"></span></div>
-<div class="wrap hx-in">
-<div class="hx-copy hx8-copy">
-<h1 class="display hh rise d1" aria-label="Green that grows.">
-<span class="w" aria-hidden="true"><span class="ch">G</span><span class="ch">R</span><span class="ch">E</span><span class="ch">E</span><span class="ch">N</span></span>
-<span class="w" aria-hidden="true"><span class="ch">T</span><span class="ch">H</span><span class="ch">A</span><span class="ch">T</span></span><br>
-<span class="w it" aria-hidden="true"><span class="ch">g</span><span class="ch">r</span><span class="ch">o</span><span class="ch">w</span><span class="ch">s</span><span class="ch" style="font-family:Termina,sans-serif;font-style:normal;color:#0EA552">.</span></span>
-</h1>
-<p class="lead hlead rise d2">We are a consultancy house full<br>of creative problem solvers,<br>specialized in climate defense,<br><span class="hx-mark">sustainability and business.</span></p>
+<!-- 1 · HERO — animated wind-farm scene (CSS/SVG), cursor spotlight + parallax, readable SEO copy -->
+<section class="hero hx11" id="top" aria-labelledby="hero-h" onMouseMove="{{heroMove}}" onMouseLeave="{{heroLeave}}">
+<div class="hx11-bg" aria-hidden="true"><div class="hx11-photo hx11-video"><img class="hx11-poster" src="/_blob/330c4895dd1e3609f9679af1372d47e7" alt=""><video class="hx11-vid" src="/_blob/eac7b66ae947ffae309a43a851bbe402" poster="/_blob/330c4895dd1e3609f9679af1372d47e7" autoplay muted loop playsinline preload="auto" disablepictureinpicture tabindex="-1"></video></div><span class="hx11-spot"></span><span class="hx11-shade"></span></div>
+<div class="wrap hx11-in">
+<div class="hx11-copy">
+<h1 class="hx10-h" id="hero-h"><span class="hh hx10-tag"><span class="hx9-l"><span>Green that</span></span><span class="hx9-l"><span><span class="it">grows</span><span class="hx9-dot">.</span></span></span></span><span class="hx10-sub rise">Sustainability consultancy in Thailand for IFRS S1 &amp; S2, carbon accounting and ESG reporting</span></h1>
+<p class="hx10-lead hx11-lead rise d2">We are a consultancy house full<br>of creative problem solvers,<br>specialized in climate defense,<br><span class="hx-mark">sustainability and business.</span></p>
 <div class="hctas rise d3">
 <a href="Contact.dc.html" class="btn btn-p"><span class="bl"><span>Talk to us</span></span> <svg class="ar" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
 <a href="#solutions" class="btn btn-o"><span class="bl"><span>Explore solutions</span></span></a>
@@ -1407,13 +1711,13 @@ ol.steps{list-style:none;padding:0}
 <div class="wrap ab3-grid">
 <div class="ab3-copy rv">
 <p class="label"><span class="ln"></span>About LO-CARB</p>
-<h2 class="display h2" id="about-h" style="font-size:calc(clamp(26px,2.5vw,40px)*var(--s));max-width:16ch">Sustainability, strategy and technology, <span class="it" style="color:#0EA552">under one roof</span>.</h2>
+<h2 class="display h2" id="about-h" style="font-size:calc(clamp(26px,2.5vw,40px)*var(--s));max-width:16ch">Sustainability, strategy and technology, <span class="it" style="color:var(--forest)">under one roof</span>.</h2>
 <p class="ab3-lead">Founded in 2021, LO-CARB is a sustainability consultancy that sees sustainability as the heart of business, not a trend or CSR. We combine science, technology and business to help Thai organizations cut emissions, meet global standards and grow.</p>
 <ul class="ab3-tags" role="list"><li>Sustainability</li><li>Strategy</li><li>Technology</li></ul>
 <div class="ab3-cta"><a href="About-Story.dc.html" class="btn btn-p"><span class="bl"><span>Read our story</span></span> <svg class="ar" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><a href="About-Board.dc.html" class="btn btn-od"><span class="bl"><span>Meet the board</span></span></a></div>
 </div>
 <div class="ab3-bento rv2">
-<div class="ab3-photo"><img class="zoomimg" src="./assets/070ecf4ba0bce5a6105896c061bf806d.webp" alt="A seedling growing from soil in an open hand"><span class="ab3-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V10l7-5 7 5v11"></path><path d="M9 21v-6h6v6"></path></svg>Founded 2021 · Bangkok</span></div>
+<div class="ab3-photo"><img class="zoomimg" src="/_blob/76a10b9728d986483bbe8ab87e4dd874" alt="A seedling growing from soil in an open hand"><span class="ab3-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V10l7-5 7 5v11"></path><path d="M9 21v-6h6v6"></path></svg>Founded 2021 · Bangkok</span></div>
 <div class="ab3-t"><span class="ab3-i"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V10l7-5 7 5v11"></path><path d="M9 21v-6h6v6"></path></svg></span><b>[5+]</b><span>Years of experience</span></div>
 <div class="ab3-t ab3-hl"><span class="ab3-i"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"></circle><path d="M8.5 14l-1.5 8 5-3 5 3-1.5-8"></path></svg></span><b>1<em>st</em></b><span>IFRS Sustainability Alliance member in Thailand</span></div>
 <div class="ab3-t"><span class="ab3-i"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5z"></path><path d="M3 13l9 5 9-5"></path></svg></span><b>[x]</b><span>Projects</span></div>
@@ -1425,7 +1729,7 @@ ol.steps{list-style:none;padding:0}
 <!-- 3 · CLIENTS + CERTIFICATES — one client marquee (each name once per loop), template certificates -->
 <section class="tb2 tbm" aria-labelledby="tb2-h">
 <div class="wrap tbm-head rv">
-<div><p class="label"><span class="ln"></span>Our clients</p><h2 class="display h2" id="tb2-h" style="font-size:calc(clamp(26px,2.4vw,38px)*var(--s));max-width:22ch">Trusted by Thailand's <span class="it" style="color:#0EA552">leading</span> organisations</h2></div>
+<div><p class="label"><span class="ln"></span>Our clients</p><h2 class="display h2" id="tb2-h" style="font-size:calc(clamp(26px,2.4vw,38px)*var(--s));max-width:22ch">Trusted by Thailand's <span class="it" style="color:var(--forest)">leading</span> organisations</h2></div>
 <div class="tbm-side"><div class="tb2-stats"><div><b>14</b><span>Organisations</span></div><div><b>5</b><span>Sectors</span></div></div><a href="Blog-Portfolio.dc.html" class="tlink">See client stories <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
 </div>
 <div class="tbm-rows rv" aria-label="Client list">
@@ -1442,10 +1746,10 @@ ol.steps{list-style:none;padding:0}
 <!-- 5 · IFRS ALLIANCE — centred, BD copy only: title, statement, two credentials, CTAs -->
 <section class="ifx ifx2" id="ifrs" aria-labelledby="ifrs-h">
 <svg class="ifx-curve top" viewBox="0 0 1440 116" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H1440V44C1080 120 360 120 0 44Z" fill="#F3F0DF"></path></svg>
-<div class="ifx2-photo" aria-hidden="true"><img src="./assets/6f24e56f551738f709ead5d068dee0c9.webp" alt="" loading="lazy"></div>
+<div class="ifx2-photo" aria-hidden="true"><img src="/_blob/6f24e56f551738f709ead5d068dee0c9" alt="" loading="lazy"></div>
 <div class="wrap ifx2-in rv">
 <p class="ifx2-k"><span></span>IFRS Sustainability Alliance<span></span></p>
-<h2 class="ifx2-h" id="ifrs-h">Thailand’s 1<em>st​</em> IFRS Sustainability Alliance &amp; ISSB Training Partner</h2>
+<h2 class="ifx2-h" id="ifrs-h">Thailand’s 1<em>st&#8203;</em> IFRS Sustainability Alliance &amp; ISSB Training Partner</h2>
 <p class="ifx2-sub">Direct connection to the standard setter &amp; IFRS community</p>
 <ul class="ifx2-creds" role="list">
 <li><span class="ifx2-ci"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"></circle><path d="M8.5 14l-1.5 8 5-3 5 3-1.5-8"></path></svg></span><b>IFRS Sustainability Alliance</b></li>
@@ -1463,40 +1767,50 @@ ol.steps{list-style:none;padding:0}
 <div class="headrow rv" style="margin-bottom:0">
 <div>
 <p class="label"><span class="ln"></span>Our solutions</p>
-<h2 class="display h2" id="sol-h" style="font-size:calc(clamp(28px,2.6vw,40px)*var(--s));max-width:24ch">IFRS, carbon accounting and ESG <span class="it" style="color:#0EA552">solutions</span> for Thai companies</h2>
+<h2 class="display h2" id="sol-h" style="font-size:calc(clamp(28px,2.6vw,40px)*var(--s));max-width:24ch">IFRS, carbon accounting and ESG <span class="it" style="color:var(--forest)">solutions</span> for Thai companies</h2>
 </div>
 <p class="p muted" style="max-width:44ch;font-size:calc(16.5px*var(--s))">Pick a solution to see how it works.</p>
 </div>
-<ol class="sgrid" role="list">
-<li class="sc scFeat">
-<div class="scHead"><span class="scIc"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"></path><path d="M14 3v5h5M10 13h6M10 17h4"></path></svg></span><span class="scN">01</span></div>
-<h3 class="scT"><a href="Solution-IFRS.dc.html">IFRS S1 &amp; S2 consulting</a></h3>
-<p class="scD">End-to-end IFRS S1/S2 support, from gap analysis to your first disclosure.</p>
-<div class="scF"><span class="scTags"><span class="tag g">Service</span></span><span class="scGo">Learn more <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></div>
+<ol class="solrow" role="list">
+<li class="sr sr-lead rv">
+<a href="Solution-IFRS.dc.html" class="sr-link" aria-label="IFRS S1 &amp; S2"></a>
+<div class="sr-top"><span class="sr-ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"></path><path d="M14 3v5h5M10 13h6M10 17h4"></path></svg></span><span class="sr-n">01</span></div>
+<span class="sr-tag">Service</span>
+<h3 class="sr-t"><a href="Solution-IFRS.dc.html">IFRS S1 &amp; S2</a></h3>
+<p class="sr-d">End-to-end IFRS S1/S2 support, from gap analysis to your first disclosure.</p>
+<span class="sr-go">Learn more <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span>
 </li>
-<li class="sc">
-<div class="scHead"><span class="scIc"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"></path></svg></span><span class="scN">02</span></div>
-<h3 class="scT"><a href="Solution-CarbonCal.dc.html">CarbonCal carbon accounting platform</a></h3>
-<p class="scD">Measure Scope 1–3 emissions on one platform, ready for TGO registration.</p>
-<div class="scF"><span class="scTags"><span class="tag g">Platform</span></span><span class="scGo">Learn more <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></div>
+<li class="sr rv">
+<a href="Solution-CarbonCal.dc.html" class="sr-link" aria-label="CarbonCal + Carbon Camp"></a>
+<div class="sr-top"><span class="sr-ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"></path></svg></span><span class="sr-n">02</span></div>
+<span class="sr-tag">Platform</span>
+<h3 class="sr-t"><a href="Solution-CarbonCal.dc.html">CarbonCal + Carbon Camp</a></h3>
+<p class="sr-d">Measure Scope 1–3 emissions on one platform, ready for TGO registration.</p>
+<span class="sr-go">Learn more <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span>
 </li>
-<li class="sc">
-<div class="scHead"><span class="scIc"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"></path><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"></path></svg></span><span class="scN">03</span></div>
-<h3 class="scT"><a href="Solution-ISSB.dc.html">ISSB training for boards and teams</a></h3>
-<p class="scD">Hands-on ISSB training from Thailand's first training partner.</p>
-<div class="scF"><span class="scTags"><span class="tag g">Training</span></span><span class="scGo">Learn more <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></div>
+<li class="sr rv">
+<a href="Solution-CarbonScout.dc.html" class="sr-link" aria-label="Carbon Scout"></a>
+<div class="sr-top"><span class="sr-ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21v-9"></path><path d="M12 12c0-4 3-7 8-7 0 5-3 8-8 7z"></path><path d="M12 14c0-3-2.5-5.5-7-5.5 0 4 2.5 6.5 7 5.5z"></path><path d="M4 21h16"></path></svg></span><span class="sr-n">03</span></div>
+<span class="sr-tag">Platform</span>
+<h3 class="sr-t"><a href="Solution-CarbonScout.dc.html">Carbon Scout</a></h3>
+<p class="sr-d">Track and verify farmland carbon, ready for carbon credits.</p>
+<span class="sr-go">Learn more <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span>
 </li>
-<li class="sc">
-<div class="scHead"><span class="scIc"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="4"></circle><path d="M12 3v3M12 18v3M3 12h3M18 12h3"></path></svg></span><span class="scN">04</span></div>
-<h3 class="scT"><a href="Solution-CarbonScout.dc.html">Carbon Scout: farmland carbon tracking</a></h3>
-<p class="scD">Track and verify farmland carbon, ready for carbon credits.</p>
-<div class="scF"><span class="scTags"><span class="tag g">Platform</span></span><span class="scGo">Learn more <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></div>
+<li class="sr rv">
+<a href="Solution-ISSB.dc.html" class="sr-link" aria-label="ISSB Training"></a>
+<div class="sr-top"><span class="sr-ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"></path><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"></path></svg></span><span class="sr-n">04</span></div>
+<span class="sr-tag">Training</span>
+<h3 class="sr-t"><a href="Solution-ISSB.dc.html">ISSB Training</a></h3>
+<p class="sr-d">Hands-on ISSB training from Thailand's first training partner.</p>
+<span class="sr-go">Learn more <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span>
 </li>
-<li class="sc">
-<div class="scHead"><span class="scIc"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"></path><path d="M8 15l3-3 2 2 3-4"></path></svg></span><span class="scN">05</span></div>
-<h3 class="scT"><a href="Solution-Reporting.dc.html">Sustainability-related reporting &amp; consulting</a></h3>
-<p class="scD">ESG reports and strategy, from GRI and CDP to Net Zero.</p>
-<div class="scF"><span class="scTags"><span class="tag g">Service</span></span><span class="scGo">Learn more <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></div>
+<li class="sr rv">
+<a href="Solution-Reporting.dc.html" class="sr-link" aria-label="ESG Reporting &amp; Consulting"></a>
+<div class="sr-top"><span class="sr-ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"></path><path d="M8 15l3-3 2 2 3-4"></path></svg></span><span class="sr-n">05</span></div>
+<span class="sr-tag">Service</span>
+<h3 class="sr-t"><a href="Solution-Reporting.dc.html">ESG Reporting &amp; Consulting</a></h3>
+<p class="sr-d">ESG reports and strategy, from GRI and CDP to Net Zero.</p>
+<span class="sr-go">Learn more <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span>
 </li>
 </ol>
 </div>
@@ -1506,42 +1820,38 @@ ol.steps{list-style:none;padding:0}
 <section class="blog bx" id="blog" aria-labelledby="blog-h">
 <div class="wrap">
 <div class="bx-head rv">
-<div><p class="label"><span class="ln"></span>Insights &amp; client stories</p><h2 class="display h2" id="blog-h" style="font-size:calc(clamp(26px,2.4vw,38px)*var(--s));max-width:24ch">Insights on IFRS, ISSB and carbon <span class="it" style="color:#0EA552">accounting</span></h2></div>
-<a href="Blog.dc.html" class="btn btn-od"><span class="bl"><span>All posts</span></span> <svg class="ar" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+<div><p class="label"><span class="ln"></span>Insights &amp; client stories</p><h2 class="display h2" id="blog-h" style="font-size:calc(clamp(26px,2.4vw,38px)*var(--s));max-width:24ch">Insights on IFRS, ISSB and carbon <span class="it" style="color:var(--forest)">accounting</span></h2></div>
+<div class="bx-nav"><nav class="bx-tabs" aria-label="Blog categories"><a href="Blog-Portfolio.dc.html">Client stories</a><a href="Blog-Knowledge.dc.html">Knowledge base</a><a href="Blog-News.dc.html">News &amp; events</a></nav><a href="Blog.dc.html" class="btn btn-od"><span class="bl"><span>All posts</span></span> <svg class="ar" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
 </div>
 <div class="bx-row">
 <article class="bx-c bx-feat rv">
-<a href="Blog-Story.dc.html" class="bx-img" tabindex="-1" aria-hidden="true"><img src="./assets/6f24e56f551738f709ead5d068dee0c9.webp" alt="" loading="lazy"><span class="bx-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></a>
-<a href="Blog-Portfolio.dc.html" class="bx-cat">Client story · IFRS</a>
+<a href="Blog-Story.dc.html" class="bx-img" tabindex="-1" aria-hidden="true"><img src="/_blob/acea1900cc76bb1ae25f3140c738e2dd" alt="" loading="lazy"><span class="bx-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></a>
+<a href="Blog-Portfolio.dc.html" class="bx-cat bx-catpill">Client story · IFRS</a>
 <h3 class="bx-t"><a href="Blog-Story.dc.html">[Client name]: IFRS S1 &amp; S2 readiness in [X] weeks</a></h3>
 <p class="bx-x">[Two-line summary of a verified client story, approved by the client.]</p>
 <div class="bx-meta"><time datetime="2026-10-14">14 Oct 2026</time><button class="bx-pv" onClick="{{open0}}" aria-label="Quick preview: [Client name] client story"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></button></div>
 </article>
 <article class="bx-c  rv">
-<a href="Blog-Article.dc.html" class="bx-img" tabindex="-1" aria-hidden="true"><img src="./assets/6fadd19b9044a270cf824cd229a32520.webp" alt="" loading="lazy"><span class="bx-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></a>
-<a href="Blog-Knowledge.dc.html" class="bx-cat">Knowledge base · IFRS</a>
+<a href="Blog-Article.dc.html" class="bx-img" tabindex="-1" aria-hidden="true"><img src="/_blob/8f8174b9c50e05e0172f98487b371cb0" alt="" loading="lazy"><span class="bx-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></a>
+<a href="Blog-Knowledge.dc.html" class="bx-cat bx-catpill">Knowledge base · IFRS</a>
 <h3 class="bx-t"><a href="Blog-Article.dc.html">What IFRS S2 means for SET-listed companies</a></h3>
 
 <div class="bx-meta"><time datetime="2026-10-02">2 Oct 2026</time><button class="bx-pv" onClick="{{open1}}" aria-label="Quick preview: What IFRS S2 means for SET-listed companies"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></button></div>
 </article>
 <article class="bx-c  rv">
-<a href="Blog-Story.dc.html" class="bx-img" tabindex="-1" aria-hidden="true"><img src="./assets/99e6571de4cb980d039c60c659613350.webp" alt="" loading="lazy"><span class="bx-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></a>
-<a href="Blog-Portfolio.dc.html" class="bx-cat">Portfolio · CarbonCal</a>
+<a href="Blog-Story.dc.html" class="bx-img" tabindex="-1" aria-hidden="true"><img src="/_blob/047a45f90dd489c5c0720e07750cf2e7" alt="" loading="lazy"><span class="bx-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></a>
+<a href="Blog-Portfolio.dc.html" class="bx-cat bx-catpill">Portfolio · CarbonCal</a>
 <h3 class="bx-t"><a href="Blog-Story.dc.html">[Client name]: measuring Scope 1–3 with CarbonCal</a></h3>
 
 <div class="bx-meta"><time datetime="2026-09-19">19 Sep 2026</time><button class="bx-pv" onClick="{{open2}}" aria-label="Quick preview: [Client name]: measuring Scope 1–3 with CarbonCal"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></button></div>
 </article>
 <article class="bx-c  rv">
-<a href="Blog-Article.dc.html" class="bx-img" tabindex="-1" aria-hidden="true"><img src="./assets/b9f62f7be4548d33408c179079945da6.webp" alt="" loading="lazy"><span class="bx-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></a>
-<a href="Blog-News.dc.html" class="bx-cat">News &amp; events · ISSB</a>
+<a href="Blog-Article.dc.html" class="bx-img" tabindex="-1" aria-hidden="true"><img src="/_blob/b1a0c09a559090138614b3c5c426b977" alt="" loading="lazy"><span class="bx-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></a>
+<a href="Blog-News.dc.html" class="bx-cat bx-catpill">News &amp; events · ISSB</a>
 <h3 class="bx-t"><a href="Blog-Article.dc.html">ISSB for Boards workshop returns to Bangkok on 21 Nov</a></h3>
 
 <div class="bx-meta"><time datetime="2026-09-05">5 Sep 2026</time><button class="bx-pv" onClick="{{open3}}" aria-label="Quick preview: ISSB for Boards workshop returns to Bangkok on 21 Nov"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></button></div>
 </article>
-</div>
-<div class="bx-foot rv">
-<nav class="bx-cats" aria-label="Blog categories"><a href="Blog-Portfolio.dc.html">Client stories</a><a href="Blog-Knowledge.dc.html">Knowledge base</a><a href="Blog-News.dc.html">News &amp; events</a></nav>
-<div class="bx-topics"><small>Topics</small><a href="Blog-Knowledge.dc.html">IFRS S2</a><a href="Blog-Knowledge.dc.html">ISSB</a><a href="Blog-Knowledge.dc.html">Scope 3</a><a href="Blog-Knowledge.dc.html">Carbon accounting</a><a href="Blog-Knowledge.dc.html">56-1 One Report</a></div>
 </div>
 </div>
 </section>
@@ -1549,7 +1859,7 @@ ol.steps{list-style:none;padding:0}
 <!-- 7 · CTA — full-bleed photo -->
 <section class="cta dark" id="contact">
 <svg class="curve" viewBox="0 0 1440 116" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H1440V44C1080 120 360 120 0 44Z" fill="#F3F0DF"></path></svg>
-<div class="bg" aria-hidden="true"><img class="driftimg" src="./assets/76a10b9728d986483bbe8ab87e4dd874.webp" alt=""></div>
+<div class="bg" aria-hidden="true"><img class="driftimg" src="/_blob/76a10b9728d986483bbe8ab87e4dd874" alt=""></div>
 <div class="ov" aria-hidden="true"></div>
 <div class="wrap ctagrid">
 <div class="rv">
@@ -1567,39 +1877,38 @@ ol.steps{list-style:none;padding:0}
 </section>
 
 <!-- 8 · FOOTER -->
-<footer class="foot dark f2">
-<div class="f2-glow" aria-hidden="true"></div>
+<footer class="foot dark f2 f3">
 <div class="wrap">
-<div class="f2-grid">
-<div class="f2-brand">
-<svg width="76" height="54" viewBox="0 0 140 100" fill="none" stroke="#F3F0DF" stroke-width="7" stroke-linecap="round" role="img" aria-label="LO-CARB"><rect x="4" y="4" width="20" height="44" rx="10"></rect><circle cx="44" cy="36" r="12"></circle><path d="M27.2 70.8A13 13 0 1 0 27.2 89.2"></path><circle cx="52" cy="80" r="13"></circle><path d="M65 67V93"></path><path d="M78 93V67M78 80Q78 67 91 67"></path><path d="M98 48V93"></path><circle cx="111" cy="80" r="13"></circle><circle cx="133" cy="90" r="5" fill="#0EA552" stroke="none"></circle></svg>
-<p>LO-CARB is a sustainability consultancy in Thailand. We believe sustainability is the new growth core, so we help organizations cut emissions, reduce risk and turn sustainability into business growth.</p>
-<a href="Solution-IFRS.dc.html" class="f2-badge"><span class="f2-seal">1<em>st</em></span><span>Thailand's first IFRS Sustainability Alliance member</span></a>
+<div class="f3-top">
+<div class="f3-brand">
+<img class="f2-logo" src="/_blob/0a7364de43a8ab52180d607e6a495657" alt="LO-CARB" width="96" height="64">
+<p class="f3-desc">LO-CARB is a sustainability consultancy in Thailand. We believe sustainability is the new growth core, so we help organizations cut emissions, reduce risk and turn sustainability into business growth.</p>
+<a href="Solution-IFRS.dc.html" class="f3-badge"><span class="f2-seal">1<em>st</em></span><span>Thailand's first IFRS Sustainability Alliance member</span></a>
 </div>
-<nav class="f2-col" aria-label="Solutions"><h4>Solutions</h4><ul><li><a href="Solution-IFRS.dc.html">IFRS Standards</a></li><li><a href="Solution-CarbonCal.dc.html">CarbonCal + Carbon Camp</a></li><li><a href="Solution-ISSB.dc.html">ISSB training</a></li><li><a href="Solution-CarbonScout.dc.html">Carbon Scout</a></li><li><a href="Solution-Reporting.dc.html">Reporting &amp; consulting</a></li></ul></nav><nav class="f2-col" aria-label="Company"><h4>Company</h4><ul><li><a href="About-Story.dc.html">Our story</a></li><li><a href="About-Certificates.dc.html">Certificates</a></li><li><a href="About-Board.dc.html">Board of directors</a></li><li><a href="Contact.dc.html">Careers</a></li><li><a href="Contact.dc.html">Contact us</a></li></ul></nav><nav class="f2-col" aria-label="Insights"><h4>Insights</h4><ul><li><a href="Blog-Portfolio.dc.html">Client stories</a></li><li><a href="Blog-Knowledge.dc.html">Knowledge base</a></li><li><a href="Blog-News.dc.html">News &amp; events</a></li><li><a href="Blog.dc.html">All posts</a></li></ul></nav>
-<div class="f2-office">
-<h4>Contact</h4>
-<ul class="f2-ci">
-<li><span class="f2-cic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></span><a href="mailto:contact@locarb.green">contact@locarb.green</a></li>
-<li><span class="f2-cic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg></span><a href="tel:+66969966249">096 996 6249</a></li>
-<li><span class="f2-cic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg></span><address>1/3-7, Rooftop, Soi Saladaeng 1 (Godche), Silom Subdistrict, Bang Rak District, Bangkok 10500</address></li>
-</ul>
-<div class="f2-soc"><a href="#linkedin" aria-label="LO-CARB on LinkedIn">in</a><a href="#facebook" aria-label="LO-CARB on Facebook">f</a></div>
+<div class="f3-contact">
+<p class="f3-k">Get in touch</p>
+<a href="mailto:contact@locarb.green" class="f3-big">contact@locarb.green<span class="f3-go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></a>
+<a href="tel:+66969966249" class="f3-big f3-tel">096 996 6249<span class="f3-go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></a>
+<address class="f3-addr">1/3-7, Rooftop, Soi Saladaeng 1 (Godche), Silom Subdistrict, Bang Rak District, Bangkok 10500</address>
+<div class="f3-soc"><a href="#linkedin" aria-label="LO-CARB on LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.3-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21H9z"></path></svg></a><a href="#facebook" aria-label="LO-CARB on Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5H16l.4-3h-2.9V8.6c0-.87.25-1.46 1.5-1.46h1.6V4.46A21 21 0 0 0 14.27 4.3c-2.3 0-3.87 1.4-3.87 3.97v2.23H7.8v3h2.6V21z"></path></svg></a></div>
 </div>
 </div>
-<div class="f2-bot">
+<div class="f3-links">
+<nav class="f3-col" aria-label="Solutions"><h4>Solutions</h4><ul><li><a href="Solution-IFRS.dc.html">IFRS Standards</a></li><li><a href="Solution-CarbonCal.dc.html">CarbonCal + Carbon Camp</a></li><li><a href="Solution-ISSB.dc.html">ISSB training</a></li><li><a href="Solution-CarbonScout.dc.html">Carbon Scout</a></li><li><a href="Solution-Reporting.dc.html">Reporting &amp; consulting</a></li></ul></nav><nav class="f3-col" aria-label="Company"><h4>Company</h4><ul><li><a href="About-Story.dc.html">Our story</a></li><li><a href="About-Certificates.dc.html">Certificates</a></li><li><a href="About-Board.dc.html">Board of directors</a></li><li><a href="Contact.dc.html">Careers</a></li></ul></nav><nav class="f3-col" aria-label="Insights"><h4>Insights</h4><ul><li><a href="Blog-Portfolio.dc.html">Client stories</a></li><li><a href="Blog-Knowledge.dc.html">Knowledge base</a></li><li><a href="Blog-News.dc.html">News &amp; events</a></li><li><a href="Blog.dc.html">All posts</a></li></ul></nav><nav class="f3-col" aria-label="Legal"><h4>Legal</h4><ul><li><a href="#privacy">Privacy policy</a></li><li><a href="#pdpa">PDPA notice</a></li><li><a href="#terms">Terms of use</a></li></ul></nav>
+</div>
+<div class="f2-bot f3-bot">
 <span>© 2026 LO-CARB. All rights reserved.</span>
-<nav class="f2-legal" aria-label="Legal"><a href="#privacy">Privacy policy</a><a href="#pdpa">PDPA notice</a><a href="#terms">Terms of use</a><button type="button" class="f2-ck" onClick="{{openCookies}}">Cookie settings</button></nav>
-<div class="f2-right"><span class="f2-lang" role="group" aria-label="Language"><button class="{{thOn}}" onClick="{{setTH}}" lang="th">TH</button><button class="{{enOn}}" onClick="{{setEN}}">EN</button></span><a href="#top" class="totop" aria-label="Back to top"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"></path></svg></span></a></div>
+<div class="f2-right"><button type="button" class="f2-ck" onClick="{{openCookies}}">Cookie settings</button><span class="f2-lang" role="group" aria-label="Language"><button class="{{thOn}}" onClick="{{setTH}}" lang="th">TH</button><button class="{{enOn}}" onClick="{{setEN}}">EN</button></span><a href="#top" class="totop" aria-label="Back to top"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"></path></svg></span></a></div>
 </div>
 </div>
 </footer>
+
 
 <!-- Blog quick-preview modal -->
 <sc-if value="{{hasPost}}" hint-placeholder-val="{{ false }}">
 <div class="modalbg" onClick="{{close}}">
 <div class="modal" role="dialog" aria-modal="true" aria-label="Post preview" onClick="{{stop}}">
-<div style="position:relative;height:180px;background:#0EA552;overflow:hidden"><img src="./assets/24d180a14c6895306525e9fe50fc214a.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+<div style="position:relative;height:180px;background:#0EA552;overflow:hidden"><img src="/_blob/24d180a14c6895306525e9fe50fc214a" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
 <button class="icbtn" onClick="{{close}}" aria-label="Close preview" style="position:absolute;right:16px;top:16px;background:#FBFAF3;border:0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
 </div>
 <div style="padding:32px 36px 36px">
@@ -1622,21 +1931,14 @@ ol.steps{list-style:none;padding:0}
 <!-- 0 · NAV — full menu, search, text size and language in one bar -->
 <header class="nav">
 <div class="wrap">
-<a href="#top" aria-label="หน้าแรก LO-CARB" style="display:inline-flex;color:#0EA552">
-<svg width="62" height="44" viewBox="0 0 140 100" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" aria-hidden="true">
-<rect x="4" y="4" width="20" height="44" rx="10"></rect><circle cx="44" cy="36" r="12"></circle>
-<path d="M27.2 70.8A13 13 0 1 0 27.2 89.2"></path><circle cx="52" cy="80" r="13"></circle><path d="M65 67V93"></path>
-<path d="M78 93V67M78 80Q78 67 91 67"></path><path d="M98 48V93"></path><circle cx="111" cy="80" r="13"></circle>
-<circle cx="133" cy="90" r="5" fill="#000000" stroke="none"></circle>
-</svg>
-</a>
+<a href="#top" aria-label="หน้าแรก LO-CARB" class="navlogo"><img src="/_blob/6fb07855b3a66662efda15fb53c6e65f" alt="LO-CARB" width="62" height="42"></a>
 <nav class="navlinks" aria-label="เมนูหลัก">
 <div class="dd"><a href="About-Story.dc.html" aria-haspopup="true">เกี่ยวกับเรา <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></a>
 <div class="menu"><div class="mpanel"><div class="mintro"><small>เกี่ยวกับเรา</small><strong>เราคือใคร</strong><p>สมาชิก IFRS Sustainability Alliance รายแรกของไทย</p><a href="About-Story.dc.html" class="mlink">เรื่องราวของเรา →</a></div><div class="mlist">
 <a href="About-Story.dc.html" class="mi2"><span class="mico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"></path><path d="M5 19l7-7"></path></svg></span><span class="mtx"><span class="mt">เรื่องราวของ LO-CARB</span><span class="md">พันธกิจ ประวัติ และตัวเลขสำคัญ</span></span><span class="mgo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a><a href="About-Certificates.dc.html" class="mi2"><span class="mico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"></circle><path d="M8.5 14l-1.5 8 5-3 5 3-1.5-8"></path></svg></span><span class="mtx"><span class="mt">ใบรับรอง</span><span class="md">IFRS Sustainability Alliance และอื่น ๆ</span></span><span class="mgo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a><a href="About-Board.dc.html" class="mi2"><span class="mico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"></circle><circle cx="17" cy="9" r="2.5"></circle><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15 20c0-2.4 1.6-4.5 4-5"></path></svg></span><span class="mtx"><span class="mt">คณะกรรมการบริษัท</span><span class="md">ผู้นำองค์กร LO-CARB</span></span><span class="mgo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
 </div></div></div></div>
 <div class="dd"><a href="Main.dc.html" aria-haspopup="true">โซลูชันของเรา <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></a>
-<div class="menu"><div class="mpanel wide"><div class="mintro"><small>โซลูชันของเรา</small><strong>5 วิธีที่เราช่วยลดคาร์บอน</strong><p>ตั้งแต่การเปิดเผยข้อมูลตาม IFRS ถึงข้อมูลซัพพลายเออร์ ไม่แน่ใจว่าจะเริ่มตรงไหน?</p><a href="Contact.dc.html" class="mlink">คุยกับผู้เชี่ยวชาญ →</a></div><div class="mlist two">
+<div class="menu"><div class="mpanel wide"><div class="mintro"><small>โซลูชันของเรา</small><strong>5 วิธีที่เราช่วยลดคาร์บอน</strong><p>ตั้งแต่การเปิดเผยข้อมูลตาม IFRS ถึงคาร์บอนในพื้นที่เกษตร ไม่แน่ใจว่าจะเริ่มตรงไหน?</p><a href="Contact.dc.html" class="mlink">คุยกับผู้เชี่ยวชาญ →</a></div><div class="mlist two">
 <a href="Solution-IFRS.dc.html" class="mi2"><span class="mico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"></path><path d="M14 3v5h5M10 13h6M10 17h4"></path></svg></span><span class="mtx"><span class="mt">มาตรฐาน IFRS</span><span class="md">ที่ปรึกษา S1 &amp; S2 ครบวงจร</span></span><span class="mgo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a><a href="Solution-CarbonCal.dc.html" class="mi2"><span class="mico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"></path></svg></span><span class="mtx"><span class="mt">CarbonCal + Camp</span><span class="md">บัญชีคาร์บอนและการอบรม</span></span><span class="mgo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a><a href="Solution-ISSB.dc.html" class="mi2"><span class="mico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"></path><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"></path></svg></span><span class="mtx"><span class="mt">อบรม ISSB</span><span class="md">จากพาร์ทเนอร์อบรม ISSB รายแรกของไทย</span></span><span class="mgo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a><a href="Solution-CarbonScout.dc.html" class="mi2"><span class="mico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="4"></circle><path d="M12 3v3M12 18v3M3 12h3M18 12h3"></path></svg></span><span class="mtx"><span class="mt">Carbon Scout</span><span class="md">คาร์บอนในพื้นที่เกษตรสู่คาร์บอนเครดิต</span></span><span class="mgo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a><a href="Solution-Reporting.dc.html" class="mi2"><span class="mico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"></path><path d="M8 15l3-3 2 2 3-4"></path></svg></span><span class="mtx"><span class="mt">รายงานและที่ปรึกษาความยั่งยืน</span><span class="md">รายงาน ESG ถึง Net Zero Pathway</span></span><span class="mgo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
 </div></div></div></div>
 <div class="dd"><a href="Blog.dc.html" aria-haspopup="true">บทความ <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></a>
@@ -1646,14 +1948,24 @@ ol.steps{list-style:none;padding:0}
 </nav>
 <div class="navtools">
 <button class="icbtn" aria-label="ค้นหา" onClick="{{openSearch}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></button>
-<div class="seg size" role="group" aria-label="ขนาดตัวอักษร">
-<button class="{{szS}}" onClick="{{setS}}" aria-label="ลดขนาดตัวอักษร">A−</button>
-<button class="{{szM}}" onClick="{{setM}}" aria-label="ขนาดตัวอักษรปกติ">A</button>
-<button class="{{szL}}" onClick="{{setL}}" aria-label="เพิ่มขนาดตัวอักษร">A+</button>
+<div class="nu" onMouseLeave="{{closeMenus}}">
+<div class="nu-dd">
+<button type="button" class="nu-btn {{sizeBtn}}" onClick="{{toggleSize}}" aria-haspopup="true" aria-expanded="{{sizeExp}}" aria-label="ขนาดตัวอักษร"><span class="nu-aa" aria-hidden="true">A<small>A</small></span><svg class="nu-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
+<sc-if value="{{sizeOpen}}" hint-placeholder-val="{{ false }}"><div class="nu-menu" role="menu" aria-label="ขนาดตัวอักษร">
+<p class="nu-h">ขนาดตัวอักษร</p>
+<button type="button" role="menuitemradio" class="nu-opt {{szS}}" onClick="{{pickS}}"><span class="nu-a" style="font-size:12px">A</span>เล็ก<svg class="nu-ck" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></button>
+<button type="button" role="menuitemradio" class="nu-opt {{szM}}" onClick="{{pickM}}"><span class="nu-a" style="font-size:15px">A</span>ปกติ<svg class="nu-ck" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></button>
+<button type="button" role="menuitemradio" class="nu-opt {{szL}}" onClick="{{pickL}}"><span class="nu-a" style="font-size:19px">A</span>ใหญ่<svg class="nu-ck" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></button>
+</div></sc-if>
 </div>
-<div class="seg" role="group" aria-label="ภาษา">
-<button class="{{thOn}}" onClick="{{setTH}}" aria-label="ภาษาไทย" lang="th">TH</button>
-<button class="{{enOn}}" onClick="{{setEN}}" aria-label="English">EN</button>
+<div class="nu-dd">
+<button type="button" class="nu-btn {{langBtn}}" onClick="{{toggleLang}}" aria-haspopup="true" aria-expanded="{{langExp}}" aria-label="ภาษา"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.6 2.7 3.9 5.7 3.9 9s-1.3 6.3-3.9 9c-2.6-2.7-3.9-5.7-3.9-9S9.4 5.7 12 3z"></path></svg><b>{{langCode}}</b><svg class="nu-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
+<sc-if value="{{langOpen}}" hint-placeholder-val="{{ false }}"><div class="nu-menu" role="menu" aria-label="ภาษา">
+<p class="nu-h">ภาษา</p>
+<button type="button" role="menuitemradio" class="nu-opt {{thOn}}" onClick="{{pickTH}}" lang="th"><span class="nu-a nu-code">TH</span>ไทย<svg class="nu-ck" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></button>
+<button type="button" role="menuitemradio" class="nu-opt {{enOn}}" onClick="{{pickEN}}"><span class="nu-a nu-code">EN</span>English<svg class="nu-ck" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></button>
+</div></sc-if>
+</div>
 </div>
 <a href="Contact.dc.html" class="btn btn-p hide-m" style="min-height:46px;padding:0 22px"><span class="bl"><span>ติดต่อเรา</span></span></a>
 <button class="icbtn menubtn" aria-label="เปิดเมนู"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"></path></svg></button>
@@ -1664,7 +1976,7 @@ ol.steps{list-style:none;padding:0}
 <sc-if value="{{searchOpen}}" hint-placeholder-val="{{ false }}">
 <div class="srch" role="dialog" aria-modal="true" aria-label="ค้นหา" onClick="{{closeSearch}}">
 <div class="srch-panel" onClick="{{stopS}}">
-<div class="srch-bar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><input class="srch-in" type="search" placeholder="ค้นหาโซลูชัน บทความ และหน้าเว็บ" value="{{q}}" onInput="{{onQ}}" onKeyDown="{{onKey}}" autofocus="" aria-label="ค้นหาในเว็บไซต์"><kbd>ESC</kbd><button class="srch-x" onClick="{{closeSearch}}" aria-label="ปิดการค้นหา"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
+<div class="srch-bar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><input class="srch-in" type="search" placeholder="ค้นหาโซลูชัน บทความ และหน้าเว็บ" value="{{q}}" onInput="{{onQ}}" onKeyDown="{{onKey}}" autofocus aria-label="ค้นหาในเว็บไซต์"><kbd>ESC</kbd><button class="srch-x" onClick="{{closeSearch}}" aria-label="ปิดการค้นหา"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
 <div class="srch-body">
 <sc-if value="{{showSuggest}}" hint-placeholder-val="{{ true }}">
 <div class="srch-sec"><p class="srch-h">คำค้นยอดนิยม</p><div class="srch-chips"><sc-for list="{{suggest}}" as="c" hint-placeholder-count="5"><button class="chip" onClick="{{c.pick}}">{{c.label}}</button></sc-for></div></div>
@@ -1690,17 +2002,13 @@ ol.steps{list-style:none;padding:0}
 
 <!-- /search -->
 
-<!-- 1 · HERO — essentials only: headline, message, CTAs; cursor spotlight lights up the photo -->
-<section class="hero hx hx8" id="top" onMouseMove="{{heroMove}}" onMouseLeave="{{heroLeave}}">
-<div class="hx8-bg" aria-hidden="true"><img class="hx8-base" src="./assets/76a10b9728d986483bbe8ab87e4dd874.webp" alt=""><img class="hx8-lit" src="./assets/76a10b9728d986483bbe8ab87e4dd874.webp" alt=""><span class="hx8-glow"></span></div>
-<div class="wrap hx-in">
-<div class="hx-copy hx8-copy">
-<h1 class="display hh rise d1" aria-label="สีเขียวที่เติบโต">
-<span class="w" aria-hidden="true"><span class="ch">G</span><span class="ch">R</span><span class="ch">E</span><span class="ch">E</span><span class="ch">N</span></span>
-<span class="w" aria-hidden="true"><span class="ch">T</span><span class="ch">H</span><span class="ch">A</span><span class="ch">T</span></span><br>
-<span class="w it" aria-hidden="true"><span class="ch">g</span><span class="ch">r</span><span class="ch">o</span><span class="ch">w</span><span class="ch">s</span><span class="ch" style="font-family:Termina,sans-serif;font-style:normal;color:#0EA552">.</span></span>
-</h1>
-<p class="lead hlead rise d2">เราคือที่ปรึกษาที่เต็มไปด้วย<br>นักแก้ปัญหาเชิงสร้างสรรค์<br>เชี่ยวชาญด้านการรับมือการเปลี่ยนแปลงสภาพภูมิอากาศ<br><span class="hx-mark">ความยั่งยืน และธุรกิจ</span></p>
+<!-- 1 · HERO — animated wind-farm scene (CSS/SVG), cursor spotlight + parallax, readable SEO copy -->
+<section class="hero hx11" id="top" aria-labelledby="hero-h" onMouseMove="{{heroMove}}" onMouseLeave="{{heroLeave}}">
+<div class="hx11-bg" aria-hidden="true"><div class="hx11-photo hx11-video"><img class="hx11-poster" src="/_blob/330c4895dd1e3609f9679af1372d47e7" alt=""><video class="hx11-vid" src="/_blob/eac7b66ae947ffae309a43a851bbe402" poster="/_blob/330c4895dd1e3609f9679af1372d47e7" autoplay muted loop playsinline preload="auto" disablepictureinpicture tabindex="-1"></video></div><span class="hx11-spot"></span><span class="hx11-shade"></span></div>
+<div class="wrap hx11-in">
+<div class="hx11-copy">
+<h1 class="hx10-h" id="hero-h"><span class="hh hx10-tag"><span class="hx9-l"><span>Green that</span></span><span class="hx9-l"><span><span class="it">grows</span><span class="hx9-dot">.</span></span></span></span><span class="hx10-sub rise">บริษัทที่ปรึกษาด้านความยั่งยืนในประเทศไทย ด้าน IFRS S1 &amp; S2 บัญชีคาร์บอน และรายงาน ESG</span></h1>
+<p class="hx10-lead hx11-lead rise d2">เราคือที่ปรึกษาที่เต็มไปด้วย<br>นักแก้ปัญหาเชิงสร้างสรรค์<br>เชี่ยวชาญด้านการรับมือการเปลี่ยนแปลงสภาพภูมิอากาศ<br><span class="hx-mark">ความยั่งยืน และธุรกิจ</span></p>
 <div class="hctas rise d3">
 <a href="Contact.dc.html" class="btn btn-p"><span class="bl"><span>คุยกับเรา</span></span> <svg class="ar" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
 <a href="#solutions" class="btn btn-o"><span class="bl"><span>ดูโซลูชันทั้งหมด</span></span></a>
@@ -1724,13 +2032,13 @@ ol.steps{list-style:none;padding:0}
 <div class="wrap ab3-grid">
 <div class="ab3-copy rv">
 <p class="label"><span class="ln"></span>เกี่ยวกับ LO-CARB</p>
-<h2 class="display h2" id="about-h" style="font-size:calc(clamp(26px,2.5vw,40px)*var(--s));max-width:16ch">ความยั่งยืน กลยุทธ์ และเทคโนโลยี <span class="it" style="color:#0EA552">ครบในที่เดียว</span>.</h2>
+<h2 class="display h2" id="about-h" style="font-size:calc(clamp(26px,2.5vw,40px)*var(--s));max-width:16ch">ความยั่งยืน กลยุทธ์ และเทคโนโลยี <span class="it" style="color:var(--forest)">ครบในที่เดียว</span>.</h2>
 <p class="ab3-lead">โล-คาร์บก่อตั้งในปี 2564 เป็นบริษัทที่ปรึกษาด้านความยั่งยืนที่มองความยั่งยืนเป็นหัวใจของธุรกิจ ไม่ใช่แค่กระแสหรือ CSR เราผสานวิทยาศาสตร์ เทคโนโลยี และธุรกิจ เพื่อช่วยองค์กรไทยลดการปล่อยก๊าซเรือนกระจก ก้าวสู่มาตรฐานสากล และเติบโตไปพร้อมกัน</p>
 <ul class="ab3-tags" role="list"><li>ความยั่งยืน</li><li>กลยุทธ์</li><li>เทคโนโลยี</li></ul>
 <div class="ab3-cta"><a href="About-Story.dc.html" class="btn btn-p"><span class="bl"><span>อ่านเรื่องราวของเรา</span></span> <svg class="ar" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><a href="About-Board.dc.html" class="btn btn-od"><span class="bl"><span>รู้จักคณะกรรมการ</span></span></a></div>
 </div>
 <div class="ab3-bento rv2">
-<div class="ab3-photo"><img class="zoomimg" src="./assets/070ecf4ba0bce5a6105896c061bf806d.webp" alt="ต้นกล้างอกจากดินบนฝ่ามือ"><span class="ab3-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V10l7-5 7 5v11"></path><path d="M9 21v-6h6v6"></path></svg>ก่อตั้ง 2564 · กรุงเทพฯ</span></div>
+<div class="ab3-photo"><img class="zoomimg" src="/_blob/76a10b9728d986483bbe8ab87e4dd874" alt="ต้นกล้างอกจากดินบนฝ่ามือ"><span class="ab3-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V10l7-5 7 5v11"></path><path d="M9 21v-6h6v6"></path></svg>ก่อตั้ง 2564 · กรุงเทพฯ</span></div>
 <div class="ab3-t"><span class="ab3-i"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V10l7-5 7 5v11"></path><path d="M9 21v-6h6v6"></path></svg></span><b>[5+]</b><span>ปีแห่งประสบการณ์</span></div>
 <div class="ab3-t ab3-hl"><span class="ab3-i"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"></circle><path d="M8.5 14l-1.5 8 5-3 5 3-1.5-8"></path></svg></span><b>1<em></em></b><span>สมาชิก IFRS Sustainability Alliance ในประเทศไทย</span></div>
 <div class="ab3-t"><span class="ab3-i"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5z"></path><path d="M3 13l9 5 9-5"></path></svg></span><b>[x]</b><span>โปรเจค</span></div>
@@ -1742,7 +2050,7 @@ ol.steps{list-style:none;padding:0}
 <!-- 3 · CLIENTS + CERTIFICATES — one client marquee (each name once per loop), template certificates -->
 <section class="tb2 tbm" aria-labelledby="tb2-h">
 <div class="wrap tbm-head rv">
-<div><p class="label"><span class="ln"></span>ลูกค้าของเรา</p><h2 class="display h2" id="tb2-h" style="font-size:calc(clamp(26px,2.4vw,38px)*var(--s));max-width:22ch">ได้รับความไว้วางใจจากองค์กร <span class="it" style="color:#0EA552">ชั้นนำ</span> ของไทย</h2></div>
+<div><p class="label"><span class="ln"></span>ลูกค้าของเรา</p><h2 class="display h2" id="tb2-h" style="font-size:calc(clamp(26px,2.4vw,38px)*var(--s));max-width:22ch">ได้รับความไว้วางใจจากองค์กร <span class="it" style="color:var(--forest)">ชั้นนำ</span> ของไทย</h2></div>
 <div class="tbm-side"><div class="tb2-stats"><div><b>14</b><span>องค์กร</span></div><div><b>5</b><span>ภาคธุรกิจ</span></div></div><a href="Blog-Portfolio.dc.html" class="tlink">ดูเรื่องราวลูกค้า <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
 </div>
 <div class="tbm-rows rv" aria-label="รายชื่อลูกค้า">
@@ -1759,10 +2067,10 @@ ol.steps{list-style:none;padding:0}
 <!-- 5 · IFRS ALLIANCE — centred, BD copy only: title, statement, two credentials, CTAs -->
 <section class="ifx ifx2" id="ifrs" aria-labelledby="ifrs-h">
 <svg class="ifx-curve top" viewBox="0 0 1440 116" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H1440V44C1080 120 360 120 0 44Z" fill="#F3F0DF"></path></svg>
-<div class="ifx2-photo" aria-hidden="true"><img src="./assets/6f24e56f551738f709ead5d068dee0c9.webp" alt="" loading="lazy"></div>
+<div class="ifx2-photo" aria-hidden="true"><img src="/_blob/6f24e56f551738f709ead5d068dee0c9" alt="" loading="lazy"></div>
 <div class="wrap ifx2-in rv">
 <p class="ifx2-k"><span></span>IFRS Sustainability Alliance<span></span></p>
-<h2 class="ifx2-h" id="ifrs-h">Thailand’s 1<em>st​</em> IFRS Sustainability Alliance และ ISSB Training Partner</h2>
+<h2 class="ifx2-h" id="ifrs-h">Thailand’s 1<em>st&#8203;</em> IFRS Sustainability Alliance และ ISSB Training Partner</h2>
 <p class="ifx2-sub">เพื่อร่วมขับเคลื่อนและเตรียมความพร้อมให้ภาคธุรกิจไทยก้าวสู่มาตรฐานการเปิดเผยข้อมูลความยั่งยืนระดับสากล</p>
 <ul class="ifx2-creds" role="list">
 <li><span class="ifx2-ci"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"></circle><path d="M8.5 14l-1.5 8 5-3 5 3-1.5-8"></path></svg></span><b>IFRS Sustainability Alliance</b></li>
@@ -1780,40 +2088,50 @@ ol.steps{list-style:none;padding:0}
 <div class="headrow rv" style="margin-bottom:0">
 <div>
 <p class="label"><span class="ln"></span>โซลูชันของเรา</p>
-<h2 class="display h2" id="sol-h" style="font-size:calc(clamp(28px,2.6vw,40px)*var(--s));max-width:24ch">IFRS บัญชีคาร์บอน และ ESG <span class="it" style="color:#0EA552">โซลูชัน</span> สำหรับบริษัทไทย</h2>
+<h2 class="display h2" id="sol-h" style="font-size:calc(clamp(28px,2.6vw,40px)*var(--s));max-width:24ch">IFRS บัญชีคาร์บอน และ ESG <span class="it" style="color:var(--forest)">โซลูชัน</span> สำหรับบริษัทไทย</h2>
 </div>
 <p class="p muted" style="max-width:44ch;font-size:calc(16.5px*var(--s))">เลือกโซลูชันเพื่อดูรายละเอียด</p>
 </div>
-<ol class="sgrid" role="list">
-<li class="sc scFeat">
-<div class="scHead"><span class="scIc"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"></path><path d="M14 3v5h5M10 13h6M10 17h4"></path></svg></span><span class="scN">01</span></div>
-<h3 class="scT"><a href="Solution-IFRS.dc.html">ที่ปรึกษา IFRS S1 &amp; S2</a></h3>
-<p class="scD">ดูแล IFRS S1/S2 ครบวงจร ตั้งแต่ประเมินช่องว่างจนถึงการเปิดเผยข้อมูลครั้งแรก</p>
-<div class="scF"><span class="scTags"><span class="tag g">บริการ</span></span><span class="scGo">ดูเพิ่มเติม <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></div>
+<ol class="solrow" role="list">
+<li class="sr sr-lead rv">
+<a href="Solution-IFRS.dc.html" class="sr-link" aria-label="IFRS S1 &amp; S2"></a>
+<div class="sr-top"><span class="sr-ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"></path><path d="M14 3v5h5M10 13h6M10 17h4"></path></svg></span><span class="sr-n">01</span></div>
+<span class="sr-tag">บริการ</span>
+<h3 class="sr-t"><a href="Solution-IFRS.dc.html">IFRS S1 &amp; S2</a></h3>
+<p class="sr-d">ดูแล IFRS S1/S2 ครบวงจร ตั้งแต่ประเมินช่องว่างจนถึงการเปิดเผยข้อมูลครั้งแรก</p>
+<span class="sr-go">ดูเพิ่มเติม <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span>
 </li>
-<li class="sc">
-<div class="scHead"><span class="scIc"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"></path></svg></span><span class="scN">02</span></div>
-<h3 class="scT"><a href="Solution-CarbonCal.dc.html">แพลตฟอร์มบัญชีคาร์บอน CarbonCal</a></h3>
-<p class="scD">วัดการปล่อย Scope 1–3 ในแพลตฟอร์มเดียว พร้อมขึ้นทะเบียนกับ อบก.</p>
-<div class="scF"><span class="scTags"><span class="tag g">แพลตฟอร์ม</span></span><span class="scGo">ดูเพิ่มเติม <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></div>
+<li class="sr rv">
+<a href="Solution-CarbonCal.dc.html" class="sr-link" aria-label="CarbonCal + Carbon Camp"></a>
+<div class="sr-top"><span class="sr-ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"></path></svg></span><span class="sr-n">02</span></div>
+<span class="sr-tag">แพลตฟอร์ม</span>
+<h3 class="sr-t"><a href="Solution-CarbonCal.dc.html">CarbonCal + Carbon Camp</a></h3>
+<p class="sr-d">วัดการปล่อย Scope 1–3 ในแพลตฟอร์มเดียว พร้อมขึ้นทะเบียนกับ อบก.</p>
+<span class="sr-go">ดูเพิ่มเติม <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span>
 </li>
-<li class="sc">
-<div class="scHead"><span class="scIc"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"></path><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"></path></svg></span><span class="scN">03</span></div>
-<h3 class="scT"><a href="Solution-ISSB.dc.html">อบรม ISSB สำหรับกรรมการและทีมงาน</a></h3>
-<p class="scD">หลักสูตร ISSB เชิงปฏิบัติ จากพาร์ทเนอร์อบรมรายแรกของไทย</p>
-<div class="scF"><span class="scTags"><span class="tag g">การอบรม</span></span><span class="scGo">ดูเพิ่มเติม <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></div>
+<li class="sr rv">
+<a href="Solution-CarbonScout.dc.html" class="sr-link" aria-label="Carbon Scout"></a>
+<div class="sr-top"><span class="sr-ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21v-9"></path><path d="M12 12c0-4 3-7 8-7 0 5-3 8-8 7z"></path><path d="M12 14c0-3-2.5-5.5-7-5.5 0 4 2.5 6.5 7 5.5z"></path><path d="M4 21h16"></path></svg></span><span class="sr-n">03</span></div>
+<span class="sr-tag">แพลตฟอร์ม</span>
+<h3 class="sr-t"><a href="Solution-CarbonScout.dc.html">Carbon Scout</a></h3>
+<p class="sr-d">ติดตามคาร์บอนในพื้นที่เกษตร ต่อยอดสู่คาร์บอนเครดิต</p>
+<span class="sr-go">ดูเพิ่มเติม <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span>
 </li>
-<li class="sc">
-<div class="scHead"><span class="scIc"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="4"></circle><path d="M12 3v3M12 18v3M3 12h3M18 12h3"></path></svg></span><span class="scN">04</span></div>
-<h3 class="scT"><a href="Solution-CarbonScout.dc.html">Carbon Scout: ติดตามคาร์บอนในพื้นที่เกษตร</a></h3>
-<p class="scD">ติดตามคาร์บอนในพื้นที่เกษตร ต่อยอดสู่คาร์บอนเครดิต</p>
-<div class="scF"><span class="scTags"><span class="tag g">แพลตฟอร์ม</span></span><span class="scGo">ดูเพิ่มเติม <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></div>
+<li class="sr rv">
+<a href="Solution-ISSB.dc.html" class="sr-link" aria-label="อบรม ISSB"></a>
+<div class="sr-top"><span class="sr-ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"></path><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"></path></svg></span><span class="sr-n">04</span></div>
+<span class="sr-tag">การอบรม</span>
+<h3 class="sr-t"><a href="Solution-ISSB.dc.html">อบรม ISSB</a></h3>
+<p class="sr-d">หลักสูตร ISSB เชิงปฏิบัติ จากพาร์ทเนอร์อบรมรายแรกของไทย</p>
+<span class="sr-go">ดูเพิ่มเติม <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span>
 </li>
-<li class="sc">
-<div class="scHead"><span class="scIc"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"></path><path d="M8 15l3-3 2 2 3-4"></path></svg></span><span class="scN">05</span></div>
-<h3 class="scT"><a href="Solution-Reporting.dc.html">รายงานและที่ปรึกษาด้านความยั่งยืน</a></h3>
-<p class="scD">รายงานและกลยุทธ์ ESG ตั้งแต่ GRI, CDP ถึง Net Zero</p>
-<div class="scF"><span class="scTags"><span class="tag g">บริการ</span></span><span class="scGo">ดูเพิ่มเติม <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></div>
+<li class="sr rv">
+<a href="Solution-Reporting.dc.html" class="sr-link" aria-label="รายงานและที่ปรึกษา ESG"></a>
+<div class="sr-top"><span class="sr-ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"></path><path d="M8 15l3-3 2 2 3-4"></path></svg></span><span class="sr-n">05</span></div>
+<span class="sr-tag">บริการ</span>
+<h3 class="sr-t"><a href="Solution-Reporting.dc.html">รายงานและที่ปรึกษา ESG</a></h3>
+<p class="sr-d">รายงานและกลยุทธ์ ESG ตั้งแต่ GRI, CDP ถึง Net Zero</p>
+<span class="sr-go">ดูเพิ่มเติม <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span>
 </li>
 </ol>
 </div>
@@ -1823,42 +2141,38 @@ ol.steps{list-style:none;padding:0}
 <section class="blog bx" id="blog" aria-labelledby="blog-h">
 <div class="wrap">
 <div class="bx-head rv">
-<div><p class="label"><span class="ln"></span>บทความและเรื่องราวลูกค้า</p><h2 class="display h2" id="blog-h" style="font-size:calc(clamp(26px,2.4vw,38px)*var(--s));max-width:24ch">บทความเรื่อง IFRS, ISSB และบัญชี <span class="it" style="color:#0EA552">คาร์บอน</span></h2></div>
-<a href="Blog.dc.html" class="btn btn-od"><span class="bl"><span>บทความทั้งหมด</span></span> <svg class="ar" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+<div><p class="label"><span class="ln"></span>บทความและเรื่องราวลูกค้า</p><h2 class="display h2" id="blog-h" style="font-size:calc(clamp(26px,2.4vw,38px)*var(--s));max-width:24ch">บทความเรื่อง IFRS, ISSB และบัญชี <span class="it" style="color:var(--forest)">คาร์บอน</span></h2></div>
+<div class="bx-nav"><nav class="bx-tabs" aria-label="หมวดบทความ"><a href="Blog-Portfolio.dc.html">เรื่องราวลูกค้า</a><a href="Blog-Knowledge.dc.html">คลังความรู้</a><a href="Blog-News.dc.html">ข่าวและกิจกรรม</a></nav><a href="Blog.dc.html" class="btn btn-od"><span class="bl"><span>บทความทั้งหมด</span></span> <svg class="ar" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
 </div>
 <div class="bx-row">
 <article class="bx-c bx-feat rv">
-<a href="Blog-Story.dc.html" class="bx-img" tabindex="-1" aria-hidden="true"><img src="./assets/6f24e56f551738f709ead5d068dee0c9.webp" alt="" loading="lazy"><span class="bx-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></a>
-<a href="Blog-Portfolio.dc.html" class="bx-cat">เรื่องราวลูกค้า · IFRS</a>
+<a href="Blog-Story.dc.html" class="bx-img" tabindex="-1" aria-hidden="true"><img src="/_blob/acea1900cc76bb1ae25f3140c738e2dd" alt="" loading="lazy"><span class="bx-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></a>
+<a href="Blog-Portfolio.dc.html" class="bx-cat bx-catpill">เรื่องราวลูกค้า · IFRS</a>
 <h3 class="bx-t"><a href="Blog-Story.dc.html">[ชื่อลูกค้า]: พร้อมตาม IFRS S1 &amp; S2 ใน [X] สัปดาห์</a></h3>
 <p class="bx-x">[สรุป 2 บรรทัดของเรื่องราวลูกค้าที่ยืนยันแล้ว และได้รับอนุมัติจากลูกค้า]</p>
 <div class="bx-meta"><time datetime="2026-10-14">14 ต.ค. 2569</time><button class="bx-pv" onClick="{{open0}}" aria-label="ดูตัวอย่าง: เรื่องราวลูกค้า [ชื่อลูกค้า]"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></button></div>
 </article>
 <article class="bx-c  rv">
-<a href="Blog-Article.dc.html" class="bx-img" tabindex="-1" aria-hidden="true"><img src="./assets/6fadd19b9044a270cf824cd229a32520.webp" alt="" loading="lazy"><span class="bx-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></a>
-<a href="Blog-Knowledge.dc.html" class="bx-cat">คลังความรู้ · IFRS</a>
+<a href="Blog-Article.dc.html" class="bx-img" tabindex="-1" aria-hidden="true"><img src="/_blob/8f8174b9c50e05e0172f98487b371cb0" alt="" loading="lazy"><span class="bx-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></a>
+<a href="Blog-Knowledge.dc.html" class="bx-cat bx-catpill">คลังความรู้ · IFRS</a>
 <h3 class="bx-t"><a href="Blog-Article.dc.html">IFRS S2 สำคัญอย่างไรกับบริษัทจดทะเบียนใน SET</a></h3>
 
 <div class="bx-meta"><time datetime="2026-10-02">2 ต.ค. 2569</time><button class="bx-pv" onClick="{{open1}}" aria-label="ดูตัวอย่าง: IFRS S2 สำคัญอย่างไรกับบริษัทจดทะเบียนใน SET"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></button></div>
 </article>
 <article class="bx-c  rv">
-<a href="Blog-Story.dc.html" class="bx-img" tabindex="-1" aria-hidden="true"><img src="./assets/99e6571de4cb980d039c60c659613350.webp" alt="" loading="lazy"><span class="bx-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></a>
-<a href="Blog-Portfolio.dc.html" class="bx-cat">ผลงาน · CarbonCal</a>
+<a href="Blog-Story.dc.html" class="bx-img" tabindex="-1" aria-hidden="true"><img src="/_blob/047a45f90dd489c5c0720e07750cf2e7" alt="" loading="lazy"><span class="bx-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></a>
+<a href="Blog-Portfolio.dc.html" class="bx-cat bx-catpill">ผลงาน · CarbonCal</a>
 <h3 class="bx-t"><a href="Blog-Story.dc.html">[ชื่อลูกค้า]: วัด Scope 1–3 ด้วย CarbonCal</a></h3>
 
 <div class="bx-meta"><time datetime="2026-09-19">19 ก.ย. 2569</time><button class="bx-pv" onClick="{{open2}}" aria-label="ดูตัวอย่าง: [ชื่อลูกค้า]: วัด Scope 1–3 ด้วย CarbonCal"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></button></div>
 </article>
 <article class="bx-c  rv">
-<a href="Blog-Article.dc.html" class="bx-img" tabindex="-1" aria-hidden="true"><img src="./assets/b9f62f7be4548d33408c179079945da6.webp" alt="" loading="lazy"><span class="bx-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></a>
-<a href="Blog-News.dc.html" class="bx-cat">ข่าวและกิจกรรม · ISSB</a>
+<a href="Blog-Article.dc.html" class="bx-img" tabindex="-1" aria-hidden="true"><img src="/_blob/b1a0c09a559090138614b3c5c426b977" alt="" loading="lazy"><span class="bx-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></a>
+<a href="Blog-News.dc.html" class="bx-cat bx-catpill">ข่าวและกิจกรรม · ISSB</a>
 <h3 class="bx-t"><a href="Blog-Article.dc.html">เวิร์กช็อป ISSB สำหรับกรรมการ กลับมาที่กรุงเทพฯ 21 พ.ย.</a></h3>
 
 <div class="bx-meta"><time datetime="2026-09-05">5 ก.ย. 2569</time><button class="bx-pv" onClick="{{open3}}" aria-label="ดูตัวอย่าง: เวิร์กช็อป ISSB สำหรับกรรมการ กลับมาที่กรุงเทพฯ 21 พ.ย."><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></button></div>
 </article>
-</div>
-<div class="bx-foot rv">
-<nav class="bx-cats" aria-label="หมวดบทความ"><a href="Blog-Portfolio.dc.html">เรื่องราวลูกค้า</a><a href="Blog-Knowledge.dc.html">คลังความรู้</a><a href="Blog-News.dc.html">ข่าวและกิจกรรม</a></nav>
-<div class="bx-topics"><small>หัวข้อ</small><a href="Blog-Knowledge.dc.html">IFRS S2</a><a href="Blog-Knowledge.dc.html">ISSB</a><a href="Blog-Knowledge.dc.html">Scope 3</a><a href="Blog-Knowledge.dc.html">บัญชีคาร์บอน</a><a href="Blog-Knowledge.dc.html">56-1 One Report</a></div>
 </div>
 </div>
 </section>
@@ -1866,7 +2180,7 @@ ol.steps{list-style:none;padding:0}
 <!-- 7 · CTA — full-bleed photo -->
 <section class="cta dark" id="contact">
 <svg class="curve" viewBox="0 0 1440 116" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H1440V44C1080 120 360 120 0 44Z" fill="#F3F0DF"></path></svg>
-<div class="bg" aria-hidden="true"><img class="driftimg" src="./assets/76a10b9728d986483bbe8ab87e4dd874.webp" alt=""></div>
+<div class="bg" aria-hidden="true"><img class="driftimg" src="/_blob/76a10b9728d986483bbe8ab87e4dd874" alt=""></div>
 <div class="ov" aria-hidden="true"></div>
 <div class="wrap ctagrid">
 <div class="rv">
@@ -1884,39 +2198,38 @@ ol.steps{list-style:none;padding:0}
 </section>
 
 <!-- 8 · FOOTER -->
-<footer class="foot dark f2">
-<div class="f2-glow" aria-hidden="true"></div>
+<footer class="foot dark f2 f3">
 <div class="wrap">
-<div class="f2-grid">
-<div class="f2-brand">
-<svg width="76" height="54" viewBox="0 0 140 100" fill="none" stroke="#F3F0DF" stroke-width="7" stroke-linecap="round" role="img" aria-label="LO-CARB"><rect x="4" y="4" width="20" height="44" rx="10"></rect><circle cx="44" cy="36" r="12"></circle><path d="M27.2 70.8A13 13 0 1 0 27.2 89.2"></path><circle cx="52" cy="80" r="13"></circle><path d="M65 67V93"></path><path d="M78 93V67M78 80Q78 67 91 67"></path><path d="M98 48V93"></path><circle cx="111" cy="80" r="13"></circle><circle cx="133" cy="90" r="5" fill="#0EA552" stroke="none"></circle></svg>
-<p>LO-CARB บริษัทที่ปรึกษาด้านความยั่งยืน เราเชื่อว่าความยั่งยืนคือแกนหลักของการเติบโต และมากไปกว่าการช่วยองค์กรลดการปล่อยก๊าซ ลดความเสี่ยง วันนี้เราช่วยเปลี่ยนความยั่งยืนให้เป็นการเติบโตทางธุรกิจ</p>
-<a href="Solution-IFRS.dc.html" class="f2-badge"><span class="f2-seal">1<em></em></span><span>สมาชิก IFRS Sustainability Alliance รายแรกของประเทศไทย</span></a>
+<div class="f3-top">
+<div class="f3-brand">
+<img class="f2-logo" src="/_blob/0a7364de43a8ab52180d607e6a495657" alt="LO-CARB" width="96" height="64">
+<p class="f3-desc">LO-CARB บริษัทที่ปรึกษาด้านความยั่งยืน เราเชื่อว่าความยั่งยืนคือแกนหลักของการเติบโต และมากไปกว่าการช่วยองค์กรลดการปล่อยก๊าซ ลดความเสี่ยง วันนี้เราช่วยเปลี่ยนความยั่งยืนให้เป็นการเติบโตทางธุรกิจ</p>
+<a href="Solution-IFRS.dc.html" class="f3-badge"><span class="f2-seal">1<em></em></span><span>สมาชิก IFRS Sustainability Alliance รายแรกของประเทศไทย</span></a>
 </div>
-<nav class="f2-col" aria-label="โซลูชัน"><h4>โซลูชัน</h4><ul><li><a href="Solution-IFRS.dc.html">มาตรฐาน IFRS</a></li><li><a href="Solution-CarbonCal.dc.html">CarbonCal + Carbon Camp</a></li><li><a href="Solution-ISSB.dc.html">อบรม ISSB</a></li><li><a href="Solution-CarbonScout.dc.html">Carbon Scout</a></li><li><a href="Solution-Reporting.dc.html">รายงานและที่ปรึกษาความยั่งยืน</a></li></ul></nav><nav class="f2-col" aria-label="บริษัท"><h4>บริษัท</h4><ul><li><a href="About-Story.dc.html">เรื่องราวของเรา</a></li><li><a href="About-Certificates.dc.html">ใบรับรอง</a></li><li><a href="About-Board.dc.html">คณะกรรมการบริษัท</a></li><li><a href="Contact.dc.html">ร่วมงานกับเรา</a></li><li><a href="Contact.dc.html">ติดต่อเรา</a></li></ul></nav><nav class="f2-col" aria-label="บทความ"><h4>บทความ</h4><ul><li><a href="Blog-Portfolio.dc.html">เรื่องราวลูกค้า</a></li><li><a href="Blog-Knowledge.dc.html">คลังความรู้</a></li><li><a href="Blog-News.dc.html">ข่าวและกิจกรรม</a></li><li><a href="Blog.dc.html">บทความทั้งหมด</a></li></ul></nav>
-<div class="f2-office">
-<h4>ติดต่อ</h4>
-<ul class="f2-ci">
-<li><span class="f2-cic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></span><a href="mailto:contact@locarb.green">contact@locarb.green</a></li>
-<li><span class="f2-cic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg></span><a href="tel:+66969966249">096 996 6249</a></li>
-<li><span class="f2-cic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg></span><address>1/3-7 ชั้นที่ ดาดฟ้า ซอย ศาลาแดง 1 (ก๊อดเช่) แขวงสีลม เขตบางรัก กรุงเทพมหานคร 10500</address></li>
-</ul>
-<div class="f2-soc"><a href="#linkedin" aria-label="LO-CARB บน LinkedIn">in</a><a href="#facebook" aria-label="LO-CARB บน Facebook">f</a></div>
+<div class="f3-contact">
+<p class="f3-k">ติดต่อเรา</p>
+<a href="mailto:contact@locarb.green" class="f3-big">contact@locarb.green<span class="f3-go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></a>
+<a href="tel:+66969966249" class="f3-big f3-tel">096 996 6249<span class="f3-go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></a>
+<address class="f3-addr">1/3-7 ชั้นที่ ดาดฟ้า ซอย ศาลาแดง 1 (ก๊อดเช่) แขวงสีลม เขตบางรัก กรุงเทพมหานคร 10500</address>
+<div class="f3-soc"><a href="#linkedin" aria-label="LO-CARB บน LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.3-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21H9z"></path></svg></a><a href="#facebook" aria-label="LO-CARB บน Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5H16l.4-3h-2.9V8.6c0-.87.25-1.46 1.5-1.46h1.6V4.46A21 21 0 0 0 14.27 4.3c-2.3 0-3.87 1.4-3.87 3.97v2.23H7.8v3h2.6V21z"></path></svg></a></div>
 </div>
 </div>
-<div class="f2-bot">
+<div class="f3-links">
+<nav class="f3-col" aria-label="โซลูชัน"><h4>โซลูชัน</h4><ul><li><a href="Solution-IFRS.dc.html">มาตรฐาน IFRS</a></li><li><a href="Solution-CarbonCal.dc.html">CarbonCal + Carbon Camp</a></li><li><a href="Solution-ISSB.dc.html">อบรม ISSB</a></li><li><a href="Solution-CarbonScout.dc.html">Carbon Scout</a></li><li><a href="Solution-Reporting.dc.html">รายงานและที่ปรึกษาความยั่งยืน</a></li></ul></nav><nav class="f3-col" aria-label="บริษัท"><h4>บริษัท</h4><ul><li><a href="About-Story.dc.html">เรื่องราวของเรา</a></li><li><a href="About-Certificates.dc.html">ใบรับรอง</a></li><li><a href="About-Board.dc.html">คณะกรรมการบริษัท</a></li><li><a href="Contact.dc.html">ร่วมงานกับเรา</a></li></ul></nav><nav class="f3-col" aria-label="บทความ"><h4>บทความ</h4><ul><li><a href="Blog-Portfolio.dc.html">เรื่องราวลูกค้า</a></li><li><a href="Blog-Knowledge.dc.html">คลังความรู้</a></li><li><a href="Blog-News.dc.html">ข่าวและกิจกรรม</a></li><li><a href="Blog.dc.html">บทความทั้งหมด</a></li></ul></nav><nav class="f3-col" aria-label="กฎหมาย"><h4>กฎหมาย</h4><ul><li><a href="#privacy">นโยบายความเป็นส่วนตัว</a></li><li><a href="#pdpa">ประกาศ PDPA</a></li><li><a href="#terms">ข้อกำหนดการใช้งาน</a></li></ul></nav>
+</div>
+<div class="f2-bot f3-bot">
 <span>© 2569 LO-CARB สงวนลิขสิทธิ์</span>
-<nav class="f2-legal" aria-label="กฎหมาย"><a href="#privacy">นโยบายความเป็นส่วนตัว</a><a href="#pdpa">ประกาศ PDPA</a><a href="#terms">ข้อกำหนดการใช้งาน</a><button type="button" class="f2-ck" onClick="{{openCookies}}">ตั้งค่าคุกกี้</button></nav>
-<div class="f2-right"><span class="f2-lang" role="group" aria-label="ภาษา"><button class="{{thOn}}" onClick="{{setTH}}" lang="th">TH</button><button class="{{enOn}}" onClick="{{setEN}}">EN</button></span><a href="#top" class="totop" aria-label="กลับด้านบน"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"></path></svg></span></a></div>
+<div class="f2-right"><button type="button" class="f2-ck" onClick="{{openCookies}}">ตั้งค่าคุกกี้</button><span class="f2-lang" role="group" aria-label="ภาษา"><button class="{{thOn}}" onClick="{{setTH}}" lang="th">TH</button><button class="{{enOn}}" onClick="{{setEN}}">EN</button></span><a href="#top" class="totop" aria-label="กลับด้านบน"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"></path></svg></span></a></div>
 </div>
 </div>
 </footer>
+
 
 <!-- Blog quick-preview modal -->
 <sc-if value="{{hasPost}}" hint-placeholder-val="{{ false }}">
 <div class="modalbg" onClick="{{close}}">
 <div class="modal" role="dialog" aria-modal="true" aria-label="ตัวอย่างบทความ" onClick="{{stop}}">
-<div style="position:relative;height:180px;background:#0EA552;overflow:hidden"><img src="./assets/24d180a14c6895306525e9fe50fc214a.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+<div style="position:relative;height:180px;background:#0EA552;overflow:hidden"><img src="/_blob/24d180a14c6895306525e9fe50fc214a" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
 <button class="icbtn" onClick="{{close}}" aria-label="ปิดตัวอย่าง" style="position:absolute;right:16px;top:16px;background:#FBFAF3;border:0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
 </div>
 <div style="padding:32px 36px 36px">
@@ -1989,9 +2302,22 @@ class Component extends DCLogic {
       rejectCookies: () => saveCk('essential'),
       openCookies: () => this.setState({ showCookie: true })
     };
-    this._intro = true;
-    const loaderV = { ldCls: this.state.skipIntro ? 'skip' : (this._intro ? 'full' : 'quick'), ldFull: !!this._intro, ldQuick: !this._intro, skipIntro: () => this.setState({ skipIntro: true }), skipLabel: th ? 'ข้ามอินโทร' : 'Skip intro', introDelay: this.state.skipIntro ? '0.3s' : '6.4s', ldNonce: (this._nonce = this._nonce || String(Date.now())) };
-    return Object.assign(out, search, cookie, loaderV, { isEN: !th, isTH: th, thOn: th ? 'on' : '', enOn: th ? '' : 'on', setTH: () => setLang('th'), setEN: () => setLang('en') });
+    if (this._intro === undefined) {
+      try { this._intro = !sessionStorage.getItem('locarb-intro'); sessionStorage.setItem('locarb-intro', '1'); } catch (e) { this._intro = true; }
+      try { if (!this._intro && document.readyState !== 'complete') window.addEventListener('load', () => this.setState({ pageLoaded: true }), { once: true }); } catch (e) {}
+    }
+    let pageLoaded = !!this.state.pageLoaded; try { pageLoaded = pageLoaded || document.readyState === 'complete'; } catch (e) { pageLoaded = true; }
+    const loaderV = { ldCls: this.state.skipIntro ? 'skip' : (this._intro ? 'full' : (pageLoaded ? 'gone' : 'wait')), ldFull: !!this._intro, ldQuick: !this._intro, skipIntro: () => this.setState({ skipIntro: true }), skipLabel: th ? 'ข้ามอินโทร' : 'Skip intro', introDelay: this.state.skipIntro ? '0.3s' : (this._intro ? '6.4s' : '0s'), ldNonce: (this._nonce = this._nonce || String(Date.now())) };
+    const sm = !!this.state.sizeOpen, lm = !!this.state.langOpen;
+    const menus = {
+      sizeOpen: sm, langOpen: lm, sizeBtn: sm ? 'open' : '', langBtn: lm ? 'open' : '', sizeExp: sm ? 'true' : 'false', langExp: lm ? 'true' : 'false',
+      toggleSize: () => this.setState({ sizeOpen: !sm, langOpen: false }), toggleLang: () => this.setState({ langOpen: !lm, sizeOpen: false }),
+      closeMenus: () => { if (sm || lm) this.setState({ sizeOpen: false, langOpen: false }); },
+      pickS: () => { if (v.setS) v.setS(); this.setState({ sizeOpen: false }); }, pickM: () => { if (v.setM) v.setM(); this.setState({ sizeOpen: false }); }, pickL: () => { if (v.setL) v.setL(); this.setState({ sizeOpen: false }); },
+      pickTH: () => { this.setState({ langOpen: false }); setLang('th'); }, pickEN: () => { this.setState({ langOpen: false }); setLang('en'); },
+      langCode: th ? 'TH' : 'EN'
+    };
+    return Object.assign(out, search, cookie, loaderV, menus, { isEN: !th, isTH: th, thOn: th ? 'on' : '', enOn: th ? '' : 'on', setTH: () => setLang('th'), setEN: () => setLang('en') });
   }
   renderVals0() {
     const s = this.state.scale;

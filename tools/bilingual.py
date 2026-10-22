@@ -6,8 +6,8 @@ FT_OLD='<a href="#th">TH</a><a href="#en" class="on" aria-current="true">EN</a>'
 FT_NEW='<button class="{{thOn}}" onClick="{{setTH}}" lang="th">TH</button><button class="{{enOn}}" onClick="{{setEN}}">EN</button>'
 CSS='''
 /* ---- Thai language rendering ---- */
-.th-root{font-family:"Anakotmai","Noto Sans Thai",system-ui,sans-serif}
-.th-root *:not(svg):not(svg *):not(.hh):not(.hh *){font-family:"Anakotmai","Noto Sans Thai",system-ui,sans-serif !important;letter-spacing:0 !important}
+.th-root{font-family:"Anakotmai",sans-serif}
+.th-root *:not(svg):not(svg *):not(.hh):not(.hh *){font-family:"Anakotmai",sans-serif !important;letter-spacing:0 !important}
 .th-root h1:not(.hh),.th-root h2,.th-root h3,.th-root h4,.th-root .display:not(.hh),.th-root .ptitle2,.th-root .ftitle,.th-root .i2-big,.th-root .f2-tag,.th-root .mission,.th-root .statement{line-height:1.3 !important}
 .th-root .it{font-style:normal}
 .f2-lang button{min-width:36px;height:30px;padding:0 10px;border:0;border-radius:999px;background:transparent;font-family:"Termina",sans-serif;font-weight:700;font-size:10.5px;color:#B9B6A3;cursor:pointer}
@@ -20,7 +20,7 @@ def tr_text(body):
         core=html.unescape(raw).strip()
         if core and core in TH:
             lead=raw[:len(raw)-len(raw.lstrip())]; trail=raw[len(raw.rstrip()):]
-            return '>'+lead+html.escape(TH[core],quote=False)+trail+'<'
+            return '>'+lead+html.escape(TH[core],quote=False).replace('\n','<br>')+trail+'<'
         return m.group(0)
     body=re.sub(r'>([^<>]+)<',seg,body)
     def att(m):
@@ -76,14 +76,27 @@ WRAP_JS='''
       rejectCookies: () => saveCk('essential'),
       openCookies: () => this.setState({ showCookie: true })
     };
-    this._intro = true;
-    const loaderV = { ldCls: this.state.skipIntro ? 'skip' : (this._intro ? 'full' : 'quick'), ldFull: !!this._intro, ldQuick: !this._intro, skipIntro: () => this.setState({ skipIntro: true }), skipLabel: th ? 'ข้ามอินโทร' : 'Skip intro', introDelay: this.state.skipIntro ? '0.3s' : '6.4s' };
-    return Object.assign(out, search, cookie, loaderV, { isEN: !th, isTH: th, thOn: th ? 'on' : '', enOn: th ? '' : 'on', setTH: () => setLang('th'), setEN: () => setLang('en') });
+    if (this._intro === undefined) {
+      try { this._intro = !sessionStorage.getItem('locarb-intro'); sessionStorage.setItem('locarb-intro', '1'); } catch (e) { this._intro = true; }
+      try { if (!this._intro && document.readyState !== 'complete') window.addEventListener('load', () => this.setState({ pageLoaded: true }), { once: true }); } catch (e) {}
+    }
+    let pageLoaded = !!this.state.pageLoaded; try { pageLoaded = pageLoaded || document.readyState === 'complete'; } catch (e) { pageLoaded = true; }
+    const loaderV = { ldCls: this.state.skipIntro ? 'skip' : (this._intro ? 'full' : (pageLoaded ? 'gone' : 'wait')), ldFull: !!this._intro, ldQuick: !this._intro, skipIntro: () => this.setState({ skipIntro: true }), skipLabel: th ? 'ข้ามอินโทร' : 'Skip intro', introDelay: this.state.skipIntro ? '0.3s' : (this._intro ? '6.4s' : '0s'), ldNonce: (this._nonce = this._nonce || String(Date.now())) };
+    const sm = !!this.state.sizeOpen, lm = !!this.state.langOpen;
+    const menus = {
+      sizeOpen: sm, langOpen: lm, sizeBtn: sm ? 'open' : '', langBtn: lm ? 'open' : '', sizeExp: sm ? 'true' : 'false', langExp: lm ? 'true' : 'false',
+      toggleSize: () => this.setState({ sizeOpen: !sm, langOpen: false }), toggleLang: () => this.setState({ langOpen: !lm, sizeOpen: false }),
+      closeMenus: () => { if (sm || lm) this.setState({ sizeOpen: false, langOpen: false }); },
+      pickS: () => { if (v.setS) v.setS(); this.setState({ sizeOpen: false }); }, pickM: () => { if (v.setM) v.setM(); this.setState({ sizeOpen: false }); }, pickL: () => { if (v.setL) v.setL(); this.setState({ sizeOpen: false }); },
+      pickTH: () => { this.setState({ langOpen: false }); setLang('th'); }, pickEN: () => { this.setState({ langOpen: false }); setLang('en'); },
+      langCode: th ? 'TH' : 'EN'
+    };
+    return Object.assign(out, search, cookie, loaderV, menus, { isEN: !th, isTH: th, thOn: th ? 'on' : '', enOn: th ? '' : 'on', setTH: () => setLang('th'), setEN: () => setLang('en') });
   }
   renderVals0() {'''
 def build(src):
     s=src
-    assert 'th-root' not in s, 'already bilingual'
+    assert 'class="th-root"' not in s, 'already bilingual'
     s=s.replace(NAV_OLD,NAV_NEW).replace(FT_OLD,FT_NEW)
     # css
     if '</helmet>' in s and '<style>' in s[:s.index('</helmet>')]:

@@ -1,6 +1,6 @@
 import re, json, os
 ROOT='/mnt/user-data/outputs/artifacts/f4e40824-ae7d-4cfb-9d09-67115159c811/project/'
-CSS='/_blob/088b7b6e4dcaea84169c9eca674588dc'
+CSS='/_blob/73f43591e88594819cee9417ed574323'
 HERO_IMG='/_blob/76a10b9728d986483bbe8ab87e4dd874'
 HAND_IMG='/_blob/070ecf4ba0bce5a6105896c061bf806d'
 main=open(ROOT+'Main.dc.html').read()
@@ -213,23 +213,28 @@ pages=[]
 # ---------- ABOUT: STORY ----------
 values_strip=open('/tmp/values_strip.html').read()
 values_strip=values_strip[:values_strip.rindex('</div>')]  # drop trailing wrapper close
-body=phero([('About Us','About-Story.dc.html'),("LO-CARB's story",None)],'About LO-CARB',"Our <span class=\"it\" style=\"color:#0B7A3E\">story</span>",
- 'We help Thai companies measure, report and cut carbon, from IFRS S1 &amp; S2 disclosure to day-to-day carbon accounting.')
-body+=sec('', '''<div class="pgrid mid">
-<div class="rv">'''+label('Our mission')+'''<p class="mission">We make carbon <span class="hl">simple to measure</span> and practical to cut, so Thai companies can report with confidence and keep growing.</p>
-<div class="stats" style="margin-top:56px"><div class="stat"><b>[X]</b><span>Clients served</span></div><div class="stat"><b>[X]</b><span>Years of practice</span></div><div class="stat"><b>[X]</b><span>tCO₂e measured</span></div></div></div>
-<div class="archbox rv2"><div class="archring" aria-hidden="true"></div><div class="storyimg"><img class="zoomimg" src="'''+HAND_IMG+'''" alt="A seedling growing from soil in an open hand"></div><div class="seal"><small>Est.</small><b>2021</b><span>Bangkok</span></div></div>
-</div>''')
-body+=sec('sand', sechead('Our journey','How we got here','From a small advisory team to a platform company serving listed firms and SMEs.')+'''<div class="timeline">
-<div class="tl rv"><b>2021</b><div><h3>Founded in Bangkok</h3><p>[Origin story from the Content Template]</p></div></div>
-<div class="tl rv"><b>[Year]</b><div><h3>CarbonCal launches</h3><p>Our carbon accounting platform, built so SMEs can measure Scope 1–3 without a consultant on site.</p></div></div>
-<div class="tl rv"><b>2024</b><div><h3>Thailand's first IFRS Sustainability Alliance member</h3><p>Joined the Alliance to bring IFRS S1 &amp; S2 know-how to Thai listed and pre-IPO companies.</p></div></div>
-<div class="tl rv"><b>[Year]</b><div><h3>Carbon Scout launches</h3><p>Our Scope 3 supplier data platform. [Client milestone to confirm with BD]</p></div></div>
-</div>''')
-body+='<section style="background:#F3F0DF">'+values_strip.replace('class="values"','class="values" style="margin-top:0"',1)+'</div></section>'
+body=phero([('About Us','About-Story.dc.html'),("LO-CARB's story",None)],'About LO-CARB',"Our <span class=\"it\" style=\"color:#0EA552\">story</span>",
+ 'Founded in 2021, LO-CARB is a sustainability consultancy that sees sustainability as the heart of business, not a trend or CSR. We combine science, technology and business to help Thai organizations cut emissions, meet global standards and grow.')
+# 1 Mission
+body+=sec('', """<div class="pgrid mid">
+<div class="rv">"""+label('Mission')+"""<p class="mission">We put the world <span class="hl">on a carbon diet.</span></p>
+<p class="lead" style="margin-top:22px;max-width:52ch">We map a clear path to lower emissions while driving business performance, for organizations from the public to the private sector, large and small.</p></div>
+<div class="archbox rv2"><div class="archring" aria-hidden="true"></div><div class="storyimg"><img class="zoomimg" src=\""""+HAND_IMG+"""\" alt="A seedling growing from soil in an open hand"></div><div class="seal"><small>Est.</small><b>2021</b><span>Bangkok</span></div></div>
+</div>""")
+# 2 Milestones
+MS=[('2021','LO-CARB founded'),('[Year]','Launched CarbonCal and Carbon Camp'),('2026',"Became Thailand’s first IFRS Sustainability Alliance member"),('[Year]','[Other milestone]')]
+body+=sec('sand', sechead('Milestones','How we got here')+'<div class="timeline">'+''.join('<div class="tl rv"><b>%s</b><div><h3>%s</h3></div></div>'%(y,h) for y,h in MS)+'</div>')
+# 3 We believe
+body+=sec('', """<div class="believe rv">"""+label('We believe')+"""<p class="mission" style="max-width:24ch">Sustainability is the new <span class="hl">growth core.</span></p>
+<p class="lead" style="margin-top:22px;max-width:60ch">We don’t see it as a trend or CSR, but as the heart of the business: it drives performance, reduces risk, meets customer demand and opens local and global opportunities.</p></div>""")
+# 4 Three DNAs
+body+=sec('sand', sechead('Our DNA','Three things that make LO-CARB')+items([('growth','Sustainability-rooted','We understand each sector’s challenges and find the smoothest path to transformation.'),('bolt','Technology-driven','We use technology to solve problems more efficiently than traditional methods.'),('story','Creative thinkers','We make sustainability simple, relevant and practical.')]))
+# 5 Key numbers
+KN=[('clients across 5 sectors'),('organizations using CarbonCal'),('tCO₂e measured'),('people trained through Carbon Camp'),('years in sustainability consulting')]
+body+=sec('', sechead('Key numbers','LO-CARB in numbers')+'<div class="stats stats5 rv">'+''.join('<div class="stat"><b>[x]</b><span>%s</span></div>'%k for k in KN)+'</div>')
 body+=sec('', sechead('Keep exploring','Get to know us better')+items([('cert','Certificates','Our credentials, with the IFRS Sustainability Alliance first.'),('board','Board of directors','The people who lead LO-CARB.'),('book' if False else 'doc','Read our blog','Our view on IFRS, ISSB and carbon.')]).replace('<div class="item rv">','<a class="item rv" style="text-decoration:none;color:inherit" href="#">',3).replace('</p></div>','</p></a>',3).replace('href="#">','href="About-Certificates.dc.html">',1).replace('href="#">','href="About-Board.dc.html">',1).replace('href="#">','href="Blog.dc.html">',1).replace('</a></div></a>','</a></div>'))
 body+=pcta('Read our blog or <span class="it" style="color:#8FE3B0">talk</span> to us','See how we think about IFRS and carbon, or tell us what you need.','Contact Us','Contact.dc.html','Read our blog','Blog.dc.html')
-page('About-Story.dc.html',"LO-CARB's story",'about',body,logic(),4200); pages.append(('About-Story.dc.html',"About · Story",4200,'about'))
+page('About-Story.dc.html',"LO-CARB's story",'about',body,logic(),5200); pages.append(('About-Story.dc.html',"About · Story",5200,'about'))
 
 # ---------- ABOUT: CERTIFICATES ----------
 def crow(cl,feat,tag,h,p,yr):
@@ -260,7 +265,7 @@ def service(fname,title,crumb,lab,h1,lead,cta,whatlab,whath2,whatp,whatitems,sho
 
 service('Solution-IFRS.dc.html','IFRS Standards','IFRS Standards','Solution · Service',
  'IFRS S1 &amp; S2, <span class="it" style="color:#0B7A3E">end to end</span>',
- 'From gap analysis to your first IFRS-aligned disclosure, with Thailand\'s first IFRS Sustainability Alliance member beside you.',
+ 'End-to-end IFRS S1/S2 support, from gap analysis and climate risk and financial impact assessment to your first disclosure.',
  'Talk to an IFRS specialist','What is IFRS S1 / S2','Two standards, in plain words','Thai listed companies are moving to ISSB-based disclosure in phases. We check the latest SEC Thailand timeline for your company in the first meeting.',
  [('doc','IFRS S1','General requirements for disclosing sustainability-related financial information: the risks and opportunities that could affect your company\'s prospects.'),('growth','IFRS S2','Climate-related disclosures: how climate risks and opportunities affect your strategy, finances and targets, including greenhouse gas emissions.')],
  True,'One-stop service in six steps',
@@ -271,7 +276,7 @@ service('Solution-IFRS.dc.html','IFRS Standards','IFRS Standards','Solution · S
 
 service('Solution-ISSB.dc.html','ISSB training','ISSB training','Solution · Service',
  'ISSB <span class="it" style="color:#0B7A3E">training</span>',
- 'Workshops that build ISSB capability from the board to the reporting team, so disclosure is understood, not outsourced.',
+ 'Hands-on ISSB reporting training from Thailand\'s first ISSB training partner.',
  'Plan a workshop','Who it is for','Training for every level',' ',
  [('board','Board &amp; executives','Briefings on what ISSB means for governance, risk and strategy.'),('users','Management','Sessions for finance, IR and sustainability leads who own the disclosure.'),('cap','Reporting team','Hands-on workshops on S1 and S2 data, calculations and drafting.')],
  False,'From brief to follow-up',
@@ -282,7 +287,7 @@ service('Solution-ISSB.dc.html','ISSB training','ISSB training','Solution · Ser
 
 service('Solution-Reporting.dc.html','Sustainability reporting & consulting','Reporting &amp; consulting','Solution · Service',
  'Reporting <span class="it" style="color:#0B7A3E">&amp;</span> consulting',
- 'Sustainability reports and advice, from materiality assessment to final disclosure.',
+ 'Sustainability and ESG reports and strategy that meet GRI, CDP and other standards, through to your Net Zero pathway, led by our specialist team.',
  'Talk to us','What we cover','Advice that ends in a report','',
  [('target','Materiality','Find the topics that matter most to your business and stakeholders.'),('rep','Sustainability report','Drafting and design of a report your board can sign off.'),('shield','Disclosure advisory','Guidance on frameworks, data and review before you publish.')],
  False,'How a reporting project runs',
@@ -298,10 +303,11 @@ UIM={'Solution-CarbonCal.dc.html':[
 '<div class="ui"><div class="uh"><span><i></i>Reports</span><span>3 ready</span></div><div class="ub"><table><tr><td><b>IFRS S2 metrics pack</b></td><td>PDF · XLSX</td><td><span class="st ok">Ready</span></td></tr><tr><td><b>56-1 One Report data</b></td><td>XLSX</td><td><span class="st ok">Ready</span></td></tr><tr><td><b>Buyer questionnaire</b></td><td>CSV</td><td><span class="st ok">Ready</span></td></tr><tr><td><b>Board summary Q3</b></td><td>PDF</td><td><span class="st pd">Draft</span></td></tr></table></div></div>',
 '<div class="ui"><div class="uh"><span><i></i>Team</span><span>12 members</span></div><div class="ub"><table><tr><td><b>[Name]</b></td><td>Admin</td><td><span class="st ok">Active</span></td></tr><tr><td><b>[Name]</b></td><td>Approver</td><td><span class="st ok">Active</span></td></tr><tr><td><b>Chonburi plant</b></td><td>Data owner</td><td><span class="st pd">Invited</span></td></tr><tr><td><b>Rayong depot</b></td><td>Data owner</td><td><span class="st ok">Active</span></td></tr></table></div></div>'],
 'Solution-CarbonScout.dc.html':[
-'<div class="ui"><div class="uh"><span><i></i>New request</span><span>Q3 2026</span></div><div class="ub"><table><tr><td>Questionnaire</td><td><b>Scope 3 · Purchased goods</b></td></tr><tr><td>Language</td><td><b>Thai + English</b></td></tr><tr><td>Suppliers</td><td><b>146 selected</b></td></tr><tr><td>Deadline</td><td><b>30 Nov 2026</b></td></tr></table></div></div>',
-'<div class="ui"><div class="uh"><span><i></i>Responses</span><span>78% complete</span></div><div class="ub"><div class="meter" style="height:10px"><i style="width:78%"></i></div><table style="margin-top:10px"><tr><td>Siam Pack Supply</td><td><span class="st ok">Submitted</span></td></tr><tr><td>Northern Resin Co.</td><td><span class="st ok">Submitted</span></td></tr><tr><td>Chao Transport</td><td><span class="st pd">In progress</span></td></tr><tr><td>Krabi Palm Mill</td><td><span class="st lt">Not opened</span></td></tr></table></div></div>',
-'<div class="ui"><div class="uh"><span><i></i>Scope 3 by category</span><span>tCO₂e</span></div><div class="ub"><div class="kpis"><div class="kpi"><small>Cat 1 · Goods</small><b>21,400</b></div><div class="kpi"><small>Cat 4 · Transport</small><b>6,150</b></div><div class="kpi"><small>Cat 12 · End of life</small><b>2,980</b></div></div><div class="bars"><div class="hi" style="height:88%"></div><div style="height:30%"></div><div style="height:22%"></div><div class="hi" style="height:44%"></div><div style="height:16%"></div><div style="height:26%"></div></div></div></div>',
-'<div class="ui"><div class="uh"><span><i></i>Supplier scorecard</span><span>Top 4</span></div><div class="ub"><table><tr><td><b>Siam Pack Supply</b></td><td>A</td><td><div class="meter" style="width:90px"><i style="width:92%"></i></div></td></tr><tr><td><b>Northern Resin Co.</b></td><td>B</td><td><div class="meter" style="width:90px"><i style="width:74%"></i></div></td></tr><tr><td><b>Chao Transport</b></td><td>B</td><td><div class="meter" style="width:90px"><i style="width:66%"></i></div></td></tr><tr><td><b>Krabi Palm Mill</b></td><td>D</td><td><div class="meter" style="width:90px"><i style="width:21%"></i></div></td></tr></table></div></div>']}
+'<div class="ui"><div class="uh"><span><i></i>Plots</span><span>Sample data</span></div><div class="ub"><table><tr><td><b>Plot A-01</b></td><td>Rubber</td><td>12.4 ha</td></tr><tr><td><b>Plot A-02</b></td><td>Oil palm</td><td>8.9 ha</td></tr><tr><td><b>Plot B-07</b></td><td>Durian</td><td>5.2 ha</td></tr><tr><td><b>Plot C-03</b></td><td>Rubber</td><td>15.0 ha</td></tr></table></div></div>',
+'<div class="ui"><div class="uh"><span><i></i>Field measurements</span><span>Sample data</span></div><div class="ub"><table><tr><td>Plot A-01</td><td>Tree survey</td><td><span class="st ok">Done</span></td></tr><tr><td>Plot A-02</td><td>Soil sample</td><td><span class="st ok">Done</span></td></tr><tr><td>Plot B-07</td><td>Tree survey</td><td><span class="st pd">Scheduled</span></td></tr><tr><td>Plot C-03</td><td>Photo evidence</td><td><span class="st pd">Pending</span></td></tr></table></div></div>',
+'<div class="ui"><div class="uh"><span><i></i>Carbon stock over time</span><span>tCO₂e · sample</span></div><div class="ub"><div class="bars"><div style="height:34%"></div><div style="height:42%"></div><div style="height:51%"></div><div style="height:60%"></div><div class="hi" style="height:70%"></div><div class="hi" style="height:79%"></div></div></div></div>',
+'<div class="ui"><div class="uh"><span><i></i>Verification pack</span><span>Sample data</span></div><div class="ub"><table><tr><td><b>Plot boundaries</b></td><td>KML</td><td><span class="st ok">Ready</span></td></tr><tr><td><b>Measurement records</b></td><td>XLSX</td><td><span class="st ok">Ready</span></td></tr><tr><td><b>Photo evidence</b></td><td>ZIP</td><td><span class="st pd">In progress</span></td></tr></table></div></div>'
+]}
 
 FAQ_JS_TMPL='''const F = %s;
     %s
@@ -323,7 +329,7 @@ def product(fname,title,crumb,h1,lead,b1,b2,benefits,stats,features,testis,faqs,
 
 camp=sec('sand', '<div class="pgrid mid"><div class="rv">'+label('Carbon Camp')+'<h2 class="display h2" style="max-width:14ch">Training so your team can <span class="it" style="color:#0B7A3E">run it</span></h2><p class="lead muted" style="margin-top:24px;font-size:calc(17px*var(--s))">Carbon Camp is hands-on training that comes with CarbonCal: your team learns carbon accounting by doing it on your own data.</p></div><div class="rv2">'+steps([('Kick-off','Set goals and scope.'),('Hands-on sessions','Work through your own data in CarbonCal.'),('Wrap-up','Certificate of completion and a 30-day follow-up check-in.')]).replace('class="svc"','class="svc" style="grid-template-columns:minmax(0,1fr);row-gap:32px"')+'</div></div>')
 product('Solution-CarbonCal.dc.html','CarbonCal + Carbon Camp','CarbonCal + Carbon Camp',
- 'Carbon<span class="it" style="color:#0B7A3E">Cal</span> + Carbon Camp','A carbon accounting platform for Scope 1, 2 and 3, with Carbon Camp training so your team can run it.','Request free trial','Book a demo',
+ 'Carbon<span class="it" style="color:#0B7A3E">Cal</span> + Carbon Camp','Measure Scope 1, 2 and 3 emissions on one easy, accurate platform, so your carbon footprint for organization (CFO) is ready for disclosure and TGO registration, with training that brings your team on board.','Request free trial','Book a demo',
  [('bolt','Faster than spreadsheets','Upload activity data once and get emissions calculated with Thai emission factors.'),('layers','Every scope in one place','Scope 1, 2 and 3 emissions side by side, by site and by month.'),('users','Built for your team','Roles for data owners, reviewers and approvers, with a full audit trail.')],
  [('[X]','companies'),('[X]','users'),('[X]','tCO₂e measured')],
  [('Measure Scope 1–3','Enter or import fuel, electricity, travel and purchase data. CarbonCal applies the right factor and shows the result by scope.'),('Track progress over time','See monthly trends against your baseline and reduction targets, site by site.'),('Share reports','Export board-ready summaries and data tables for IFRS S2, 56-1 One Report and buyer questionnaires.'),('Invite your team','Give each site its own data owner and keep every change logged for auditors.')],
@@ -332,12 +338,12 @@ product('Solution-CarbonCal.dc.html','CarbonCal + Carbon Camp','CarbonCal + Carb
  camp,'CarbonCal + Carbon Camp',6400)
 
 product('Solution-CarbonScout.dc.html','Carbon Scout','Carbon Scout',
- 'Carbon <span class="it" style="color:#0B7A3E">Scout</span>','Collect Scope 3 data from your suppliers in one place, without the spreadsheet chase.','Book a demo','Request free trial',
- [('target','Scope 3 coverage','See emissions across your supply chain, supplier by supplier.'),('clock','Less chasing','Send requests, reminders and deadlines from one place.'),('shield','Data you can trust','Every supplier answer is checked against ranges and kept with its evidence.')],
- [('[X]','suppliers connected'),('[X]','companies'),('[X]','tCO₂e tracked')],
- [('Supplier requests','Send a short, guided questionnaire in Thai or English. Suppliers answer without creating an account.'),('Response tracking','See who has opened, started and submitted, and send reminders in one click.'),('Scope 3 roll-up','Supplier data flows into your Scope 3 categories, with gaps filled by spend-based estimates.'),('Supplier scorecards','Rank suppliers by data quality and emissions to plan your reduction work.')],
- [('[Client quote, pending approval]','AP','[Name]','Procurement Head, [Client name]'),('[Client quote, pending approval]','TS','[Name]','ESG Lead, [Client name]'),('[Supplier quote, pending approval]','RN','[Name]','Owner, a packaging supplier')],
- [{'q':'How much does Carbon Scout cost?','a':'Pricing is based on the number of suppliers you invite. Suppliers never pay.'},{'q':'How is supplier data protected?','a':'Each supplier only sees its own answers. Data is encrypted and shared with you under a clear consent notice.'},{'q':'Do suppliers need training?','a':'No. The questionnaire is guided and takes most suppliers 15 to 30 minutes. We run a short webinar for large supplier groups.'}],
+ 'Carbon <span class="it" style="color:#0B7A3E">Scout</span>','Track and verify carbon on farmland and plantations, ready for carbon credits.','Book a demo','Talk to us',
+ [('growth','Carbon on every plot','Map farmland and plantation plots and follow their carbon over time.'),('shield','Verification-ready data','Keep measurements and evidence organised for third-party verification.'),('target','A path to carbon credits','Prepare project data for carbon credit programmes.')],
+ [('[X]','hectares tracked'),('[X]','plots'),('[X]','tCO₂e estimated')],
+ [('Plot mapping','Register each plot with its boundary, crop and area.'),('Field measurements','Plan and record field surveys, samples and photo evidence.'),('Carbon over time','See how carbon on each plot changes, season by season.'),('Verification pack','Export plot data and evidence for verifiers and carbon credit programmes.')],
+ [('[Client quote, pending approval]','PJ','[Name]','Sustainability Manager, [Client name]'),('[Client quote, pending approval]','KR','[Name]','Plantation Manager, [Client name]'),('[Client quote, pending approval]','NW','[Name]','[Title], [Client name]')],
+ [{'q':'Which crops and land types does Carbon Scout cover?','a':'Farmland and plantations. [Confirm the supported crop list with the product team.]'},{'q':'Does Carbon Scout issue carbon credits?','a':'No. Carbon Scout prepares tracked and verified data for carbon credit programmes; credits are issued by the programme operator.'},{'q':'How is plot data collected?','a':'[Data collection method to confirm with the product team.]'}],
  '','Carbon Scout',5600)
 
 # ---------- BLOG HUB + CATEGORIES ----------
@@ -347,11 +353,11 @@ POSTS=[
  {'cv':'cv2','cat':'Portfolio','tag':'CarbonCal','t':'[Client name]: measuring Scope 1–3 with CarbonCal','h':'Blog-Story.dc.html','d':'19 Sep 2026'},
  {'cv':'cv7','cat':'Knowledge base','tag':'IFRS','t':'IFRS S1 vs S2: what each standard asks for','h':'Blog-Article.dc.html','d':'12 Sep 2026'},
  {'cv':'cv3','cat':'News & events','tag':'ISSB','t':'ISSB for Boards workshop returns to Bangkok on 21 Nov','h':'Blog-Article.dc.html','d':'5 Sep 2026'},
- {'cv':'cv6','cat':'Portfolio','tag':'Carbon Scout','t':'[Client name]: [X]% supplier response rate with Carbon Scout','h':'Blog-Story.dc.html','d':'28 Aug 2026'},
+ {'cv':'cv6','cat':'Portfolio','tag':'Carbon Scout','t':'[Client name]: tracking plantation carbon with Carbon Scout','h':'Blog-Story.dc.html','d':'28 Aug 2026'},
  {'cv':'cv5','cat':'Knowledge base','tag':'CarbonCal','t':'Scope 1, 2 and 3 emissions explained','h':'Blog-Article.dc.html','d':'22 Aug 2026'},
  {'cv':'cv8','cat':'Portfolio','tag':'Reporting','t':'[Client name]: a first sustainability report in one cycle','h':'Blog-Story.dc.html','d':'8 Aug 2026'},
- {'cv':'cv2','cat':'News & events','tag':'Carbon Scout','t':'LO-CARB and [Client name] team up on supplier decarbonisation','h':'Blog-Article.dc.html','d':'1 Aug 2026'},
- {'cv':'cv1','cat':'Knowledge base','tag':'Carbon Scout','t':'How to start collecting Scope 3 supplier data','h':'Blog-Article.dc.html','d':'25 Jul 2026'},
+ {'cv':'cv2','cat':'News & events','tag':'Carbon Scout','t':'LO-CARB and [Client name] team up on farmland carbon','h':'Blog-Article.dc.html','d':'1 Aug 2026'},
+ {'cv':'cv1','cat':'Knowledge base','tag':'CarbonCal','t':'How to start collecting Scope 3 supplier data','h':'Blog-Article.dc.html','d':'25 Jul 2026'},
  {'cv':'cv4','cat':'Portfolio','tag':'ISSB','t':'[Client name]: ISSB training for the board','h':'Blog-Story.dc.html','d':'18 Jul 2026'},
  {'cv':'cv7','cat':'News & events','tag':'CarbonCal','t':'CarbonCal adds Scope 3 category templates','h':'Blog-Article.dc.html','d':'11 Jul 2026'}]
 TAGS=['All','IFRS','CarbonCal','ISSB','Carbon Scout','Reporting']

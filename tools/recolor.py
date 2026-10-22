@@ -8,6 +8,7 @@ def recolor(s):
     s=re.sub(r'rgba\(\s*143\s*,\s*227\s*,\s*176\s*,',  'rgba(14,165,82,',s)
     s=re.sub(r'rgba\(\s*11\s*,\s*122\s*,\s*62\s*,',    'rgba(14,165,82,',s)
     s=re.sub(r'rgba\(\s*(6\s*,\s*51\s*,\s*27|4\s*,\s*34\s*,\s*18|14\s*,\s*14\s*,\s*12)\s*,','rgba(0,0,0,',s)
+    s=s.replace('class="it" style="color:#0EA552"','class="it" style="color:var(--forest)"')
     if '/* CI palette */' not in s and '@media (max-width:1080px){' in s:
         i=s.index('@media (max-width:1080px){')
         s=s[:i]+'/* CI palette */\n.values,.mintro,.pcta,.banner,.psec.green,.okmsg,.inlinecta,.story.green{--mint:#F3F0DF}\n'+s[i:]

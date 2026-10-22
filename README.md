@@ -1,12 +1,3 @@
-# Updated Home export — 20 October 2026
-
-Home uses the latest supplied HTML export. Other pages retain the older ZIP version.
-Fonts, images, React and the design runtime are included locally. Open index.html or serve this folder with `python3 -m http.server 8000`.
-This remains an interactive design prototype, with no form submission backend.
-The original generator scripts are archived in tools/; do not regenerate pages without updating those scripts.
-
-## Original project notes
-
 # LO-CARB Website Revamp 2027 — Design prototype
 
 High-fidelity, interactive prototype of the new **locarb.green** (16 pages, TH/EN), built from the
