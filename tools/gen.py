@@ -1,6 +1,6 @@
 import re, json, os
 ROOT='/mnt/user-data/outputs/artifacts/f4e40824-ae7d-4cfb-9d09-67115159c811/project/'
-CSS='/_blob/e530b10be96a1b830084b553d65ae46d'
+CSS='/_blob/c8a5ee2e0794924a909918c9217777e6'
 HERO_IMG='/_blob/76a10b9728d986483bbe8ab87e4dd874'
 HAND_IMG='/_blob/070ecf4ba0bce5a6105896c061bf806d'
 main=open(ROOT+'Main.dc.html').read()
@@ -462,7 +462,7 @@ form='''<div class="formwrap">
 <sc-if value="{{notSent}}" hint-placeholder-val="{{ true }}">
 <div class="form">
 <div class="fld full"><span class="flab">I'm contacting about <em>*</em></span><div class="chips"><sc-for list="{{topics}}" as="t" hint-placeholder-count="4"><button class="chip {{t.cls}}" onClick="{{t.pick}}" aria-pressed="{{t.pr}}">{{t.label}}</button></sc-for></div></div>
-<sc-if value="{{isSol}}" hint-placeholder-val="{{ false }}"><div class="fld full"><span class="flab">Which solution?</span><div class="chips"><sc-for list="{{sols}}" as="t" hint-placeholder-count="5"><button class="chip {{t.cls}}" onClick="{{t.pick}}" aria-pressed="{{t.pr}}">{{t.label}}</button></sc-for></div></div></sc-if>
+<sc-if value="{{isSol}}" hint-placeholder-val="{{ false }}"><div class="fld full"><span class="flab">Which solutions? <small class="fhint">Select all that apply</small></span><div class="chips"><sc-for list="{{sols}}" as="t" hint-placeholder-count="5"><button class="chip chk {{t.cls}}" onClick="{{t.pick}}" aria-pressed="{{t.pr}}"><span class="chk-b" aria-hidden="true"></span>{{t.label}}</button></sc-for></div></div></sc-if>
 <div class="fld"><label for="cn">Name <em>*</em></label><input id="cn" type="text" placeholder="Your full name"></div>
 <div class="fld"><label for="ce">Email <em>*</em></label><input id="ce" type="email" placeholder="name@company.com"></div>
 <div class="fld"><label for="cc">Company</label><input id="cc" type="text" placeholder="Company name"></div>
@@ -479,30 +479,38 @@ form='''<div class="formwrap">
 <div class="okmsg"><span class="oi">'''+CHK+'''</span><div><b>Thank you</b><p>Your message has been well received.</p></div><button onClick="{{closeOk}}" aria-label="Close message">✕</button></div>
 </sc-if>
 </div>
-<div class="cinfo rv2">
-<div class="row2"><small>Your message goes to</small><b>{{route}}</b><span>{{routeNote}}</span></div>
-<div class="row2"><small>Business &amp; partnerships</small><b><a href="mailto:contact@locarb.green">contact@locarb.green</a></b><span>Solutions, partnership and other enquiries</span></div>
-<div class="row2"><small>Careers</small><b><a href="mailto:hr@locarb.green">hr@locarb.green</a></b><span>Job seekers and interns</span></div>
-<div class="row2"><small>Office</small><b>1/3-7, Rooftop, Soi Saladaeng 1 (Godche)</b><span>Silom Subdistrict, Bang Rak District, Bangkok 10500</span></div><div class="row2"><small>Phone</small><b><a href="tel:+66969966249">096 996 6249</a></b><span>contact@locarb.green</span></div>
-<div class="row2"><small>Follow us</small><div class="social" style="margin-top:12px"><a href="#" class="soc" style="color:#0E0E0C;border-color:rgba(14,14,12,.2)">in</a><a href="#" class="soc" style="color:#0E0E0C;border-color:rgba(14,14,12,.2)">f</a></div></div>
+<aside class="cside rv2">
+<div class="croute">
+<small>Your message goes to</small>
+<b>{{route}}</b>
+<sc-if value="{{hasTopic}}" hint-placeholder-val="{{ false }}"><div class="croute-tags"><span class="ctag">{{routeTopic}}</span><sc-for list="{{routeSols}}" as="s" hint-placeholder-count="0"><span class="ctag ctag-l">{{s}}</span></sc-for></div></sc-if>
+<sc-if value="{{noTopic}}" hint-placeholder-val="{{ true }}"><p>Choose a topic to see where it goes.</p></sc-if>
 </div>
+<div class="cdir">
+<a href="mailto:contact@locarb.green" class="cd-row"><span class="cd-ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></span><span><small>Business &amp; partnerships</small><b>contact@locarb.green</b></span></a>
+<a href="mailto:hr@locarb.green" class="cd-row"><span class="cd-ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"></path></svg></span><span><small>Careers</small><b>hr@locarb.green</b></span></a>
+<a href="tel:+66969966249" class="cd-row"><span class="cd-ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg></span><span><small>Phone</small><b>096 996 6249</b></span></a>
+<div class="cd-row cd-addr"><span class="cd-ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg></span><span><small>Office</small><address>1/3-7, Rooftop, Soi Saladaeng 1 (Godche), Silom Subdistrict, Bang Rak District, Bangkok 10500</address></span></div>
+<div class="cd-soc"><small>Follow us</small><span><a href="#linkedin" aria-label="LO-CARB on LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.3-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21H9z"></path></svg></a><a href="#facebook" aria-label="LO-CARB on Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5H16l.4-3h-2.9V8.6c0-.87.25-1.46 1.5-1.46h1.6V4.46A21 21 0 0 0 14.27 4.3c-2.3 0-3.87 1.4-3.87 3.97v2.23H7.8v3h2.6V21z"></path></svg></a></span></div>
+</div>
+</aside>
 </div>'''
 body+='<section class="psec" style="padding-top:16px"><div class="wrap">'+form+'</div></section>'
-js=logic("{ topic: '', sol: '', agree: false, sent: false, err: false }",'''const TOP = ['Solutions', 'Partnership', 'Careers', 'Other inquiries'];
+js=logic("{ topic: '', sols: [], agree: false, sent: false, err: false }",'''const TOP = ['Solutions', 'Partnership', 'Careers', 'Other inquiries'];
     const SOL = ['IFRS', 'CarbonCal + Carbon Camp', 'ISSB training', 'Carbon Scout', 'Reporting & consulting'];
     const career = st.topic === 'Careers';
     const extra = {
       topics: TOP.map((t) => ({ label: t, cls: st.topic === t ? 'on' : '', pr: st.topic === t ? 'true' : 'false', pick: () => this.setState({ topic: t, err: false }) })),
-      sols: SOL.map((t) => ({ label: t, cls: st.sol === t ? 'on' : '', pr: st.sol === t ? 'true' : 'false', pick: () => this.setState({ sol: t }) })),
+      sols: SOL.map((t) => { const on = (st.sols || []).indexOf(t) >= 0; return { label: t, cls: on ? 'on' : '', pr: on ? 'true' : 'false', pick: () => this.setState({ sols: on ? st.sols.filter((x) => x !== t) : (st.sols || []).concat([t]) }) }; }),
       isSol: st.topic === 'Solutions', isCareer: career,
       route: career ? 'hr@locarb.green' : 'contact@locarb.green',
-      routeNote: st.topic ? ('Subject: ' + st.topic + (st.topic === 'Solutions' && st.sol ? ' · ' + st.sol : '')) : 'Choose a topic to see where it goes.',
+      hasTopic: !!st.topic, noTopic: !st.topic, routeTopic: st.topic || '', routeSols: st.topic === 'Solutions' ? SOL.filter((x) => (st.sols || []).indexOf(x) >= 0) : [],
       notSent: !st.sent, sent: !!st.sent, err: !!st.err,
       errMsg: !st.topic ? 'Please choose what you are contacting us about.' : 'Please accept the privacy policy to send your message.',
       agreeCls: st.agree ? 'on' : '', agreeAria: st.agree ? 'true' : 'false',
       toggleAgree: () => this.setState({ agree: !st.agree, err: false }),
       submit: () => (st.topic && st.agree) ? this.setState({ sent: true, err: false }) : this.setState({ err: true }),
-      closeOk: () => this.setState({ sent: false, agree: false, topic: '', sol: '' })
+      closeOk: () => this.setState({ sent: false, agree: false, topic: '', sols: [] })
     };''')
 page('Contact.dc.html','Contact Us',None,body,js,2700); pages.append(('Contact.dc.html','Contact Us',2700,'contact'))
 

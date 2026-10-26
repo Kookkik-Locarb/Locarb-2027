@@ -1489,6 +1489,8 @@ ol.steps{list-style:none;padding:0}
 .ifx2-creds li:not(.ifx2-plus):not(.ifx2-div){color:#F3F0DF}
 .ifx2-ci{border-color:rgba(243,240,223,.6);color:#F3F0DF}
 .ifx2-div{background:rgba(243,240,223,.3)}
+.ld.full.rep{animation-name:ldOutB}
+@keyframes ldOutB{to{opacity:0;visibility:hidden}}
 @media (max-width:1080px){.hero.hx11 .hx11-shade{background:linear-gradient(0deg,rgba(1,8,5,.35),rgba(1,8,5,.82) 70%)}}
 @media (prefers-reduced-motion:reduce){.hx11-video video{display:none}}
 @media (max-width:1080px){.hx11-shade{background:linear-gradient(0deg,rgba(1,8,5,.2),rgba(1,8,5,.75) 70%)}}
@@ -1602,7 +1604,7 @@ ol.steps{list-style:none;padding:0}
 <!-- 0 · NAV — full menu, search, text size and language in one bar -->
 <header class="nav">
 <div class="wrap">
-<a href="#top" aria-label="LO-CARB home" class="navlogo"><img src="/_blob/6fb07855b3a66662efda15fb53c6e65f" alt="LO-CARB" width="62" height="42"></a>
+<a href="#top" aria-label="LO-CARB home" class="navlogo" onClick="{{goHome}}"><img src="/_blob/6fb07855b3a66662efda15fb53c6e65f" alt="LO-CARB" width="62" height="42"></a>
 <nav class="navlinks" aria-label="Main">
 <div class="dd"><a href="About-Story.dc.html" aria-haspopup="true">About Us <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></a>
 <div class="menu"><div class="mpanel"><div class="mintro"><small>About Us</small><strong>Who we are</strong><p>Thailand's first IFRS Sustainability Alliance member.</p><a href="About-Story.dc.html" class="mlink">Our story →</a></div><div class="mlist">

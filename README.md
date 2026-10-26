@@ -27,6 +27,18 @@ client-story template, article template) · Contact Us.
 - Contact form with topic/solution routing (contact@ vs hr@), PDPA consent, success message
 - SEO structure: one H1, keyword H2s, H3 links for solutions and posts, `<time>` dates, alt text
 
+
+## Deploy (Vercel) — use the `site/` folder
+
+`design/*.dc.html` only run inside the Claude design canvas (they need its runtime and `/_blob/` asset URLs).
+On a normal host they stop at the logo animation. **Deploy `site/` instead**: plain HTML, CSS and JS that
+render the same pages (TH/EN switch, search, cookie notice, logo intro once per visit, forms, hero video).
+
+Vercel: import the repo, Framework Preset **Other**, no build command. The root `vercel.json` sets `site` as Output Directory. Keep Vercel Root Directory at the repository root (blank), Framework Preset Other, and no build command. Old /design/*.dc.html URLs redirect to the new HTML pages.
+
+To rebuild `site/` after design changes: `python3 tools/export.py` (paths at the top of the script).
+`site/assets/morphdom.js` is morphdom 2.7.4 (MIT).
+
 ## How the files work
 The `*.dc.html` files run inside the Claude design canvas (they load `./support.js` and assets via
 `/_blob/...` URLs). To use the assets outside the canvas, map each `/_blob/<id>` to its file with

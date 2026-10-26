@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>Contact Us · LO-CARB</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="/_blob/e530b10be96a1b830084b553d65ae46d">
+<link rel="stylesheet" href="/_blob/c8a5ee2e0794924a909918c9217777e6">
 </head>
 <body>
 <x-dc>
@@ -32,7 +32,7 @@ a{color:#0EA552}a:hover{color:#000000}
 <sc-if value="{{isEN}}" hint-placeholder-val="{{ true }}">
 <header class="nav">
 <div class="wrap">
-<a href="Main.dc.html" aria-label="LO-CARB home" class="navlogo"><img src="/_blob/6fb07855b3a66662efda15fb53c6e65f" alt="LO-CARB" width="62" height="42"></a>
+<a href="Main.dc.html" aria-label="LO-CARB home" class="navlogo" onClick="{{goHome}}"><img src="/_blob/6fb07855b3a66662efda15fb53c6e65f" alt="LO-CARB" width="62" height="42"></a>
 <nav class="navlinks" aria-label="Main">
 <div class="dd"><a href="About-Story.dc.html" aria-haspopup="true">About Us <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></a>
 <div class="menu"><div class="mpanel"><div class="mintro"><small>About Us</small><strong>Who we are</strong><p>Thailand's first IFRS Sustainability Alliance member.</p><a href="About-Story.dc.html" class="mlink">Our story →</a></div><div class="mlist">
@@ -116,7 +116,7 @@ a{color:#0EA552}a:hover{color:#000000}
 <sc-if value="{{notSent}}" hint-placeholder-val="{{ true }}">
 <div class="form">
 <div class="fld full"><span class="flab">I'm contacting about <em>*</em></span><div class="chips"><sc-for list="{{topics}}" as="t" hint-placeholder-count="4"><button class="chip {{t.cls}}" onClick="{{t.pick}}" aria-pressed="{{t.pr}}">{{t.label}}</button></sc-for></div></div>
-<sc-if value="{{isSol}}" hint-placeholder-val="{{ false }}"><div class="fld full"><span class="flab">Which solution?</span><div class="chips"><sc-for list="{{sols}}" as="t" hint-placeholder-count="5"><button class="chip {{t.cls}}" onClick="{{t.pick}}" aria-pressed="{{t.pr}}">{{t.label}}</button></sc-for></div></div></sc-if>
+<sc-if value="{{isSol}}" hint-placeholder-val="{{ false }}"><div class="fld full"><span class="flab">Which solutions? <small class="fhint">Select all that apply</small></span><div class="chips"><sc-for list="{{sols}}" as="t" hint-placeholder-count="5"><button class="chip chk {{t.cls}}" onClick="{{t.pick}}" aria-pressed="{{t.pr}}"><span class="chk-b" aria-hidden="true"></span>{{t.label}}</button></sc-for></div></div></sc-if>
 <div class="fld"><label for="cn">Name <em>*</em></label><input id="cn" type="text" placeholder="Your full name"></div>
 <div class="fld"><label for="ce">Email <em>*</em></label><input id="ce" type="email" placeholder="name@company.com"></div>
 <div class="fld"><label for="cc">Company</label><input id="cc" type="text" placeholder="Company name"></div>
@@ -133,13 +133,21 @@ a{color:#0EA552}a:hover{color:#000000}
 <div class="okmsg"><span class="oi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg></span><div><b>Thank you</b><p>Your message has been well received.</p></div><button onClick="{{closeOk}}" aria-label="Close message">✕</button></div>
 </sc-if>
 </div>
-<div class="cinfo rv2">
-<div class="row2"><small>Your message goes to</small><b>{{route}}</b><span>{{routeNote}}</span></div>
-<div class="row2"><small>Business &amp; partnerships</small><b><a href="mailto:contact@locarb.green">contact@locarb.green</a></b><span>Solutions, partnership and other enquiries</span></div>
-<div class="row2"><small>Careers</small><b><a href="mailto:hr@locarb.green">hr@locarb.green</a></b><span>Job seekers and interns</span></div>
-<div class="row2"><small>Office</small><b>1/3-7, Rooftop, Soi Saladaeng 1 (Godche)</b><span>Silom Subdistrict, Bang Rak District, Bangkok 10500</span></div><div class="row2"><small>Phone</small><b><a href="tel:+66969966249">096 996 6249</a></b><span>contact@locarb.green</span></div>
-<div class="row2"><small>Follow us</small><div class="social" style="margin-top:12px"><a href="#" class="soc" style="color:#000000;border-color:rgba(0,0,0,.2)">in</a><a href="#" class="soc" style="color:#000000;border-color:rgba(0,0,0,.2)">f</a></div></div>
+<aside class="cside rv2">
+<div class="croute">
+<small>Your message goes to</small>
+<b>{{route}}</b>
+<sc-if value="{{hasTopic}}" hint-placeholder-val="{{ false }}"><div class="croute-tags"><span class="ctag">{{routeTopic}}</span><sc-for list="{{routeSols}}" as="s" hint-placeholder-count="0"><span class="ctag ctag-l">{{s}}</span></sc-for></div></sc-if>
+<sc-if value="{{noTopic}}" hint-placeholder-val="{{ true }}"><p>Choose a topic to see where it goes.</p></sc-if>
 </div>
+<div class="cdir">
+<a href="mailto:contact@locarb.green" class="cd-row"><span class="cd-ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></span><span><small>Business &amp; partnerships</small><b>contact@locarb.green</b></span></a>
+<a href="mailto:hr@locarb.green" class="cd-row"><span class="cd-ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"></path></svg></span><span><small>Careers</small><b>hr@locarb.green</b></span></a>
+<a href="tel:+66969966249" class="cd-row"><span class="cd-ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg></span><span><small>Phone</small><b>096 996 6249</b></span></a>
+<div class="cd-row cd-addr"><span class="cd-ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg></span><span><small>Office</small><address>1/3-7, Rooftop, Soi Saladaeng 1 (Godche), Silom Subdistrict, Bang Rak District, Bangkok 10500</address></span></div>
+<div class="cd-soc"><small>Follow us</small><span><a href="#linkedin" aria-label="LO-CARB on LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.3-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21H9z"></path></svg></a><a href="#facebook" aria-label="LO-CARB on Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5H16l.4-3h-2.9V8.6c0-.87.25-1.46 1.5-1.46h1.6V4.46A21 21 0 0 0 14.27 4.3c-2.3 0-3.87 1.4-3.87 3.97v2.23H7.8v3h2.6V21z"></path></svg></a></span></div>
+</div>
+</aside>
 </div></div></section>
 
 <footer class="foot dark f2 f3">
@@ -171,7 +179,7 @@ a{color:#0EA552}a:hover{color:#000000}
 <sc-if value="{{isTH}}" hint-placeholder-val="{{ false }}"><div class="th-root" lang="th">
 <header class="nav">
 <div class="wrap">
-<a href="Main.dc.html" aria-label="หน้าแรก LO-CARB" class="navlogo"><img src="/_blob/6fb07855b3a66662efda15fb53c6e65f" alt="LO-CARB" width="62" height="42"></a>
+<a href="Main.dc.html" aria-label="หน้าแรก LO-CARB" class="navlogo" onClick="{{goHome}}"><img src="/_blob/6fb07855b3a66662efda15fb53c6e65f" alt="LO-CARB" width="62" height="42"></a>
 <nav class="navlinks" aria-label="เมนูหลัก">
 <div class="dd"><a href="About-Story.dc.html" aria-haspopup="true">เกี่ยวกับเรา <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></a>
 <div class="menu"><div class="mpanel"><div class="mintro"><small>เกี่ยวกับเรา</small><strong>เราคือใคร</strong><p>สมาชิก IFRS Sustainability Alliance รายแรกของไทย</p><a href="About-Story.dc.html" class="mlink">เรื่องราวของเรา →</a></div><div class="mlist">
@@ -255,7 +263,7 @@ a{color:#0EA552}a:hover{color:#000000}
 <sc-if value="{{notSent}}" hint-placeholder-val="{{ true }}">
 <div class="form">
 <div class="fld full"><span class="flab">ติดต่อเรื่อง <em>*</em></span><div class="chips"><sc-for list="{{topics}}" as="t" hint-placeholder-count="4"><button class="chip {{t.cls}}" onClick="{{t.pick}}" aria-pressed="{{t.pr}}">{{t.label}}</button></sc-for></div></div>
-<sc-if value="{{isSol}}" hint-placeholder-val="{{ false }}"><div class="fld full"><span class="flab">โซลูชันไหน?</span><div class="chips"><sc-for list="{{sols}}" as="t" hint-placeholder-count="5"><button class="chip {{t.cls}}" onClick="{{t.pick}}" aria-pressed="{{t.pr}}">{{t.label}}</button></sc-for></div></div></sc-if>
+<sc-if value="{{isSol}}" hint-placeholder-val="{{ false }}"><div class="fld full"><span class="flab">โซลูชันไหนบ้าง? <small class="fhint">เลือกได้มากกว่า 1 ข้อ</small></span><div class="chips"><sc-for list="{{sols}}" as="t" hint-placeholder-count="5"><button class="chip chk {{t.cls}}" onClick="{{t.pick}}" aria-pressed="{{t.pr}}"><span class="chk-b" aria-hidden="true"></span>{{t.label}}</button></sc-for></div></div></sc-if>
 <div class="fld"><label for="cn">ชื่อ <em>*</em></label><input id="cn" type="text" placeholder="ชื่อ-นามสกุล"></div>
 <div class="fld"><label for="ce">อีเมล <em>*</em></label><input id="ce" type="email" placeholder="name@company.com"></div>
 <div class="fld"><label for="cc">บริษัท</label><input id="cc" type="text" placeholder="ชื่อบริษัท"></div>
@@ -272,13 +280,21 @@ a{color:#0EA552}a:hover{color:#000000}
 <div class="okmsg"><span class="oi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg></span><div><b>ขอบคุณ</b><p>เราได้รับข้อความของคุณแล้ว</p></div><button onClick="{{closeOk}}" aria-label="ปิดข้อความ">✕</button></div>
 </sc-if>
 </div>
-<div class="cinfo rv2">
-<div class="row2"><small>ข้อความของคุณจะส่งถึง</small><b>{{route}}</b><span>{{routeNote}}</span></div>
-<div class="row2"><small>ธุรกิจและพันธมิตร</small><b><a href="mailto:contact@locarb.green">contact@locarb.green</a></b><span>โซลูชัน พันธมิตร และเรื่องอื่น ๆ</span></div>
-<div class="row2"><small>ร่วมงานกับเรา</small><b><a href="mailto:hr@locarb.green">hr@locarb.green</a></b><span>ผู้สมัครงานและนักศึกษาฝึกงาน</span></div>
-<div class="row2"><small>สำนักงาน</small><b>1/3-7 ชั้นที่ ดาดฟ้า ซอย ศาลาแดง 1 (ก๊อดเช่)</b><span>แขวงสีลม เขตบางรัก กรุงเทพมหานคร 10500</span></div><div class="row2"><small>โทรศัพท์</small><b><a href="tel:+66969966249">096 996 6249</a></b><span>contact@locarb.green</span></div>
-<div class="row2"><small>ติดตามเรา</small><div class="social" style="margin-top:12px"><a href="#" class="soc" style="color:#000000;border-color:rgba(0,0,0,.2)">in</a><a href="#" class="soc" style="color:#000000;border-color:rgba(0,0,0,.2)">f</a></div></div>
+<aside class="cside rv2">
+<div class="croute">
+<small>ข้อความของคุณจะส่งถึง</small>
+<b>{{route}}</b>
+<sc-if value="{{hasTopic}}" hint-placeholder-val="{{ false }}"><div class="croute-tags"><span class="ctag">{{routeTopic}}</span><sc-for list="{{routeSols}}" as="s" hint-placeholder-count="0"><span class="ctag ctag-l">{{s}}</span></sc-for></div></sc-if>
+<sc-if value="{{noTopic}}" hint-placeholder-val="{{ true }}"><p>เลือกหัวข้อเพื่อดูว่าข้อความจะส่งถึงใคร</p></sc-if>
 </div>
+<div class="cdir">
+<a href="mailto:contact@locarb.green" class="cd-row"><span class="cd-ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></span><span><small>ธุรกิจและพันธมิตร</small><b>contact@locarb.green</b></span></a>
+<a href="mailto:hr@locarb.green" class="cd-row"><span class="cd-ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"></path></svg></span><span><small>ร่วมงานกับเรา</small><b>hr@locarb.green</b></span></a>
+<a href="tel:+66969966249" class="cd-row"><span class="cd-ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg></span><span><small>โทรศัพท์</small><b>096 996 6249</b></span></a>
+<div class="cd-row cd-addr"><span class="cd-ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg></span><span><small>สำนักงาน</small><address>1/3-7 ชั้นที่ ดาดฟ้า ซอย ศาลาแดง 1 (ก๊อดเช่) แขวงสีลม เขตบางรัก กรุงเทพมหานคร 10500</address></span></div>
+<div class="cd-soc"><small>ติดตามเรา</small><span><a href="#linkedin" aria-label="LO-CARB บน LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.3-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21H9z"></path></svg></a><a href="#facebook" aria-label="LO-CARB บน Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5H16l.4-3h-2.9V8.6c0-.87.25-1.46 1.5-1.46h1.6V4.46A21 21 0 0 0 14.27 4.3c-2.3 0-3.87 1.4-3.87 3.97v2.23H7.8v3h2.6V21z"></path></svg></a></span></div>
+</div>
+</aside>
 </div></div></section>
 
 <footer class="foot dark f2 f3">
@@ -311,7 +327,7 @@ a{color:#0EA552}a:hover{color:#000000}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2700}}'>
 class Component extends DCLogic {
-  constructor(props) { super(props); this.state = Object.assign({ scale: 1 }, { topic: '', sol: '', agree: false, sent: false, err: false }); }
+  constructor(props) { super(props); this.state = Object.assign({ scale: 1 }, { topic: '', sols: [], agree: false, sent: false, err: false }); }
 
   renderVals() {
     const v = this.renderVals0();
@@ -319,7 +335,7 @@ class Component extends DCLogic {
     if (!lang) { try { lang = localStorage.getItem('locarb-lang') || 'en'; } catch (e) { lang = 'en'; } }
     const th = lang === 'th';
     const setLang = (l) => { try { localStorage.setItem('locarb-lang', l); } catch (e) {} this.setState({ lang: l }); };
-    const TH = {"ISSB training": "อบรม ISSB", "Carbon Scout": "Carbon Scout", "Reporting & consulting": "รายงานและที่ปรึกษาความยั่งยืน", "Careers": "ร่วมงานกับเรา", "Solutions": "โซลูชัน", "Please accept the privacy policy to send your message.": "กรุณายอมรับนโยบายความเป็นส่วนตัวก่อนส่งข้อความ", "Partnership": "พันธมิตร", "Other inquiries": "เรื่องอื่น ๆ", "IFRS": "IFRS", "CarbonCal + Carbon Camp": "CarbonCal + Carbon Camp", "Please choose what you are contacting us about.": "กรุณาเลือกเรื่องที่ต้องการติดต่อ", "Choose a topic to see where it goes.": "เลือกหัวข้อเพื่อดูว่าข้อความจะส่งถึงใคร", "Subject: Solutions": "หัวข้อ: โซลูชัน", "Subject: Partnership": "หัวข้อ: พันธมิตร", "Subject: Careers": "หัวข้อ: ร่วมงานกับเรา", "Subject: Other inquiries": "หัวข้อ: เรื่องอื่น ๆ", "Subject: Solutions · IFRS": "หัวข้อ: โซลูชัน · IFRS", "Subject: Solutions · CarbonCal + Carbon Camp": "หัวข้อ: โซลูชัน · CarbonCal + Carbon Camp", "Subject: Solutions · ISSB training": "หัวข้อ: โซลูชัน · อบรม ISSB", "Subject: Solutions · Carbon Scout": "หัวข้อ: โซลูชัน · Carbon Scout", "Subject: Solutions · Reporting & consulting": "หัวข้อ: โซลูชัน · รายงานและที่ปรึกษาความยั่งยืน"};
+    const TH = {"ISSB training": "อบรม ISSB", "Carbon Scout": "Carbon Scout", "Reporting & consulting": "รายงานและที่ปรึกษาความยั่งยืน", "Careers": "ร่วมงานกับเรา", "Solutions": "โซลูชัน", "Please accept the privacy policy to send your message.": "กรุณายอมรับนโยบายความเป็นส่วนตัวก่อนส่งข้อความ", "Partnership": "พันธมิตร", "Other inquiries": "เรื่องอื่น ๆ", "IFRS": "IFRS", "CarbonCal + Carbon Camp": "CarbonCal + Carbon Camp", "Please choose what you are contacting us about.": "กรุณาเลือกเรื่องที่ต้องการติดต่อ"};
     const tr = (x) => {
       if (!th) return x;
       if (typeof x === 'string') return Object.prototype.hasOwnProperty.call(TH, x) ? TH[x] : x;
@@ -360,11 +376,20 @@ class Component extends DCLogic {
       openCookies: () => this.setState({ showCookie: true })
     };
     if (this._intro === undefined) {
-      try { this._intro = !sessionStorage.getItem('locarb-intro'); sessionStorage.setItem('locarb-intro', '1'); } catch (e) { this._intro = true; }
+      try { this._intro = !sessionStorage.getItem('locarb-intro') || sessionStorage.getItem('locarb-intro-force') === '1'; sessionStorage.setItem('locarb-intro', '1'); sessionStorage.removeItem('locarb-intro-force'); } catch (e) { this._intro = true; }
       try { if (!this._intro && document.readyState !== 'complete') window.addEventListener('load', () => this.setState({ pageLoaded: true }), { once: true }); } catch (e) {}
     }
+    if (this._t0 === undefined) this._t0 = Date.now();
     let pageLoaded = !!this.state.pageLoaded; try { pageLoaded = pageLoaded || document.readyState === 'complete'; } catch (e) { pageLoaded = true; }
-    const loaderV = { ldCls: this.state.skipIntro ? 'skip' : (this._intro ? 'full' : (pageLoaded ? 'gone' : 'wait')), ldFull: !!this._intro, ldQuick: !this._intro, skipIntro: () => this.setState({ skipIntro: true }), skipLabel: th ? 'ข้ามอินโทร' : 'Skip intro', introDelay: this.state.skipIntro ? '0.3s' : (this._intro ? '6.4s' : '0s'), ldNonce: (this._nonce = this._nonce || String(Date.now())) };
+    const loaderV = { ldCls: this.state.skipIntro ? 'skip' : (this._intro ? ((this._replay || 0) % 2 ? 'full rep' : 'full') : (pageLoaded ? 'gone' : 'wait')), ldFull: !!this._intro, ldQuick: !this._intro, skipIntro: () => this.setState({ skipIntro: true }), skipLabel: th ? 'ข้ามอินโทร' : 'Skip intro',
+      goHome: (e) => {
+        if (v.heroMove) {
+          if (e && e.preventDefault) e.preventDefault();
+          this._intro = true; this._replay = (this._replay || 0) + 1; this._nonce = String(Date.now()); this._t0 = Date.now();
+          try { window.scrollTo(0, 0); } catch (er) {}
+          this.setState({ skipIntro: false, replayAt: Date.now() });
+        } else { try { sessionStorage.setItem('locarb-intro-force', '1'); } catch (er) {} }
+      }, introDelay: this.state.skipIntro ? '0.3s' : ((this._intro && this._t0 !== undefined) ? Math.max(0, 6.4 - (Date.now() - this._t0) / 1000).toFixed(2) + 's' : (this._intro ? '6.4s' : '0s')), ldNonce: (this._nonce = this._nonce || String(Date.now())) };
     const sm = !!this.state.sizeOpen, lm = !!this.state.langOpen;
     const menus = {
       sizeOpen: sm, langOpen: lm, sizeBtn: sm ? 'open' : '', langBtn: lm ? 'open' : '', sizeExp: sm ? 'true' : 'false', langExp: lm ? 'true' : 'false',
@@ -385,16 +410,16 @@ class Component extends DCLogic {
     const career = st.topic === 'Careers';
     const extra = {
       topics: TOP.map((t) => ({ label: t, cls: st.topic === t ? 'on' : '', pr: st.topic === t ? 'true' : 'false', pick: () => this.setState({ topic: t, err: false }) })),
-      sols: SOL.map((t) => ({ label: t, cls: st.sol === t ? 'on' : '', pr: st.sol === t ? 'true' : 'false', pick: () => this.setState({ sol: t }) })),
+      sols: SOL.map((t) => { const on = (st.sols || []).indexOf(t) >= 0; return { label: t, cls: on ? 'on' : '', pr: on ? 'true' : 'false', pick: () => this.setState({ sols: on ? st.sols.filter((x) => x !== t) : (st.sols || []).concat([t]) }) }; }),
       isSol: st.topic === 'Solutions', isCareer: career,
       route: career ? 'hr@locarb.green' : 'contact@locarb.green',
-      routeNote: st.topic ? ('Subject: ' + st.topic + (st.topic === 'Solutions' && st.sol ? ' · ' + st.sol : '')) : 'Choose a topic to see where it goes.',
+      hasTopic: !!st.topic, noTopic: !st.topic, routeTopic: st.topic || '', routeSols: st.topic === 'Solutions' ? SOL.filter((x) => (st.sols || []).indexOf(x) >= 0) : [],
       notSent: !st.sent, sent: !!st.sent, err: !!st.err,
       errMsg: !st.topic ? 'Please choose what you are contacting us about.' : 'Please accept the privacy policy to send your message.',
       agreeCls: st.agree ? 'on' : '', agreeAria: st.agree ? 'true' : 'false',
       toggleAgree: () => this.setState({ agree: !st.agree, err: false }),
       submit: () => (st.topic && st.agree) ? this.setState({ sent: true, err: false }) : this.setState({ err: true }),
-      closeOk: () => this.setState({ sent: false, agree: false, topic: '', sol: '' })
+      closeOk: () => this.setState({ sent: false, agree: false, topic: '', sols: [] })
     };
     return Object.assign(base, extra);
   }

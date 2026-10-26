@@ -77,11 +77,20 @@ WRAP_JS='''
       openCookies: () => this.setState({ showCookie: true })
     };
     if (this._intro === undefined) {
-      try { this._intro = !sessionStorage.getItem('locarb-intro'); sessionStorage.setItem('locarb-intro', '1'); } catch (e) { this._intro = true; }
+      try { this._intro = !sessionStorage.getItem('locarb-intro') || sessionStorage.getItem('locarb-intro-force') === '1'; sessionStorage.setItem('locarb-intro', '1'); sessionStorage.removeItem('locarb-intro-force'); } catch (e) { this._intro = true; }
       try { if (!this._intro && document.readyState !== 'complete') window.addEventListener('load', () => this.setState({ pageLoaded: true }), { once: true }); } catch (e) {}
     }
+    if (this._t0 === undefined) this._t0 = Date.now();
     let pageLoaded = !!this.state.pageLoaded; try { pageLoaded = pageLoaded || document.readyState === 'complete'; } catch (e) { pageLoaded = true; }
-    const loaderV = { ldCls: this.state.skipIntro ? 'skip' : (this._intro ? 'full' : (pageLoaded ? 'gone' : 'wait')), ldFull: !!this._intro, ldQuick: !this._intro, skipIntro: () => this.setState({ skipIntro: true }), skipLabel: th ? 'ข้ามอินโทร' : 'Skip intro', introDelay: this.state.skipIntro ? '0.3s' : (this._intro ? '6.4s' : '0s'), ldNonce: (this._nonce = this._nonce || String(Date.now())) };
+    const loaderV = { ldCls: this.state.skipIntro ? 'skip' : (this._intro ? ((this._replay || 0) % 2 ? 'full rep' : 'full') : (pageLoaded ? 'gone' : 'wait')), ldFull: !!this._intro, ldQuick: !this._intro, skipIntro: () => this.setState({ skipIntro: true }), skipLabel: th ? 'ข้ามอินโทร' : 'Skip intro',
+      goHome: (e) => {
+        if (v.heroMove) {
+          if (e && e.preventDefault) e.preventDefault();
+          this._intro = true; this._replay = (this._replay || 0) + 1; this._nonce = String(Date.now()); this._t0 = Date.now();
+          try { window.scrollTo(0, 0); } catch (er) {}
+          this.setState({ skipIntro: false, replayAt: Date.now() });
+        } else { try { sessionStorage.setItem('locarb-intro-force', '1'); } catch (er) {} }
+      }, introDelay: this.state.skipIntro ? '0.3s' : ((this._intro && this._t0 !== undefined) ? Math.max(0, 6.4 - (Date.now() - this._t0) / 1000).toFixed(2) + 's' : (this._intro ? '6.4s' : '0s')), ldNonce: (this._nonce = this._nonce || String(Date.now())) };
     const sm = !!this.state.sizeOpen, lm = !!this.state.langOpen;
     const menus = {
       sizeOpen: sm, langOpen: lm, sizeBtn: sm ? 'open' : '', langBtn: lm ? 'open' : '', sizeExp: sm ? 'true' : 'false', langExp: lm ? 'true' : 'false',

@@ -1,0 +1,18 @@
+{
+  "framework": null,
+  "buildCommand": "",
+  "outputDirectory": "site",
+  "cleanUrls": false,
+  "redirects": [
+    {
+      "source": "/design/Main.dc.html",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/design/:page.dc.html",
+      "destination": "/:page.html",
+      "permanent": false
+    }
+  ]
+}

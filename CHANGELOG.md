@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-10-26 (logo)
+- Clicking the LO-CARB logo always plays the logo intro: from any page it opens Home with the full animation; on Home it scrolls to the top and replays it
+- `site/` rebuilt
+
+## 2026-10-26 (contact)
+- Contact: choose more than one solution (checkbox chips, "Select all that apply")
+- Contact side panel redesigned: green "Your message goes to" card with topic and selected solutions; one contact card (email, careers, phone, office, social) without repeats
+- `site/` rebuilt
+
+## 2026-10-26 (deploy)
+- New `site/` folder: static build of all 16 pages for Vercel (fixes the page stuck on the logo animation)
+- Root `vercel.json` serves `site/`
+- Fix: after switching language during/after the intro, the hero no longer waits another 6 s before appearing
+
 ## 2026-10-26
 - About Us redesigned (Story, Certificates, Board) with a shared About sub-navigation and a CTA band (Read our blog · Contact Us) on each page
 - Story: hero with seedling cut-out and Est. 2021 seal; Mission (black band); Milestones timeline; We believe; 3 DNAs; Key numbers (5, placeholders) — all from the BD document, EN/TH
