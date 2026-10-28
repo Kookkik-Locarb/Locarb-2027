@@ -72,7 +72,7 @@ a{color:#0EA552}a:hover{color:#000000}
 </div>
 </div>
 <a href="Contact.html" class="btn btn-p hide-m" style="min-height:46px;padding:0 22px"><span class="bl"><span>Contact Us</span></span></a>
-<button class="icbtn menubtn" aria-label="Open menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"></path></svg></button>
+<button class="icbtn menubtn" aria-label="Open menu" aria-expanded="{{navExp}}" aria-controls="mnav" onClick="{{toggleNav}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"></path></svg></button>
 </div>
 </div>
 <span class="progress" aria-hidden="true"></span>
@@ -104,6 +104,21 @@ a{color:#0EA552}a:hover{color:#000000}
 </div>
 </sc-if>
 
+<sc-if value="{{navOpen}}" hint-placeholder-val="{{ false }}">
+<div class="mnav-bg" onClick="{{closeNav}}"></div>
+<div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="Menu" onKeyDown="{{navKey}}">
+<div class="mn-top"><span class="mn-t">Menu</span><button type="button" class="mn-x" onClick="{{closeNav}}" aria-label="Close menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
+<div class="mn-body">
+<div class="mn-g mn-home"><ul><li><a href="/" onClick="{{closeNav}}"><span class="mn-hi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"></path><path d="M5 10v10h14V10"></path><path d="M10 20v-6h4v6"></path></svg>Home</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li></ul></div>
+<div class="mn-g"><p class="mn-h">About Us</p><ul><li><a href="About-Story.html" onClick="{{closeNav}}">LO-CARB's story<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="About-Certificates.html" onClick="{{closeNav}}">Certificates<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="About-Board.html" onClick="{{closeNav}}">Board of directors<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li></ul></div><div class="mn-g"><p class="mn-h">Our Solutions</p><ul><li><a href="Solution-IFRS.html" onClick="{{closeNav}}">IFRS Standards<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Solution-CarbonCal.html" onClick="{{closeNav}}">CarbonCal + Carbon Camp<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Solution-ISSB.html" onClick="{{closeNav}}">ISSB training<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Solution-CarbonScout.html" onClick="{{closeNav}}">Carbon Scout<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Solution-Reporting.html" onClick="{{closeNav}}">Reporting &amp; consulting<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li></ul></div><div class="mn-g"><p class="mn-h">Blog</p><ul><li><a href="Blog.html" onClick="{{closeNav}}">All posts<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Blog-Portfolio.html" onClick="{{closeNav}}">Client stories<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Blog-Knowledge.html" onClick="{{closeNav}}">Knowledge base<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Blog-News.html" onClick="{{closeNav}}">News &amp; events<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li></ul></div>
+<div class="mn-tools">
+<div class="mn-tool"><span>Language</span><div class="mn-seg"><button type="button" class="{{thOn}}" onClick="{{pickTH}}" lang="th">ไทย</button><button type="button" class="{{enOn}}" onClick="{{pickEN}}">English</button></div></div>
+<div class="mn-tool"><span>Text size</span><div class="mn-seg"><button type="button" class="{{szS}}" onClick="{{pickS}}" aria-label="Smaller text"><i style="font-size:12px">A</i></button><button type="button" class="{{szM}}" onClick="{{pickM}}" aria-label="Default text size"><i style="font-size:15px">A</i></button><button type="button" class="{{szL}}" onClick="{{pickL}}" aria-label="Larger text"><i style="font-size:18px">A</i></button></div></div>
+</div>
+</div>
+<div class="mn-foot"><a href="Contact.html" class="btn btn-p" onClick="{{closeNav}}"><span class="bl"><span>Contact Us</span></span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><a href="mailto:contact@locarb.green" class="mn-mail">contact@locarb.green</a></div>
+</div>
+</sc-if>
 <!-- /search -->
 
 <section class="phero">
@@ -144,7 +159,7 @@ a{color:#0EA552}a:hover{color:#000000}
 <div class="wrap">
 <div class="f3-top">
 <div class="f3-brand">
-<img class="f2-logo" src="/assets/images/logo-official-dark.webp" alt="LO-CARB" width="96" height="64">
+<img class="f2-logo" src="/assets/images/logo-official.webp" alt="LO-CARB" width="96" height="64">
 <p class="f3-desc">LO-CARB is a sustainability consultancy in Thailand. We believe sustainability is the new growth core, so we help organizations cut emissions, reduce risk and turn sustainability into business growth.</p>
 <a href="Solution-IFRS.html" class="f3-badge"><span class="f2-seal">1<em>st</em></span><span>Thailand's first IFRS Sustainability Alliance member</span></a>
 </div>
@@ -206,7 +221,7 @@ a{color:#0EA552}a:hover{color:#000000}
 </div>
 </div>
 <a href="Contact.html" class="btn btn-p hide-m" style="min-height:46px;padding:0 22px"><span class="bl"><span>ติดต่อเรา</span></span></a>
-<button class="icbtn menubtn" aria-label="เปิดเมนู"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"></path></svg></button>
+<button class="icbtn menubtn" aria-label="เปิดเมนู" aria-expanded="{{navExp}}" aria-controls="mnav" onClick="{{toggleNav}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"></path></svg></button>
 </div>
 </div>
 <span class="progress" aria-hidden="true"></span>
@@ -238,6 +253,21 @@ a{color:#0EA552}a:hover{color:#000000}
 </div>
 </sc-if>
 
+<sc-if value="{{navOpen}}" hint-placeholder-val="{{ false }}">
+<div class="mnav-bg" onClick="{{closeNav}}"></div>
+<div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="เมนู" onKeyDown="{{navKey}}">
+<div class="mn-top"><span class="mn-t">เมนู</span><button type="button" class="mn-x" onClick="{{closeNav}}" aria-label="ปิดเมนู"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
+<div class="mn-body">
+<div class="mn-g mn-home"><ul><li><a href="/" onClick="{{closeNav}}"><span class="mn-hi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"></path><path d="M5 10v10h14V10"></path><path d="M10 20v-6h4v6"></path></svg>หน้าแรก</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li></ul></div>
+<div class="mn-g"><p class="mn-h">เกี่ยวกับเรา</p><ul><li><a href="About-Story.html" onClick="{{closeNav}}">เรื่องราวของ LO-CARB<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="About-Certificates.html" onClick="{{closeNav}}">ใบรับรอง<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="About-Board.html" onClick="{{closeNav}}">คณะกรรมการบริษัท<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li></ul></div><div class="mn-g"><p class="mn-h">โซลูชันของเรา</p><ul><li><a href="Solution-IFRS.html" onClick="{{closeNav}}">มาตรฐาน IFRS<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Solution-CarbonCal.html" onClick="{{closeNav}}">CarbonCal + Carbon Camp<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Solution-ISSB.html" onClick="{{closeNav}}">อบรม ISSB<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Solution-CarbonScout.html" onClick="{{closeNav}}">Carbon Scout<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Solution-Reporting.html" onClick="{{closeNav}}">รายงานและที่ปรึกษาความยั่งยืน<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li></ul></div><div class="mn-g"><p class="mn-h">บทความ</p><ul><li><a href="Blog.html" onClick="{{closeNav}}">บทความทั้งหมด<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Blog-Portfolio.html" onClick="{{closeNav}}">เรื่องราวลูกค้า<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Blog-Knowledge.html" onClick="{{closeNav}}">คลังความรู้<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Blog-News.html" onClick="{{closeNav}}">ข่าวและกิจกรรม<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li></ul></div>
+<div class="mn-tools">
+<div class="mn-tool"><span>ภาษา</span><div class="mn-seg"><button type="button" class="{{thOn}}" onClick="{{pickTH}}" lang="th">ไทย</button><button type="button" class="{{enOn}}" onClick="{{pickEN}}">English</button></div></div>
+<div class="mn-tool"><span>ขนาดตัวอักษร</span><div class="mn-seg"><button type="button" class="{{szS}}" onClick="{{pickS}}" aria-label="ลดขนาดตัวอักษร"><i style="font-size:12px">A</i></button><button type="button" class="{{szM}}" onClick="{{pickM}}" aria-label="ขนาดตัวอักษรปกติ"><i style="font-size:15px">A</i></button><button type="button" class="{{szL}}" onClick="{{pickL}}" aria-label="เพิ่มขนาดตัวอักษร"><i style="font-size:18px">A</i></button></div></div>
+</div>
+</div>
+<div class="mn-foot"><a href="Contact.html" class="btn btn-p" onClick="{{closeNav}}"><span class="bl"><span>ติดต่อเรา</span></span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><a href="mailto:contact@locarb.green" class="mn-mail">contact@locarb.green</a></div>
+</div>
+</sc-if>
 <!-- /search -->
 
 <section class="phero">
@@ -278,7 +308,7 @@ a{color:#0EA552}a:hover{color:#000000}
 <div class="wrap">
 <div class="f3-top">
 <div class="f3-brand">
-<img class="f2-logo" src="/assets/images/logo-official-dark.webp" alt="LO-CARB" width="96" height="64">
+<img class="f2-logo" src="/assets/images/logo-official.webp" alt="LO-CARB" width="96" height="64">
 <p class="f3-desc">LO-CARB บริษัทที่ปรึกษาด้านความยั่งยืน เราเชื่อว่าความยั่งยืนคือแกนหลักของการเติบโต และมากไปกว่าการช่วยองค์กรลดการปล่อยก๊าซ ลดความเสี่ยง วันนี้เราช่วยเปลี่ยนความยั่งยืนให้เป็นการเติบโตทางธุรกิจ</p>
 <a href="Solution-IFRS.html" class="f3-badge"><span class="f2-seal">1<em></em></span><span>สมาชิก IFRS Sustainability Alliance รายแรกของประเทศไทย</span></a>
 </div>
@@ -315,7 +345,15 @@ class Component extends DCLogic {
     let lang = this.state.lang;
     if (!lang) { try { lang = localStorage.getItem('locarb-lang') || 'en'; } catch (e) { lang = 'en'; } }
     const th = lang === 'th';
-    const setLang = (l) => { try { localStorage.setItem('locarb-lang', l); } catch (e) {} this.setState({ lang: l }); };
+    const setLang = (l) => {
+      try { localStorage.setItem('locarb-lang', l); } catch (e) {}
+      const go = () => this.setState({ lang: l });
+      try {
+        const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!reduce && document.startViewTransition) { document.startViewTransition(go); return; }
+      } catch (e) {}
+      go();
+    };
     const TH = {"How much does CarbonCal cost?": "CarbonCal ราคาเท่าไร?", "How is our data kept secure?": "ข้อมูลของเราปลอดภัยอย่างไร?", "What support do we get?": "เราจะได้รับการสนับสนุนอะไรบ้าง?", "Pricing depends on the number of sites and users. [Pricing and free-trial terms to confirm with the product team.]": "ราคาขึ้นอยู่กับจำนวนสาขาและผู้ใช้งาน [รอยืนยันราคาและเงื่อนไขทดลองใช้ฟรีกับทีมผลิตภัณฑ์]", "Access is role-based for data owners, reviewers and approvers. [Encryption, hosting and data-retention details to confirm with the product team.]": "สิทธิ์การเข้าถึงกำหนดตามบทบาท ทั้งผู้รับผิดชอบข้อมูล ผู้ตรวจ และผู้อนุมัติ [รอยืนยันรายละเอียดการเข้ารหัส การจัดเก็บ และระยะเวลาเก็บข้อมูลกับทีมผลิตภัณฑ์]", "Carbon Camp onboarding helps your team run CarbonCal on its own. [Support channels and hours to confirm.]": "การอบรม Carbon Camp ช่วยให้ทีมใช้งาน CarbonCal ได้เอง [รอยืนยันช่องทางและเวลาให้บริการ]"};
     const tr = (x) => {
       if (!th) return x;
@@ -356,21 +394,52 @@ class Component extends DCLogic {
       rejectCookies: () => saveCk('essential'),
       openCookies: () => this.setState({ showCookie: true })
     };
+    if (!this._motionInit) {
+      this._motionInit = true;
+      try {
+        const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const SEL = 'nav.ftabs, nav.asub';
+        if (!window.__lcTabClick) {
+          window.__lcTabClick = true;
+          document.addEventListener('click', (ev) => {
+            const a = ev.target && ev.target.closest ? ev.target.closest('nav.ftabs a, nav.asub a') : null;
+            if (!a) return;
+            const nav = a.closest(SEL); const on = nav && nav.querySelector('a.on');
+            if (!nav || !on) return;
+            const nr = nav.getBoundingClientRect(), r = on.getBoundingClientRect();
+            try { sessionStorage.setItem('locarb-tabfrom', JSON.stringify({ g: nav.getAttribute('aria-label') || '', l: r.left - nr.left, w: r.width })); } catch (e) {}
+          }, true);
+        }
+        const run = () => {
+          let from = null;
+          try { from = JSON.parse(sessionStorage.getItem('locarb-tabfrom') || 'null'); sessionStorage.removeItem('locarb-tabfrom'); } catch (e) {}
+          document.querySelectorAll(SEL).forEach((nav) => {
+            const on = nav.querySelector('a.on'); if (!on || nav.querySelector('.tab-ink')) return;
+            const nr = nav.getBoundingClientRect(), r = on.getBoundingClientRect();
+            const ink = document.createElement('span'); ink.className = 'tab-ink'; ink.setAttribute('aria-hidden', 'true');
+            ink.style.left = (r.left - nr.left) + 'px'; ink.style.top = (r.top - nr.top) + 'px'; ink.style.width = r.width + 'px'; ink.style.height = r.height + 'px';
+            nav.classList.add('has-ink'); nav.insertBefore(ink, nav.firstChild);
+            if (reduce) return;
+            const same = from && from.g === (nav.getAttribute('aria-label') || '');
+            if (same) {
+              const dx = from.l - (r.left - nr.left), sx = from.w / r.width;
+              ink.animate([{ transform: 'translateX(' + dx + 'px) scaleX(' + sx + ')' }, { transform: 'none' }], { duration: 480, easing: 'cubic-bezier(.2,.8,.2,1)' });
+            } else {
+              ink.animate([{ transform: 'scale(.85)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 360, easing: 'cubic-bezier(.3,1.3,.5,1)' });
+            }
+          });
+        };
+        setTimeout(run, 60);
+      } catch (e) {}
+    }
     if (this._intro === undefined) {
-      try { this._intro = !sessionStorage.getItem('locarb-intro') || sessionStorage.getItem('locarb-intro-force') === '1'; sessionStorage.setItem('locarb-intro', '1'); sessionStorage.removeItem('locarb-intro-force'); } catch (e) { this._intro = true; }
+      try { this._intro = !sessionStorage.getItem('locarb-intro'); sessionStorage.setItem('locarb-intro', '1'); sessionStorage.removeItem('locarb-intro-force'); } catch (e) { this._intro = true; }
       try { if (!this._intro && document.readyState !== 'complete') window.addEventListener('load', () => this.setState({ pageLoaded: true }), { once: true }); } catch (e) {}
     }
     if (this._t0 === undefined) this._t0 = Date.now();
     let pageLoaded = !!this.state.pageLoaded; try { pageLoaded = pageLoaded || document.readyState === 'complete'; } catch (e) { pageLoaded = true; }
     const loaderV = { ldCls: this.state.skipIntro ? 'skip' : (this._intro ? ((this._replay || 0) % 2 ? 'full rep' : 'full') : (pageLoaded ? 'gone' : 'wait')), ldFull: !!this._intro, ldQuick: !this._intro, skipIntro: () => this.setState({ skipIntro: true }), skipLabel: th ? 'ข้ามอินโทร' : 'Skip intro',
-      goHome: (e) => {
-        if (v.heroMove) {
-          if (e && e.preventDefault) e.preventDefault();
-          this._intro = true; this._replay = (this._replay || 0) + 1; this._nonce = String(Date.now()); this._t0 = Date.now();
-          try { window.scrollTo(0, 0); } catch (er) {}
-          this.setState({ skipIntro: false, replayAt: Date.now() });
-        } else { try { sessionStorage.setItem('locarb-intro-force', '1'); } catch (er) {} }
-      }, introDelay: this.state.skipIntro ? '0.3s' : ((this._intro && this._t0 !== undefined) ? Math.max(0, 6.4 - (Date.now() - this._t0) / 1000).toFixed(2) + 's' : (this._intro ? '6.4s' : '0s')), ldNonce: (this._nonce = this._nonce || String(Date.now())) };
+      goHome: () => { /* logo is a normal link; the intro only plays on the first page of a visit or when loading is slow */ }, introDelay: this.state.skipIntro ? '0.3s' : ((this._intro && this._t0 !== undefined) ? Math.max(0, 6.4 - (Date.now() - this._t0) / 1000).toFixed(2) + 's' : (this._intro ? '6.4s' : '0s')), ldNonce: (this._nonce = this._nonce || String(Date.now())) };
     const sm = !!this.state.sizeOpen, lm = !!this.state.langOpen;
     const menus = {
       sizeOpen: sm, langOpen: lm, sizeBtn: sm ? 'open' : '', langBtn: lm ? 'open' : '', sizeExp: sm ? 'true' : 'false', langExp: lm ? 'true' : 'false',
@@ -378,7 +447,11 @@ class Component extends DCLogic {
       closeMenus: () => { if (sm || lm) this.setState({ sizeOpen: false, langOpen: false }); },
       pickS: () => { if (v.setS) v.setS(); this.setState({ sizeOpen: false }); }, pickM: () => { if (v.setM) v.setM(); this.setState({ sizeOpen: false }); }, pickL: () => { if (v.setL) v.setL(); this.setState({ sizeOpen: false }); },
       pickTH: () => { this.setState({ langOpen: false }); setLang('th'); }, pickEN: () => { this.setState({ langOpen: false }); setLang('en'); },
-      langCode: th ? 'TH' : 'EN'
+      langCode: th ? 'TH' : 'EN',
+      navOpen: !!this.state.navOpen, navExp: this.state.navOpen ? 'true' : 'false',
+      toggleNav: () => this.setState({ navOpen: !this.state.navOpen, sizeOpen: false, langOpen: false }),
+      closeNav: () => { if (this.state.navOpen) this.setState({ navOpen: false }); },
+      navKey: (e) => { if (e && e.key === 'Escape') this.setState({ navOpen: false }); }
     };
     return Object.assign(out, search, cookie, loaderV, menus, { isEN: !th, isTH: th, thOn: th ? 'on' : '', enOn: th ? '' : 'on', setTH: () => setLang('th'), setEN: () => setLang('en') });
   }

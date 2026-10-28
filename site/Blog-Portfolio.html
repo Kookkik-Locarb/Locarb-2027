@@ -72,7 +72,7 @@ a{color:#0EA552}a:hover{color:#000000}
 </div>
 </div>
 <a href="Contact.html" class="btn btn-p hide-m" style="min-height:46px;padding:0 22px"><span class="bl"><span>Contact Us</span></span></a>
-<button class="icbtn menubtn" aria-label="Open menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"></path></svg></button>
+<button class="icbtn menubtn" aria-label="Open menu" aria-expanded="{{navExp}}" aria-controls="mnav" onClick="{{toggleNav}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"></path></svg></button>
 </div>
 </div>
 <span class="progress" aria-hidden="true"></span>
@@ -104,17 +104,40 @@ a{color:#0EA552}a:hover{color:#000000}
 </div>
 </sc-if>
 
+<sc-if value="{{navOpen}}" hint-placeholder-val="{{ false }}">
+<div class="mnav-bg" onClick="{{closeNav}}"></div>
+<div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="Menu" onKeyDown="{{navKey}}">
+<div class="mn-top"><span class="mn-t">Menu</span><button type="button" class="mn-x" onClick="{{closeNav}}" aria-label="Close menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
+<div class="mn-body">
+<div class="mn-g mn-home"><ul><li><a href="/" onClick="{{closeNav}}"><span class="mn-hi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"></path><path d="M5 10v10h14V10"></path><path d="M10 20v-6h4v6"></path></svg>Home</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li></ul></div>
+<div class="mn-g"><p class="mn-h">About Us</p><ul><li><a href="About-Story.html" onClick="{{closeNav}}">LO-CARB's story<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="About-Certificates.html" onClick="{{closeNav}}">Certificates<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="About-Board.html" onClick="{{closeNav}}">Board of directors<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li></ul></div><div class="mn-g"><p class="mn-h">Our Solutions</p><ul><li><a href="Solution-IFRS.html" onClick="{{closeNav}}">IFRS Standards<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Solution-CarbonCal.html" onClick="{{closeNav}}">CarbonCal + Carbon Camp<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Solution-ISSB.html" onClick="{{closeNav}}">ISSB training<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Solution-CarbonScout.html" onClick="{{closeNav}}">Carbon Scout<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Solution-Reporting.html" onClick="{{closeNav}}">Reporting &amp; consulting<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li></ul></div><div class="mn-g"><p class="mn-h">Blog</p><ul><li><a href="Blog.html" onClick="{{closeNav}}">All posts<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Blog-Portfolio.html" onClick="{{closeNav}}">Client stories<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Blog-Knowledge.html" onClick="{{closeNav}}">Knowledge base<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Blog-News.html" onClick="{{closeNav}}">News &amp; events<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li></ul></div>
+<div class="mn-tools">
+<div class="mn-tool"><span>Language</span><div class="mn-seg"><button type="button" class="{{thOn}}" onClick="{{pickTH}}" lang="th">ไทย</button><button type="button" class="{{enOn}}" onClick="{{pickEN}}">English</button></div></div>
+<div class="mn-tool"><span>Text size</span><div class="mn-seg"><button type="button" class="{{szS}}" onClick="{{pickS}}" aria-label="Smaller text"><i style="font-size:12px">A</i></button><button type="button" class="{{szM}}" onClick="{{pickM}}" aria-label="Default text size"><i style="font-size:15px">A</i></button><button type="button" class="{{szL}}" onClick="{{pickL}}" aria-label="Larger text"><i style="font-size:18px">A</i></button></div></div>
+</div>
+</div>
+<div class="mn-foot"><a href="Contact.html" class="btn btn-p" onClick="{{closeNav}}"><span class="bl"><span>Contact Us</span></span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><a href="mailto:contact@locarb.green" class="mn-mail">contact@locarb.green</a></div>
+</div>
+</sc-if>
 <!-- /search -->
 
-<section class="phero">
-<div class="wrap">
-<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><i></i><a href="Blog.html">Blog</a><i></i><b>Portfolio</b></nav>
-<div class="pgrid">
-<div><p class="label"><span class="ln"></span>Blog</p><h1 class="display ph1 rise">Client <span class="it" style="color:var(--forest)">stories</span></h1></div>
-<div class="rise d2"><p class="lead muted" style="font-size:calc(18px*var(--s))">Named clients, the challenge they faced and the results they got. Grouped by solution so you can find peers.</p></div>
+<section class="bh-hero"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><i></i><a href="Blog.html">Blog</a><i></i><b>Client stories</b></nav>
+<div class="bh-hero-grid"><div><p class="label"><span class="ln"></span>Blog</p><h1 class="display bh-h1 rise">Insights &amp; <span class="it" style="color:var(--forest)">client stories</span></h1></div>
+<p class="bh-lead rise d2">Client stories, explainers on IFRS, ISSB and carbon, and news from the LO-CARB team.</p></div>
+</div></section>
+<section class="psec bh-body"><div class="wrap">
+<div class="bh-bar">
+<div class="bh-tabs" role="tablist" aria-label="Blog categories" style="--i:{{tabIndex}}"><span class="bh-ink" aria-hidden="true"></span><sc-for list="{{tabs}}" as="x" hint-placeholder-count="4"><button type="button" role="tab" aria-selected="{{x.sel}}" class="bh-tab {{x.cls}}" onClick="{{x.pick}}">{{x.label}}</button></sc-for></div>
+<div class="bh-dd" onMouseLeave="{{closeSol}}" onKeyDown="{{solKey}}"><button type="button" class="bh-ddb {{solActive}}" aria-haspopup="listbox" aria-expanded="{{solExp}}" onClick="{{toggleSol}}"><span class="bh-lb">Solution</span><b>{{tagLabel}}</b><svg class="nu-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{solOpen}}" hint-placeholder-val="{{ false }}"><div class="nu-menu bh-menu" role="listbox" aria-label="Solution"><sc-for list="{{chips}}" as="c" hint-placeholder-count="6"><button type="button" role="option" aria-selected="{{c.pr}}" class="nu-opt {{c.cls}}" onClick="{{c.pick}}">{{c.label}}<svg class="nu-ck" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></button></sc-for></div></sc-if></div>
 </div>
-</div>
-</section><section class="psec" style="padding-top:24px"><div class="wrap"><div style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:64px"><nav class="ftabs" aria-label="Blog categories"><a href="Blog.html">All</a><a href="Blog-Portfolio.html" class="on" aria-current="page">Portfolio</a><a href="Blog-Knowledge.html">Knowledge base</a><a href="Blog-News.html">News &amp; events</a></nav><div class="chips"><span class="lb">SOLUTION</span><sc-for list="{{chips}}" as="c" hint-placeholder-count="6"><button class="chip {{c.cls}}" onClick="{{c.pick}}">{{c.label}}</button></sc-for></div></div><sc-if value="{{hasPosts}}" hint-placeholder-val="{{ true }}"><div class="postgrid"><sc-for list="{{posts}}" as="p" hint-placeholder-count="6"><a href="{{p.h}}" class="pc"><span class="cv {{p.cv}}"><span class="cvl">{{p.tag}}</span></span><span class="cat">{{p.cat}}</span><span class="t">{{p.t}}</span><span class="pmeta">{{p.d}}</span></a></sc-for></div></sc-if><sc-if value="{{noPosts}}" hint-placeholder-val="{{ false }}"><p class="empty">No posts for this solution yet. Try another filter.</p></sc-if><nav class="pager" aria-label="Pages"><a href="#" class="pg on">1</a><a href="#" class="pg">2</a><a href="#" class="pg">3</a><a href="#" class="pg">→</a></nav></div></section><section class="pcta dark">
+<p class="bh-count"><b>{{count}}</b> <span>posts</span></p>
+<sc-if value="{{featA}}" hint-placeholder-val="{{ true }}"><article class="bh-feat" aria-label="Featured"><a href="{{feat.h}}" class="bh-feat-img" target="{{feat.tgt}}" rel="{{feat.rel}}" tabindex="-1" aria-hidden="true"><img src="{{feat.img}}" alt=""></a><div class="bh-feat-b"><span class="bh-flag">Featured</span><span class="bh-meta"><span class="bh-cat">{{feat.catLabel}}</span><i class="bh-dot" aria-hidden="true"></i><span>{{feat.tag}}</span></span><h2 class="bh-feat-t"><a href="{{feat.h}}" target="{{feat.tgt}}" rel="{{feat.rel}}">{{feat.t}}</a></h2><span class="bh-d">{{feat.d}}</span><a href="{{feat.h}}" class="tlink" target="{{feat.tgt}}" rel="{{feat.rel}}">Read more <svg class="ar" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div></article></sc-if>
+<sc-if value="{{featB}}" hint-placeholder-val="{{ false }}"><section class="bh-feat" aria-label="Featured"><a href="{{feat.h}}" class="bh-feat-img" target="{{feat.tgt}}" rel="{{feat.rel}}" tabindex="-1" aria-hidden="true"><img src="{{feat.img}}" alt=""></a><div class="bh-feat-b"><span class="bh-flag">Featured</span><span class="bh-meta"><span class="bh-cat">{{feat.catLabel}}</span><i class="bh-dot" aria-hidden="true"></i><span>{{feat.tag}}</span></span><h2 class="bh-feat-t"><a href="{{feat.h}}" target="{{feat.tgt}}" rel="{{feat.rel}}">{{feat.t}}</a></h2><span class="bh-d">{{feat.d}}</span><a href="{{feat.h}}" class="tlink" target="{{feat.tgt}}" rel="{{feat.rel}}">Read more <svg class="ar" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div></section></sc-if>
+<sc-if value="{{gridA}}" hint-placeholder-val="{{ true }}"><div class="bh-grid"><sc-for list="{{posts}}" as="p" hint-placeholder-count="6"><a href="{{p.h}}" class="bh-card" target="{{p.tgt}}" rel="{{p.rel}}"><span class="bh-img"><img src="{{p.img}}" alt="" loading="lazy"></span><span class="bh-meta"><span class="bh-cat">{{p.catLabel}}</span><i class="bh-dot" aria-hidden="true"></i><span>{{p.tag}}</span></span><span class="bh-t">{{p.t}}</span><span class="bh-d">{{p.d}}<span class="bh-go"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></span></a></sc-for></div></sc-if>
+<sc-if value="{{gridB}}" hint-placeholder-val="{{ false }}"><section class="bh-grid" aria-label="Posts"><sc-for list="{{posts}}" as="p" hint-placeholder-count="6"><a href="{{p.h}}" class="bh-card" target="{{p.tgt}}" rel="{{p.rel}}"><span class="bh-img"><img src="{{p.img}}" alt="" loading="lazy"></span><span class="bh-meta"><span class="bh-cat">{{p.catLabel}}</span><i class="bh-dot" aria-hidden="true"></i><span>{{p.tag}}</span></span><span class="bh-t">{{p.t}}</span><span class="bh-d">{{p.d}}<span class="bh-go"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></span></a></sc-for></section></sc-if>
+<sc-if value="{{noPosts}}" hint-placeholder-val="{{ false }}"><p class="empty bh-empty">No posts for this solution yet. Try another filter.</p></sc-if>
+<sc-if value="{{hasMore}}" hint-placeholder-val="{{ true }}"><div class="bh-more"><button type="button" class="btn btn-od" onClick="{{more}}"><span class="bl"><span>Load more</span></span></button></div></sc-if>
+</div></section><section class="pcta dark">
 <div class="ring" style="width:560px;height:560px;right:-180px;top:-240px" aria-hidden="true"></div>
 <div class="ring" style="width:340px;height:340px;right:-70px;top:-130px" aria-hidden="true"></div>
 <div class="wrap pctagrid">
@@ -127,7 +150,7 @@ a{color:#0EA552}a:hover{color:#000000}
 <div class="wrap">
 <div class="f3-top">
 <div class="f3-brand">
-<img class="f2-logo" src="/assets/images/logo-official-dark.webp" alt="LO-CARB" width="96" height="64">
+<img class="f2-logo" src="/assets/images/logo-official.webp" alt="LO-CARB" width="96" height="64">
 <p class="f3-desc">LO-CARB is a sustainability consultancy in Thailand. We believe sustainability is the new growth core, so we help organizations cut emissions, reduce risk and turn sustainability into business growth.</p>
 <a href="Solution-IFRS.html" class="f3-badge"><span class="f2-seal">1<em>st</em></span><span>Thailand's first IFRS Sustainability Alliance member</span></a>
 </div>
@@ -189,7 +212,7 @@ a{color:#0EA552}a:hover{color:#000000}
 </div>
 </div>
 <a href="Contact.html" class="btn btn-p hide-m" style="min-height:46px;padding:0 22px"><span class="bl"><span>ติดต่อเรา</span></span></a>
-<button class="icbtn menubtn" aria-label="เปิดเมนู"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"></path></svg></button>
+<button class="icbtn menubtn" aria-label="เปิดเมนู" aria-expanded="{{navExp}}" aria-controls="mnav" onClick="{{toggleNav}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"></path></svg></button>
 </div>
 </div>
 <span class="progress" aria-hidden="true"></span>
@@ -221,17 +244,40 @@ a{color:#0EA552}a:hover{color:#000000}
 </div>
 </sc-if>
 
+<sc-if value="{{navOpen}}" hint-placeholder-val="{{ false }}">
+<div class="mnav-bg" onClick="{{closeNav}}"></div>
+<div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="เมนู" onKeyDown="{{navKey}}">
+<div class="mn-top"><span class="mn-t">เมนู</span><button type="button" class="mn-x" onClick="{{closeNav}}" aria-label="ปิดเมนู"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
+<div class="mn-body">
+<div class="mn-g mn-home"><ul><li><a href="/" onClick="{{closeNav}}"><span class="mn-hi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"></path><path d="M5 10v10h14V10"></path><path d="M10 20v-6h4v6"></path></svg>หน้าแรก</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li></ul></div>
+<div class="mn-g"><p class="mn-h">เกี่ยวกับเรา</p><ul><li><a href="About-Story.html" onClick="{{closeNav}}">เรื่องราวของ LO-CARB<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="About-Certificates.html" onClick="{{closeNav}}">ใบรับรอง<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="About-Board.html" onClick="{{closeNav}}">คณะกรรมการบริษัท<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li></ul></div><div class="mn-g"><p class="mn-h">โซลูชันของเรา</p><ul><li><a href="Solution-IFRS.html" onClick="{{closeNav}}">มาตรฐาน IFRS<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Solution-CarbonCal.html" onClick="{{closeNav}}">CarbonCal + Carbon Camp<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Solution-ISSB.html" onClick="{{closeNav}}">อบรม ISSB<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Solution-CarbonScout.html" onClick="{{closeNav}}">Carbon Scout<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Solution-Reporting.html" onClick="{{closeNav}}">รายงานและที่ปรึกษาความยั่งยืน<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li></ul></div><div class="mn-g"><p class="mn-h">บทความ</p><ul><li><a href="Blog.html" onClick="{{closeNav}}">บทความทั้งหมด<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Blog-Portfolio.html" onClick="{{closeNav}}">เรื่องราวลูกค้า<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Blog-Knowledge.html" onClick="{{closeNav}}">คลังความรู้<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Blog-News.html" onClick="{{closeNav}}">ข่าวและกิจกรรม<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li></ul></div>
+<div class="mn-tools">
+<div class="mn-tool"><span>ภาษา</span><div class="mn-seg"><button type="button" class="{{thOn}}" onClick="{{pickTH}}" lang="th">ไทย</button><button type="button" class="{{enOn}}" onClick="{{pickEN}}">English</button></div></div>
+<div class="mn-tool"><span>ขนาดตัวอักษร</span><div class="mn-seg"><button type="button" class="{{szS}}" onClick="{{pickS}}" aria-label="ลดขนาดตัวอักษร"><i style="font-size:12px">A</i></button><button type="button" class="{{szM}}" onClick="{{pickM}}" aria-label="ขนาดตัวอักษรปกติ"><i style="font-size:15px">A</i></button><button type="button" class="{{szL}}" onClick="{{pickL}}" aria-label="เพิ่มขนาดตัวอักษร"><i style="font-size:18px">A</i></button></div></div>
+</div>
+</div>
+<div class="mn-foot"><a href="Contact.html" class="btn btn-p" onClick="{{closeNav}}"><span class="bl"><span>ติดต่อเรา</span></span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><a href="mailto:contact@locarb.green" class="mn-mail">contact@locarb.green</a></div>
+</div>
+</sc-if>
 <!-- /search -->
 
-<section class="phero">
-<div class="wrap">
-<nav class="crumbs" aria-label="เส้นทางหน้า"><a href="/">หน้าแรก</a><i></i><a href="Blog.html">บทความ</a><i></i><b>ผลงาน</b></nav>
-<div class="pgrid">
-<div><p class="label"><span class="ln"></span>บทความ</p><h1 class="display ph1 rise">ลูกค้า <span class="it" style="color:var(--forest)">ของเรา</span></h1></div>
-<div class="rise d2"><p class="lead muted" style="font-size:calc(18px*var(--s))">ลูกค้าตัวจริง ความท้าทายที่เจอ และผลลัพธ์ที่ได้ แยกตามโซลูชันเพื่อให้คุณหาธุรกิจที่ใกล้เคียงได้</p></div>
+<section class="bh-hero"><div class="wrap"><nav class="crumbs" aria-label="เส้นทางหน้า"><a href="/">หน้าแรก</a><i></i><a href="Blog.html">บทความ</a><i></i><b>เรื่องราวลูกค้า</b></nav>
+<div class="bh-hero-grid"><div><p class="label"><span class="ln"></span>บทความ</p><h1 class="display bh-h1 rise">บทความและ <span class="it" style="color:var(--forest)">เรื่องราวลูกค้า</span></h1></div>
+<p class="bh-lead rise d2">เรื่องราวลูกค้า บทความอธิบาย IFRS, ISSB และคาร์บอน และข่าวจากทีม LO-CARB</p></div>
+</div></section>
+<section class="psec bh-body"><div class="wrap">
+<div class="bh-bar">
+<div class="bh-tabs" role="tablist" aria-label="หมวดบทความ" style="--i:{{tabIndex}}"><span class="bh-ink" aria-hidden="true"></span><sc-for list="{{tabs}}" as="x" hint-placeholder-count="4"><button type="button" role="tab" aria-selected="{{x.sel}}" class="bh-tab {{x.cls}}" onClick="{{x.pick}}">{{x.label}}</button></sc-for></div>
+<div class="bh-dd" onMouseLeave="{{closeSol}}" onKeyDown="{{solKey}}"><button type="button" class="bh-ddb {{solActive}}" aria-haspopup="listbox" aria-expanded="{{solExp}}" onClick="{{toggleSol}}"><span class="bh-lb">โซลูชัน</span><b>{{tagLabel}}</b><svg class="nu-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{solOpen}}" hint-placeholder-val="{{ false }}"><div class="nu-menu bh-menu" role="listbox" aria-label="โซลูชัน"><sc-for list="{{chips}}" as="c" hint-placeholder-count="6"><button type="button" role="option" aria-selected="{{c.pr}}" class="nu-opt {{c.cls}}" onClick="{{c.pick}}">{{c.label}}<svg class="nu-ck" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></button></sc-for></div></sc-if></div>
 </div>
-</div>
-</section><section class="psec" style="padding-top:24px"><div class="wrap"><div style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:64px"><nav class="ftabs" aria-label="หมวดบทความ"><a href="Blog.html">ทั้งหมด</a><a href="Blog-Portfolio.html" class="on" aria-current="page">ผลงาน</a><a href="Blog-Knowledge.html">คลังความรู้</a><a href="Blog-News.html">ข่าวและกิจกรรม</a></nav><div class="chips"><span class="lb">โซลูชัน</span><sc-for list="{{chips}}" as="c" hint-placeholder-count="6"><button class="chip {{c.cls}}" onClick="{{c.pick}}">{{c.label}}</button></sc-for></div></div><sc-if value="{{hasPosts}}" hint-placeholder-val="{{ true }}"><div class="postgrid"><sc-for list="{{posts}}" as="p" hint-placeholder-count="6"><a href="{{p.h}}" class="pc"><span class="cv {{p.cv}}"><span class="cvl">{{p.tag}}</span></span><span class="cat">{{p.cat}}</span><span class="t">{{p.t}}</span><span class="pmeta">{{p.d}}</span></a></sc-for></div></sc-if><sc-if value="{{noPosts}}" hint-placeholder-val="{{ false }}"><p class="empty">ยังไม่มีบทความสำหรับโซลูชันนี้ ลองเลือกตัวกรองอื่น</p></sc-if><nav class="pager" aria-label="หน้า"><a href="#" class="pg on">1</a><a href="#" class="pg">2</a><a href="#" class="pg">3</a><a href="#" class="pg">→</a></nav></div></section><section class="pcta dark">
+<p class="bh-count"><b>{{count}}</b> <span>บทความ</span></p>
+<sc-if value="{{featA}}" hint-placeholder-val="{{ true }}"><article class="bh-feat" aria-label="แนะนำ"><a href="{{feat.h}}" class="bh-feat-img" target="{{feat.tgt}}" rel="{{feat.rel}}" tabindex="-1" aria-hidden="true"><img src="{{feat.img}}" alt=""></a><div class="bh-feat-b"><span class="bh-flag">แนะนำ</span><span class="bh-meta"><span class="bh-cat">{{feat.catLabel}}</span><i class="bh-dot" aria-hidden="true"></i><span>{{feat.tag}}</span></span><h2 class="bh-feat-t"><a href="{{feat.h}}" target="{{feat.tgt}}" rel="{{feat.rel}}">{{feat.t}}</a></h2><span class="bh-d">{{feat.d}}</span><a href="{{feat.h}}" class="tlink" target="{{feat.tgt}}" rel="{{feat.rel}}">อ่านต่อ <svg class="ar" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div></article></sc-if>
+<sc-if value="{{featB}}" hint-placeholder-val="{{ false }}"><section class="bh-feat" aria-label="แนะนำ"><a href="{{feat.h}}" class="bh-feat-img" target="{{feat.tgt}}" rel="{{feat.rel}}" tabindex="-1" aria-hidden="true"><img src="{{feat.img}}" alt=""></a><div class="bh-feat-b"><span class="bh-flag">แนะนำ</span><span class="bh-meta"><span class="bh-cat">{{feat.catLabel}}</span><i class="bh-dot" aria-hidden="true"></i><span>{{feat.tag}}</span></span><h2 class="bh-feat-t"><a href="{{feat.h}}" target="{{feat.tgt}}" rel="{{feat.rel}}">{{feat.t}}</a></h2><span class="bh-d">{{feat.d}}</span><a href="{{feat.h}}" class="tlink" target="{{feat.tgt}}" rel="{{feat.rel}}">อ่านต่อ <svg class="ar" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div></section></sc-if>
+<sc-if value="{{gridA}}" hint-placeholder-val="{{ true }}"><div class="bh-grid"><sc-for list="{{posts}}" as="p" hint-placeholder-count="6"><a href="{{p.h}}" class="bh-card" target="{{p.tgt}}" rel="{{p.rel}}"><span class="bh-img"><img src="{{p.img}}" alt="" loading="lazy"></span><span class="bh-meta"><span class="bh-cat">{{p.catLabel}}</span><i class="bh-dot" aria-hidden="true"></i><span>{{p.tag}}</span></span><span class="bh-t">{{p.t}}</span><span class="bh-d">{{p.d}}<span class="bh-go"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></span></a></sc-for></div></sc-if>
+<sc-if value="{{gridB}}" hint-placeholder-val="{{ false }}"><section class="bh-grid" aria-label="บทความ"><sc-for list="{{posts}}" as="p" hint-placeholder-count="6"><a href="{{p.h}}" class="bh-card" target="{{p.tgt}}" rel="{{p.rel}}"><span class="bh-img"><img src="{{p.img}}" alt="" loading="lazy"></span><span class="bh-meta"><span class="bh-cat">{{p.catLabel}}</span><i class="bh-dot" aria-hidden="true"></i><span>{{p.tag}}</span></span><span class="bh-t">{{p.t}}</span><span class="bh-d">{{p.d}}<span class="bh-go"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></span></a></sc-for></section></sc-if>
+<sc-if value="{{noPosts}}" hint-placeholder-val="{{ false }}"><p class="empty bh-empty">ยังไม่มีบทความสำหรับโซลูชันนี้ ลองเลือกตัวกรองอื่น</p></sc-if>
+<sc-if value="{{hasMore}}" hint-placeholder-val="{{ true }}"><div class="bh-more"><button type="button" class="btn btn-od" onClick="{{more}}"><span class="bl"><span>ดูเพิ่มเติม</span></span></button></div></sc-if>
+</div></section><section class="pcta dark">
 <div class="ring" style="width:560px;height:560px;right:-180px;top:-240px" aria-hidden="true"></div>
 <div class="ring" style="width:340px;height:340px;right:-70px;top:-130px" aria-hidden="true"></div>
 <div class="wrap pctagrid">
@@ -244,7 +290,7 @@ a{color:#0EA552}a:hover{color:#000000}
 <div class="wrap">
 <div class="f3-top">
 <div class="f3-brand">
-<img class="f2-logo" src="/assets/images/logo-official-dark.webp" alt="LO-CARB" width="96" height="64">
+<img class="f2-logo" src="/assets/images/logo-official.webp" alt="LO-CARB" width="96" height="64">
 <p class="f3-desc">LO-CARB บริษัทที่ปรึกษาด้านความยั่งยืน เราเชื่อว่าความยั่งยืนคือแกนหลักของการเติบโต และมากไปกว่าการช่วยองค์กรลดการปล่อยก๊าซ ลดความเสี่ยง วันนี้เราช่วยเปลี่ยนความยั่งยืนให้เป็นการเติบโตทางธุรกิจ</p>
 <a href="Solution-IFRS.html" class="f3-badge"><span class="f2-seal">1<em></em></span><span>สมาชิก IFRS Sustainability Alliance รายแรกของประเทศไทย</span></a>
 </div>
@@ -274,15 +320,23 @@ a{color:#0EA552}a:hover{color:#000000}
 LocarbRuntime.mount(function (DCLogic) {
 
 class Component extends DCLogic {
-  constructor(props) { super(props); this.state = Object.assign({ scale: 1 }, { tag: 'All' }); }
+  constructor(props) { super(props); this.state = Object.assign({ scale: 1 }, { ci: 1, tag: 'All', limit: 6 }); }
 
   renderVals() {
     const v = this.renderVals0();
     let lang = this.state.lang;
     if (!lang) { try { lang = localStorage.getItem('locarb-lang') || 'en'; } catch (e) { lang = 'en'; } }
     const th = lang === 'th';
-    const setLang = (l) => { try { localStorage.setItem('locarb-lang', l); } catch (e) {} this.setState({ lang: l }); };
-    const TH = {"Carbon Scout": "Carbon Scout", "Portfolio": "ผลงาน", "Reporting": "การรายงาน", "[Client name]: IFRS S1 & S2 readiness in [X] weeks": "[ชื่อลูกค้า]: พร้อมตาม IFRS S1 & S2 ใน [X] สัปดาห์", "14 Oct 2026": "14 ต.ค. 2569", "19 Sep 2026": "19 ก.ย. 2569", "All": "ทั้งหมด", "[Client name]: a first sustainability report in one cycle": "[ชื่อลูกค้า]: รายงานความยั่งยืนฉบับแรกในรอบเดียว", "IFRS": "IFRS", "[Client name]: ISSB training for the board": "[ชื่อลูกค้า]: อบรม ISSB ให้คณะกรรมการ", "28 Aug 2026": "28 ส.ค. 2569", "18 Jul 2026": "18 ก.ค. 2569", "8 Aug 2026": "8 ส.ค. 2569", "[Client name]: tracking plantation carbon with Carbon Scout": "[ชื่อลูกค้า]: ติดตามคาร์บอนในสวนด้วย Carbon Scout"};
+    const setLang = (l) => {
+      try { localStorage.setItem('locarb-lang', l); } catch (e) {}
+      const go = () => this.setState({ lang: l });
+      try {
+        const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!reduce && document.startViewTransition) { document.startViewTransition(go); return; }
+      } catch (e) {}
+      go();
+    };
+    const TH = {"Carbon Scout": "Carbon Scout", "Portfolio": "ผลงาน", "Knowledge base": "คลังความรู้", "News & events": "ข่าวและกิจกรรม", "Client stories": "เรื่องราวลูกค้า", "Reporting": "การรายงาน", "[Client name]: IFRS S1 & S2 readiness in [X] weeks": "[ชื่อลูกค้า]: พร้อมตาม IFRS S1 & S2 ใน [X] สัปดาห์", "What IFRS S2 means for SET-listed companies": "IFRS S2 สำคัญอย่างไรกับบริษัทจดทะเบียนใน SET", "[Client name]: measuring Scope 1–3 with CarbonCal": "[ชื่อลูกค้า]: วัด Scope 1–3 ด้วย CarbonCal", "ISSB for Boards workshop returns to Bangkok on 21 Nov": "เวิร์กช็อป ISSB สำหรับกรรมการ กลับมาที่กรุงเทพฯ 21 พ.ย.", "14 Oct 2026": "14 ต.ค. 2569", "2 Oct 2026": "2 ต.ค. 2569", "19 Sep 2026": "19 ก.ย. 2569", "5 Sep 2026": "5 ก.ย. 2569", "All": "ทั้งหมด", "Client story": "เรื่องราวลูกค้า", "IFRS S1 vs S2: what each standard asks for": "IFRS S1 กับ S2: แต่ละมาตรฐานกำหนดอะไรบ้าง", "[Client name]: a first sustainability report in one cycle": "[ชื่อลูกค้า]: รายงานความยั่งยืนฉบับแรกในรอบเดียว", "IFRS": "IFRS", "Scope 1, 2 and 3 emissions explained": "อธิบายการปล่อย Scope 1, 2 และ 3", "How to start collecting Scope 3 supplier data": "เริ่มเก็บข้อมูล Scope 3 จากซัพพลายเออร์อย่างไร", "[Client name]: ISSB training for the board": "[ชื่อลูกค้า]: อบรม ISSB ให้คณะกรรมการ", "CarbonCal adds Scope 3 category templates": "CarbonCal เพิ่มเทมเพลตหมวด Scope 3", "12 Sep 2026": "12 ก.ย. 2569", "28 Aug 2026": "28 ส.ค. 2569", "22 Aug 2026": "22 ส.ค. 2569", "25 Jul 2026": "25 ก.ค. 2569", "18 Jul 2026": "18 ก.ค. 2569", "11 Jul 2026": "11 ก.ค. 2569", "8 Aug 2026": "8 ส.ค. 2569", "1 Aug 2026": "1 ส.ค. 2569", "[Client name]: tracking plantation carbon with Carbon Scout": "[ชื่อลูกค้า]: ติดตามคาร์บอนในสวนด้วย Carbon Scout", "LO-CARB and [Client name] team up on farmland carbon": "LO-CARB จับมือ [ชื่อลูกค้า] ด้านคาร์บอนในพื้นที่เกษตร", "LO-CARB in The Nation Thailand": "LO-CARB ใน The Nation Thailand", "LO-CARB on PPTV HD 36": "LO-CARB ทาง PPTV HD 36", "Media": "สื่อ", "All solutions": "ทุกโซลูชัน"};
     const tr = (x) => {
       if (!th) return x;
       if (typeof x === 'string') return Object.prototype.hasOwnProperty.call(TH, x) ? TH[x] : x;
@@ -322,21 +376,52 @@ class Component extends DCLogic {
       rejectCookies: () => saveCk('essential'),
       openCookies: () => this.setState({ showCookie: true })
     };
+    if (!this._motionInit) {
+      this._motionInit = true;
+      try {
+        const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const SEL = 'nav.ftabs, nav.asub';
+        if (!window.__lcTabClick) {
+          window.__lcTabClick = true;
+          document.addEventListener('click', (ev) => {
+            const a = ev.target && ev.target.closest ? ev.target.closest('nav.ftabs a, nav.asub a') : null;
+            if (!a) return;
+            const nav = a.closest(SEL); const on = nav && nav.querySelector('a.on');
+            if (!nav || !on) return;
+            const nr = nav.getBoundingClientRect(), r = on.getBoundingClientRect();
+            try { sessionStorage.setItem('locarb-tabfrom', JSON.stringify({ g: nav.getAttribute('aria-label') || '', l: r.left - nr.left, w: r.width })); } catch (e) {}
+          }, true);
+        }
+        const run = () => {
+          let from = null;
+          try { from = JSON.parse(sessionStorage.getItem('locarb-tabfrom') || 'null'); sessionStorage.removeItem('locarb-tabfrom'); } catch (e) {}
+          document.querySelectorAll(SEL).forEach((nav) => {
+            const on = nav.querySelector('a.on'); if (!on || nav.querySelector('.tab-ink')) return;
+            const nr = nav.getBoundingClientRect(), r = on.getBoundingClientRect();
+            const ink = document.createElement('span'); ink.className = 'tab-ink'; ink.setAttribute('aria-hidden', 'true');
+            ink.style.left = (r.left - nr.left) + 'px'; ink.style.top = (r.top - nr.top) + 'px'; ink.style.width = r.width + 'px'; ink.style.height = r.height + 'px';
+            nav.classList.add('has-ink'); nav.insertBefore(ink, nav.firstChild);
+            if (reduce) return;
+            const same = from && from.g === (nav.getAttribute('aria-label') || '');
+            if (same) {
+              const dx = from.l - (r.left - nr.left), sx = from.w / r.width;
+              ink.animate([{ transform: 'translateX(' + dx + 'px) scaleX(' + sx + ')' }, { transform: 'none' }], { duration: 480, easing: 'cubic-bezier(.2,.8,.2,1)' });
+            } else {
+              ink.animate([{ transform: 'scale(.85)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 360, easing: 'cubic-bezier(.3,1.3,.5,1)' });
+            }
+          });
+        };
+        setTimeout(run, 60);
+      } catch (e) {}
+    }
     if (this._intro === undefined) {
-      try { this._intro = !sessionStorage.getItem('locarb-intro') || sessionStorage.getItem('locarb-intro-force') === '1'; sessionStorage.setItem('locarb-intro', '1'); sessionStorage.removeItem('locarb-intro-force'); } catch (e) { this._intro = true; }
+      try { this._intro = !sessionStorage.getItem('locarb-intro'); sessionStorage.setItem('locarb-intro', '1'); sessionStorage.removeItem('locarb-intro-force'); } catch (e) { this._intro = true; }
       try { if (!this._intro && document.readyState !== 'complete') window.addEventListener('load', () => this.setState({ pageLoaded: true }), { once: true }); } catch (e) {}
     }
     if (this._t0 === undefined) this._t0 = Date.now();
     let pageLoaded = !!this.state.pageLoaded; try { pageLoaded = pageLoaded || document.readyState === 'complete'; } catch (e) { pageLoaded = true; }
     const loaderV = { ldCls: this.state.skipIntro ? 'skip' : (this._intro ? ((this._replay || 0) % 2 ? 'full rep' : 'full') : (pageLoaded ? 'gone' : 'wait')), ldFull: !!this._intro, ldQuick: !this._intro, skipIntro: () => this.setState({ skipIntro: true }), skipLabel: th ? 'ข้ามอินโทร' : 'Skip intro',
-      goHome: (e) => {
-        if (v.heroMove) {
-          if (e && e.preventDefault) e.preventDefault();
-          this._intro = true; this._replay = (this._replay || 0) + 1; this._nonce = String(Date.now()); this._t0 = Date.now();
-          try { window.scrollTo(0, 0); } catch (er) {}
-          this.setState({ skipIntro: false, replayAt: Date.now() });
-        } else { try { sessionStorage.setItem('locarb-intro-force', '1'); } catch (er) {} }
-      }, introDelay: this.state.skipIntro ? '0.3s' : ((this._intro && this._t0 !== undefined) ? Math.max(0, 6.4 - (Date.now() - this._t0) / 1000).toFixed(2) + 's' : (this._intro ? '6.4s' : '0s')), ldNonce: (this._nonce = this._nonce || String(Date.now())) };
+      goHome: () => { /* logo is a normal link; the intro only plays on the first page of a visit or when loading is slow */ }, introDelay: this.state.skipIntro ? '0.3s' : ((this._intro && this._t0 !== undefined) ? Math.max(0, 6.4 - (Date.now() - this._t0) / 1000).toFixed(2) + 's' : (this._intro ? '6.4s' : '0s')), ldNonce: (this._nonce = this._nonce || String(Date.now())) };
     const sm = !!this.state.sizeOpen, lm = !!this.state.langOpen;
     const menus = {
       sizeOpen: sm, langOpen: lm, sizeBtn: sm ? 'open' : '', langBtn: lm ? 'open' : '', sizeExp: sm ? 'true' : 'false', langExp: lm ? 'true' : 'false',
@@ -344,7 +429,11 @@ class Component extends DCLogic {
       closeMenus: () => { if (sm || lm) this.setState({ sizeOpen: false, langOpen: false }); },
       pickS: () => { if (v.setS) v.setS(); this.setState({ sizeOpen: false }); }, pickM: () => { if (v.setM) v.setM(); this.setState({ sizeOpen: false }); }, pickL: () => { if (v.setL) v.setL(); this.setState({ sizeOpen: false }); },
       pickTH: () => { this.setState({ langOpen: false }); setLang('th'); }, pickEN: () => { this.setState({ langOpen: false }); setLang('en'); },
-      langCode: th ? 'TH' : 'EN'
+      langCode: th ? 'TH' : 'EN',
+      navOpen: !!this.state.navOpen, navExp: this.state.navOpen ? 'true' : 'false',
+      toggleNav: () => this.setState({ navOpen: !this.state.navOpen, sizeOpen: false, langOpen: false }),
+      closeNav: () => { if (this.state.navOpen) this.setState({ navOpen: false }); },
+      navKey: (e) => { if (e && e.key === 'Escape') this.setState({ navOpen: false }); }
     };
     return Object.assign(out, search, cookie, loaderV, menus, { isEN: !th, isTH: th, thOn: th ? 'on' : '', enOn: th ? '' : 'on', setTH: () => setLang('th'), setEN: () => setLang('en') });
   }
@@ -352,10 +441,30 @@ class Component extends DCLogic {
     const s = this.state.scale; const st = this.state;
     const base = { scale: s, szS: s < 1 ? 'on' : '', szM: s === 1 ? 'on' : '', szL: s > 1 ? 'on' : '',
       setS: () => this.setState({ scale: 0.9 }), setM: () => this.setState({ scale: 1 }), setL: () => this.setState({ scale: 1.12 }) };
-    const P = [{"cv": "cv1", "cat": "Portfolio", "tag": "IFRS", "t": "[Client name]: IFRS S1 & S2 readiness in [X] weeks", "h": "Blog-Story.dc.html", "d": "14 Oct 2026"}, {"cv": "cv2", "cat": "Portfolio", "tag": "CarbonCal", "t": "[Client name]: measuring Scope 1\u20133 with CarbonCal", "h": "Blog-Story.dc.html", "d": "19 Sep 2026"}, {"cv": "cv6", "cat": "Portfolio", "tag": "Carbon Scout", "t": "[Client name]: tracking plantation carbon with Carbon Scout", "h": "Blog-Story.dc.html", "d": "28 Aug 2026"}, {"cv": "cv8", "cat": "Portfolio", "tag": "Reporting", "t": "[Client name]: a first sustainability report in one cycle", "h": "Blog-Story.dc.html", "d": "8 Aug 2026"}, {"cv": "cv4", "cat": "Portfolio", "tag": "ISSB", "t": "[Client name]: ISSB training for the board", "h": "Blog-Story.dc.html", "d": "18 Jul 2026"}];
+    const P = [{"img": "/assets/images/news-launch-event.webp", "cat": "News & events", "tag": "Media", "t": "LO-CARB in The Nation Thailand", "h": "https://www.nationthailand.com/pr-news/pr-news/40070816", "d": "The Nation Thailand", "ext": true}, {"img": "/assets/images/blog-ifrs-story.webp", "cv": "cv1", "cat": "Portfolio", "tag": "IFRS", "t": "[Client name]: IFRS S1 & S2 readiness in [X] weeks", "h": "Blog-Story.dc.html", "d": "14 Oct 2026"}, {"img": "/assets/images/blog-ifrs-s2.webp", "cv": "cv4", "cat": "Knowledge base", "tag": "IFRS", "t": "What IFRS S2 means for SET-listed companies", "h": "Blog-Article.dc.html", "d": "2 Oct 2026"}, {"img": "/assets/images/news-launch-event-crop.webp", "cat": "News & events", "tag": "Media", "t": "LO-CARB on PPTV HD 36", "h": "https://www.pptvhd36.com/news/%E0%B9%84%E0%B8%A5%E0%B8%9F%E0%B9%8C%E0%B8%AA%E0%B9%84%E0%B8%95%E0%B8%A5%E0%B9%8C/263265", "d": "PPTV HD 36", "ext": true}, {"img": "/assets/images/blog-carboncal-story.webp", "cv": "cv2", "cat": "Portfolio", "tag": "CarbonCal", "t": "[Client name]: measuring Scope 1–3 with CarbonCal", "h": "Blog-Story.dc.html", "d": "19 Sep 2026"}, {"img": "/assets/images/blog-s1-vs-s2.webp", "cv": "cv7", "cat": "Knowledge base", "tag": "IFRS", "t": "IFRS S1 vs S2: what each standard asks for", "h": "Blog-Article.dc.html", "d": "12 Sep 2026"}, {"img": "/assets/images/blog-issb-workshop.webp", "cv": "cv3", "cat": "News & events", "tag": "ISSB", "t": "ISSB for Boards workshop returns to Bangkok on 21 Nov", "h": "Blog-Article.dc.html", "d": "5 Sep 2026"}, {"img": "/assets/images/blog-scout-story.webp", "cv": "cv6", "cat": "Portfolio", "tag": "Carbon Scout", "t": "[Client name]: tracking plantation carbon with Carbon Scout", "h": "Blog-Story.dc.html", "d": "28 Aug 2026"}, {"img": "/assets/images/blog-scopes.webp", "cv": "cv5", "cat": "Knowledge base", "tag": "CarbonCal", "t": "Scope 1, 2 and 3 emissions explained", "h": "Blog-Article.dc.html", "d": "22 Aug 2026"}, {"img": "/assets/images/blog-report-story.webp", "cv": "cv8", "cat": "Portfolio", "tag": "Reporting", "t": "[Client name]: a first sustainability report in one cycle", "h": "Blog-Story.dc.html", "d": "8 Aug 2026"}, {"img": "/assets/images/blog-partner-news.webp", "cv": "cv2", "cat": "News & events", "tag": "Carbon Scout", "t": "LO-CARB and [Client name] team up on farmland carbon", "h": "Blog-Article.dc.html", "d": "1 Aug 2026"}, {"img": "/assets/images/blog-scope3.webp", "cv": "cv1", "cat": "Knowledge base", "tag": "CarbonCal", "t": "How to start collecting Scope 3 supplier data", "h": "Blog-Article.dc.html", "d": "25 Jul 2026"}, {"img": "/assets/images/blog-issb-story.webp", "cv": "cv4", "cat": "Portfolio", "tag": "ISSB", "t": "[Client name]: ISSB training for the board", "h": "Blog-Story.dc.html", "d": "18 Jul 2026"}, {"img": "/assets/images/blog-cc-templates.webp", "cv": "cv7", "cat": "News & events", "tag": "CarbonCal", "t": "CarbonCal adds Scope 3 category templates", "h": "Blog-Article.dc.html", "d": "11 Jul 2026"}];
     const T = ["All", "IFRS", "CarbonCal", "ISSB", "Carbon Scout", "Reporting"];
-    const list = P.filter((p) => st.tag === 'All' || p.tag === st.tag);
-    const extra = { chips: T.map((t) => ({ label: t, cls: st.tag === t ? 'on' : '', pick: () => this.setState({ tag: t }) })), posts: list, hasPosts: list.length > 0, noPosts: list.length === 0 };
+    const CATS = [["All", null], ["Client stories", "Portfolio"], ["Knowledge base", "Knowledge base"], ["News & events", "News & events"]];
+    const FILES = ['Blog.html', 'Blog-Portfolio.html', 'Blog-Knowledge.html', 'Blog-News.html'];
+    const CL = { 'Portfolio': 'Client story', 'Knowledge base': 'Knowledge base', 'News & events': 'News & events' };
+    const ci = st.ci, cc = CATS[ci][1];
+    const deco = (p) => Object.assign({}, p, { catLabel: CL[p.cat] || p.cat, tgt: p.ext ? '_blank' : '', rel: p.ext ? 'noopener' : '' });
+    const list = P.filter((p) => (!cc || p.cat === cc) && (st.tag === 'All' || p.tag === st.tag)).map(deco);
+    const ft = list[0], rest = list.slice(1), shown = rest.slice(0, st.limit), flip = !!this._flip;
+    const go = (patch) => { this._flip = !this._flip; this.setState(Object.assign({ limit: 6, solOpen: false }, patch)); };
+    const extra = {
+      tabs: CATS.map((x, i) => ({ label: x[0], cls: i === ci ? 'on' : '', sel: i === ci ? 'true' : 'false', pick: () => { if (i === ci) return; go({ ci: i }); try { const pth = location.pathname; if (/\.html$/.test(pth) && !/\.dc\.html$/.test(pth)) history.replaceState(null, '', FILES[i]); } catch (e) {} } })),
+      tabIndex: String(ci),
+      chips: T.map((x) => ({ label: x === 'All' ? 'All solutions' : x, cls: st.tag === x ? 'on' : '', pr: st.tag === x ? 'true' : 'false', pick: () => { if (st.tag !== x) go({ tag: x, solOpen: false }); else this.setState({ solOpen: false }); } })),
+      tagLabel: st.tag === 'All' ? 'All solutions' : st.tag, solActive: (st.tag !== 'All' ? 'is-set ' : '') + (st.solOpen ? 'open' : ''),
+      solOpen: !!st.solOpen, solExp: st.solOpen ? 'true' : 'false',
+      toggleSol: () => this.setState({ solOpen: !st.solOpen }), closeSol: () => { if (st.solOpen) this.setState({ solOpen: false }); },
+      solKey: (e) => { if (e && e.key === 'Escape') this.setState({ solOpen: false }); },
+      count: String(list.length),
+      feat: ft || {}, featA: !!ft && !flip, featB: !!ft && flip,
+      posts: shown, gridA: shown.length > 0 && !flip, gridB: shown.length > 0 && flip,
+      noPosts: list.length === 0, hasMore: rest.length > st.limit,
+      more: () => this.setState({ limit: st.limit + 6 })
+    };
     return Object.assign(base, extra);
   }
 }

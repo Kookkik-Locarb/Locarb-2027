@@ -70,7 +70,7 @@
       kids(tpl.content, vals, out);
       var html = '<div id="app">' + out.join('') + '</div>';
       if (first){ app.innerHTML = out.join(''); first = false; }
-      else window.morphdom(app, html, { onBeforeElUpdated: function(from, to){ if (from.tagName === 'VIDEO') return false; if (from === document.activeElement && from.tagName === 'INPUT') { to.value = from.value; } return true; } });
+      else window.morphdom(app, html, { onBeforeNodeDiscarded: function(node){ return !(node.classList && node.classList.contains('tab-ink')); }, onBeforeElUpdated: function(from, to){ if (from.tagName === 'VIDEO') return false; if (from.classList && from.classList.contains('has-ink')) to.classList.add('has-ink'); if (from === document.activeElement && from.tagName === 'INPUT') { to.value = from.value; } return true; } });
       bind(app);
       var af = app.querySelector('input[autofocus]');
       if (af && !af.__f) { af.__f = true; try { af.focus(); } catch (e) {} }
