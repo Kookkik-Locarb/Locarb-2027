@@ -35,7 +35,15 @@ WRAP_JS='''
     let lang = this.state.lang;
     if (!lang) { try { lang = localStorage.getItem('locarb-lang') || 'en'; } catch (e) { lang = 'en'; } }
     const th = lang === 'th';
-    const setLang = (l) => { try { localStorage.setItem('locarb-lang', l); } catch (e) {} this.setState({ lang: l }); };
+    const setLang = (l) => {
+      try { localStorage.setItem('locarb-lang', l); } catch (e) {}
+      const go = () => this.setState({ lang: l });
+      try {
+        const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!reduce && document.startViewTransition) { document.startViewTransition(go); return; }
+      } catch (e) {}
+      go();
+    };
     const TH = __TH__;
     const tr = (x) => {
       if (!th) return x;
@@ -76,21 +84,52 @@ WRAP_JS='''
       rejectCookies: () => saveCk('essential'),
       openCookies: () => this.setState({ showCookie: true })
     };
+    if (!this._motionInit) {
+      this._motionInit = true;
+      try {
+        const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const SEL = 'nav.ftabs, nav.asub';
+        if (!window.__lcTabClick) {
+          window.__lcTabClick = true;
+          document.addEventListener('click', (ev) => {
+            const a = ev.target && ev.target.closest ? ev.target.closest('nav.ftabs a, nav.asub a') : null;
+            if (!a) return;
+            const nav = a.closest(SEL); const on = nav && nav.querySelector('a.on');
+            if (!nav || !on) return;
+            const nr = nav.getBoundingClientRect(), r = on.getBoundingClientRect();
+            try { sessionStorage.setItem('locarb-tabfrom', JSON.stringify({ g: nav.getAttribute('aria-label') || '', l: r.left - nr.left, w: r.width })); } catch (e) {}
+          }, true);
+        }
+        const run = () => {
+          let from = null;
+          try { from = JSON.parse(sessionStorage.getItem('locarb-tabfrom') || 'null'); sessionStorage.removeItem('locarb-tabfrom'); } catch (e) {}
+          document.querySelectorAll(SEL).forEach((nav) => {
+            const on = nav.querySelector('a.on'); if (!on || nav.querySelector('.tab-ink')) return;
+            const nr = nav.getBoundingClientRect(), r = on.getBoundingClientRect();
+            const ink = document.createElement('span'); ink.className = 'tab-ink'; ink.setAttribute('aria-hidden', 'true');
+            ink.style.left = (r.left - nr.left) + 'px'; ink.style.top = (r.top - nr.top) + 'px'; ink.style.width = r.width + 'px'; ink.style.height = r.height + 'px';
+            nav.classList.add('has-ink'); nav.insertBefore(ink, nav.firstChild);
+            if (reduce) return;
+            const same = from && from.g === (nav.getAttribute('aria-label') || '');
+            if (same) {
+              const dx = from.l - (r.left - nr.left), sx = from.w / r.width;
+              ink.animate([{ transform: 'translateX(' + dx + 'px) scaleX(' + sx + ')' }, { transform: 'none' }], { duration: 480, easing: 'cubic-bezier(.2,.8,.2,1)' });
+            } else {
+              ink.animate([{ transform: 'scale(.85)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 360, easing: 'cubic-bezier(.3,1.3,.5,1)' });
+            }
+          });
+        };
+        setTimeout(run, 60);
+      } catch (e) {}
+    }
     if (this._intro === undefined) {
-      try { this._intro = !sessionStorage.getItem('locarb-intro') || sessionStorage.getItem('locarb-intro-force') === '1'; sessionStorage.setItem('locarb-intro', '1'); sessionStorage.removeItem('locarb-intro-force'); } catch (e) { this._intro = true; }
+      try { this._intro = !sessionStorage.getItem('locarb-intro'); sessionStorage.setItem('locarb-intro', '1'); sessionStorage.removeItem('locarb-intro-force'); } catch (e) { this._intro = true; }
       try { if (!this._intro && document.readyState !== 'complete') window.addEventListener('load', () => this.setState({ pageLoaded: true }), { once: true }); } catch (e) {}
     }
     if (this._t0 === undefined) this._t0 = Date.now();
     let pageLoaded = !!this.state.pageLoaded; try { pageLoaded = pageLoaded || document.readyState === 'complete'; } catch (e) { pageLoaded = true; }
     const loaderV = { ldCls: this.state.skipIntro ? 'skip' : (this._intro ? ((this._replay || 0) % 2 ? 'full rep' : 'full') : (pageLoaded ? 'gone' : 'wait')), ldFull: !!this._intro, ldQuick: !this._intro, skipIntro: () => this.setState({ skipIntro: true }), skipLabel: th ? 'ข้ามอินโทร' : 'Skip intro',
-      goHome: (e) => {
-        if (v.heroMove) {
-          if (e && e.preventDefault) e.preventDefault();
-          this._intro = true; this._replay = (this._replay || 0) + 1; this._nonce = String(Date.now()); this._t0 = Date.now();
-          try { window.scrollTo(0, 0); } catch (er) {}
-          this.setState({ skipIntro: false, replayAt: Date.now() });
-        } else { try { sessionStorage.setItem('locarb-intro-force', '1'); } catch (er) {} }
-      }, introDelay: this.state.skipIntro ? '0.3s' : ((this._intro && this._t0 !== undefined) ? Math.max(0, 6.4 - (Date.now() - this._t0) / 1000).toFixed(2) + 's' : (this._intro ? '6.4s' : '0s')), ldNonce: (this._nonce = this._nonce || String(Date.now())) };
+      goHome: () => { /* logo is a normal link; the intro only plays on the first page of a visit or when loading is slow */ }, introDelay: this.state.skipIntro ? '0.3s' : ((this._intro && this._t0 !== undefined) ? Math.max(0, 6.4 - (Date.now() - this._t0) / 1000).toFixed(2) + 's' : (this._intro ? '6.4s' : '0s')), ldNonce: (this._nonce = this._nonce || String(Date.now())) };
     const sm = !!this.state.sizeOpen, lm = !!this.state.langOpen;
     const menus = {
       sizeOpen: sm, langOpen: lm, sizeBtn: sm ? 'open' : '', langBtn: lm ? 'open' : '', sizeExp: sm ? 'true' : 'false', langExp: lm ? 'true' : 'false',
@@ -98,7 +137,11 @@ WRAP_JS='''
       closeMenus: () => { if (sm || lm) this.setState({ sizeOpen: false, langOpen: false }); },
       pickS: () => { if (v.setS) v.setS(); this.setState({ sizeOpen: false }); }, pickM: () => { if (v.setM) v.setM(); this.setState({ sizeOpen: false }); }, pickL: () => { if (v.setL) v.setL(); this.setState({ sizeOpen: false }); },
       pickTH: () => { this.setState({ langOpen: false }); setLang('th'); }, pickEN: () => { this.setState({ langOpen: false }); setLang('en'); },
-      langCode: th ? 'TH' : 'EN'
+      langCode: th ? 'TH' : 'EN',
+      navOpen: !!this.state.navOpen, navExp: this.state.navOpen ? 'true' : 'false',
+      toggleNav: () => this.setState({ navOpen: !this.state.navOpen, sizeOpen: false, langOpen: false }),
+      closeNav: () => { if (this.state.navOpen) this.setState({ navOpen: false }); },
+      navKey: (e) => { if (e && e.key === 'Escape') this.setState({ navOpen: false }); }
     };
     return Object.assign(out, search, cookie, loaderV, menus, { isEN: !th, isTH: th, thOn: th ? 'on' : '', enOn: th ? '' : 'on', setTH: () => setLang('th'), setEN: () => setLang('en') });
   }

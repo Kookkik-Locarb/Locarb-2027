@@ -1491,6 +1491,142 @@ ol.steps{list-style:none;padding:0}
 .ifx2-div{background:rgba(243,240,223,.3)}
 .ld.full.rep{animation-name:ldOutB}
 @keyframes ldOutB{to{opacity:0;visibility:hidden}}
+/* Mobile menu drawer */
+.mnav-bg{position:fixed;inset:0;z-index:94;background:rgba(0,0,0,.45);animation:fadein .2s ease}
+.mnav{position:fixed;top:0;right:0;bottom:0;z-index:95;width:min(420px,100%);display:flex;flex-direction:column;background:var(--paper);box-shadow:-30px 0 60px -30px rgba(0,0,0,.5);animation:mnIn .32s cubic-bezier(.2,.8,.2,1)}
+@keyframes mnIn{from{transform:translateX(100%)}to{transform:none}}
+.mn-top{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--line);padding-top:calc(14px + env(safe-area-inset-top,0px))}
+.mn-t{font-family:"Termina",sans-serif;font-weight:700;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.mn-x{width:44px;height:44px;border-radius:999px;border:1px solid var(--line);background:transparent;color:#000;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.mn-body{flex:1;overflow:auto;padding:6px 20px 20px}
+.mn-g{padding:16px 0 8px;border-bottom:1px solid var(--line)}
+.mn-h{margin:0 0 4px;font-family:"Termina",sans-serif;font-weight:700;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--forest)}
+.mn-g ul{list-style:none;margin:0;padding:0}
+.mn-g a{display:flex;justify-content:space-between;align-items:center;min-height:46px;font-family:"Termina",sans-serif;font-weight:700;font-size:calc(14px*var(--s));text-transform:uppercase;letter-spacing:.01em;color:#000;text-decoration:none}
+.mn-g a svg{color:var(--forest);opacity:.6;transition:transform .2s,opacity .2s}
+.mn-g a:hover svg,.mn-g a:focus-visible svg{opacity:1;transform:translateX(3px)}
+.mn-tools{display:flex;flex-direction:column;gap:12px;padding:18px 0 4px}
+.mn-tool{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.mn-tool>span{font-family:"Termina",sans-serif;font-weight:700;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.mn-seg{display:inline-flex;padding:3px;border-radius:999px;background:rgba(0,0,0,.06)}
+.mn-seg button{min-width:44px;height:38px;padding:0 14px;border:0;border-radius:999px;background:transparent;font-family:"Anakotmai",sans-serif;font-weight:500;font-size:13px;color:var(--muted);cursor:pointer}
+.mn-seg button i{font-style:normal;font-family:"Termina",sans-serif;font-weight:700}
+.mn-seg button.on{background:#000;color:#F3F0DF}
+.mn-foot{display:flex;flex-direction:column;gap:12px;padding:16px 20px calc(18px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line)}
+.mn-foot .btn{justify-content:center;width:100%}
+.mn-mail{text-align:center;font-family:"Termina",sans-serif;font-weight:700;font-size:12.5px;color:var(--forest);text-decoration:none}
+@media (min-width:1081px){.mnav,.mnav-bg{display:none}}
+.mn-home{padding-top:10px}
+.mn-hi{display:inline-flex;align-items:center;gap:12px}
+.mn-hi svg{color:var(--forest)}
+/* Our clients — numbers as a compact fact row */
+.tbm-side2{flex-direction:column;align-items:flex-end;gap:10px}
+.tbm-facts{display:inline-flex;align-items:center;gap:20px;padding:12px 22px;border-radius:999px;background:#FBFAF3;border:1px solid var(--line)}
+.tbm-f{display:flex;align-items:baseline;gap:8px;margin:0}
+.tbm-f b{font-family:"Termina",sans-serif;font-weight:700;font-size:calc(26px*var(--s));line-height:1;color:var(--forest)}
+.tbm-f span{font-size:calc(14px*var(--s));color:var(--muted)}
+.tbm-div{width:1px;height:24px;background:var(--line)}
+.bx-src{font-family:"Termina",sans-serif;font-weight:700;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+a.bx-ext{display:inline-flex;align-items:center;justify-content:center;color:inherit;text-decoration:none}
+/* Footer — CI: full-colour logo on Off-white (CI p.14); no logo-on-black */
+.foot.f3{background:#F3F0DF;color:#000;border-top:1px solid var(--line);border-radius:0}
+.foot.f3::before,.foot.f3 .f2-glow{display:none}
+.f3 .f3-top{border-bottom-color:var(--line)}
+.f3 .f3-desc,.f3 .f3-addr{color:var(--muted)}
+.f3 .f3-badge{border-color:var(--line);color:#000}
+.f3 .f3-badge:hover{border-color:var(--forest);color:#000}
+.f3 .f2-seal{background:var(--forest)}
+.f3 .f3-k{color:var(--forest)}
+.f3 .f3-big{color:#000;border-bottom-color:var(--line)}
+.f3 .f3-big:hover{color:var(--forest)}
+.f3 .f3-go{border-color:var(--line);color:#000}
+.f3 .f3-big:hover .f3-go{background:var(--forest);border-color:var(--forest);color:#F3F0DF}
+.f3 .f3-soc a{border-color:var(--line);color:#000}
+.f3 .f3-soc a:hover{background:#000;color:#F3F0DF}
+.f3 .f3-col h4{color:var(--forest)}
+.f3 .f3-col a{color:#000}
+.f3 .f3-col a:hover{color:var(--forest);text-decoration-color:var(--forest)}
+.f3 .f2-bot{border-top-color:var(--line);color:var(--muted)}
+.f3 .f2-ck{color:var(--muted)}
+.f3 .f2-ck:hover{color:#000}
+.f3 .f2-lang{background:rgba(0,0,0,.06)}
+.f3 .f2-lang a,.f3 .f2-lang button{color:var(--muted)}
+.f3 .f2-lang .on{background:#000;color:#F3F0DF}
+.f3 .totop span{border-color:var(--line);color:#000}
+.f3 .totop:hover span{background:#000;border-color:#000;color:#F3F0DF}
+/* ===== Micro-interactions — subtle motion so the site doesn't feel stiff ===== */
+/* page-to-page: soft crossfade; the active tab pill slides to its new place (Chrome/Edge/Safari 18+) */
+@view-transition{navigation:auto}
+header.nav{view-transition-name:site-nav}
+.ftabs a.on,.asub a.on{view-transition-name:tab-pill}
+::view-transition-old(root){animation:vtOut .2s ease both}
+::view-transition-new(root){animation:vtIn .38s cubic-bezier(.2,.7,.2,1) both}
+::view-transition-group(tab-pill){animation-duration:.42s;animation-timing-function:cubic-bezier(.2,.8,.2,1)}
+@keyframes vtOut{to{opacity:0}}
+@keyframes vtIn{from{opacity:0;transform:translateY(12px)}}
+/* tabs, chips, segmented controls: colour eases, press feedback */
+.ftabs a,.asub a,.bx-tabs a,.chip,.mn-seg button,.f2-lang a,.f2-lang button,.nu-opt,.pg{transition:background-color .28s ease,color .28s ease,border-color .28s ease,transform .18s ease,box-shadow .28s ease}
+.ftabs a:active,.asub a:active,.bx-tabs a:active,.chip:active,.mn-seg button:active,.pg:active,.btn:active,.nu-btn:active,.icbtn:active{transform:scale(.96)}
+.chip.on,.ftabs a.on,.asub a.on{animation:pillPop .32s cubic-bezier(.3,1.4,.5,1)}
+@keyframes pillPop{0%{transform:scale(.94)}100%{transform:none}}
+/* content that appears after a click */
+.pg-anim .pc{animation:cardIn .5s cubic-bezier(.2,.75,.2,1) both}
+.pg-anim .pc:nth-child(2){animation-delay:.05s}.pg-anim .pc:nth-child(3){animation-delay:.1s}.pg-anim .pc:nth-child(4){animation-delay:.15s}.pg-anim .pc:nth-child(5){animation-delay:.2s}.pg-anim .pc:nth-child(6){animation-delay:.25s}.pg-anim .pc:nth-child(n+7){animation-delay:.3s}
+@keyframes cardIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.empty{animation:fadeUpS .35s ease both}
+.fq .ans{animation:ansIn .32s cubic-bezier(.2,.7,.2,1) both;transform-origin:top}
+@keyframes ansIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.fq .pl{transition:transform .3s cubic-bezier(.3,1.3,.5,1)}
+.fq.open .pl{transform:rotate(45deg)}
+.chip.chk{animation:fadeUpS .3s ease both}
+.chip.chk:nth-child(2){animation-delay:.04s}.chip.chk:nth-child(3){animation-delay:.08s}.chip.chk:nth-child(4){animation-delay:.12s}.chip.chk:nth-child(5){animation-delay:.16s}
+.chk-b{transition:background-color .2s ease,border-color .2s ease}
+.croute-tags .ctag{animation:pillPop .3s cubic-bezier(.3,1.4,.5,1) both}
+.croute b{transition:opacity .2s}
+.srch-it{animation:fadeUpS .28s ease both}
+.srch-it:nth-child(2){animation-delay:.03s}.srch-it:nth-child(3){animation-delay:.06s}.srch-it:nth-child(4){animation-delay:.09s}.srch-it:nth-child(n+5){animation-delay:.12s}
+@keyframes fadeUpS{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.nu-chev{transition:transform .25s ease}
+.okmsg{animation:okIn .45s cubic-bezier(.3,1.3,.5,1) both}
+@keyframes okIn{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+::view-transition-old(root),::view-transition-new(root){mix-blend-mode:normal}
+@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}.chip.on,.ftabs a.on,.asub a.on,.pg-anim .pc,.fq .ans,.chip.chk,.croute-tags .ctag,.srch-it{animation:none!important}.ftabs a:active,.asub a:active,.chip:active,.btn:active{transform:none}}
+/* Tab ink (sliding active pill) + page entrance — works in every browser */
+nav.ftabs,nav.asub{position:relative;isolation:isolate}
+.tab-ink{position:absolute;z-index:-1;border-radius:999px;background:#000;transform-origin:left center;pointer-events:none;will-change:transform}
+nav.has-ink a.on{background:transparent!important}
+.os-hero2 .asub .tab-ink{background:#F3F0DF}
+.ftabs a.on,.asub a.on{animation:none}
+@keyframes pageIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.phero .wrap,.ahero .wrap,.os-hero2-in,.psec:first-of-type .wrap{animation:pageIn .55s cubic-bezier(.2,.7,.2,1) both}
+.phero + .psec .wrap,.phero ~ section:nth-of-type(2) .wrap{animation:pageIn .6s cubic-bezier(.2,.7,.2,1) .08s both}
+@media (prefers-reduced-motion:reduce){.phero .wrap,.ahero .wrap,.os-hero2-in,.psec .wrap{animation:none!important}}
+/* ===== Navbar v3 — floating glass pill ===== */
+.nav{background:transparent;border-bottom:0;backdrop-filter:none;-webkit-backdrop-filter:none;padding:12px 0 0;pointer-events:none}
+.nav .wrap{pointer-events:auto;position:relative;min-height:66px;gap:16px;padding:0 10px 0 22px;max-width:min(1296px,calc(100% - 32px));box-sizing:border-box;border-radius:999px;background:rgba(251,250,243,.82);backdrop-filter:blur(18px) saturate(1.5);-webkit-backdrop-filter:blur(18px) saturate(1.5);border:1px solid var(--line);box-shadow:0 18px 40px -30px rgba(0,0,0,.45);transition:min-height .3s ease,box-shadow .3s ease}
+.nav .navlogo img{height:36px;width:auto}
+.navlinks{margin:0 auto;gap:4px}
+.dd>a{min-height:44px;padding:10px 16px;border-radius:999px;transition:background-color .25s,color .25s}
+.dd>a::after{left:50%;right:auto;width:5px;height:5px;margin-left:-2.5px;bottom:3px;border-radius:999px;background:var(--forest);transform:scale(0);transition:transform .3s cubic-bezier(.3,1.5,.5,1)}
+.dd:hover>a,.dd:focus-within>a{background:rgba(0,0,0,.05);color:#000}
+.dd:hover>a::after,.dd:focus-within>a::after{transform:scale(0)}
+.dd.cur>a{color:var(--forest)}
+.dd.cur>a::after{transform:scale(1)}
+.nav .navtools{margin-left:0;gap:6px}
+.nav .icbtn{width:42px;height:42px;border-color:transparent;background:rgba(0,0,0,.04)}
+.nav .icbtn:hover{background:rgba(0,0,0,.08);border-color:transparent;color:#000}
+.nav .nu-btn{height:42px}
+.nav .navtools .btn{min-height:46px;padding:0 22px}
+.nav .progress{display:none}
+.nav .menu{top:calc(100% + 14px)}
+.nav .mpanel{border-radius:28px;box-shadow:0 30px 60px -30px rgba(0,0,0,.45)}
+@supports (animation-timeline: scroll()){
+ .nav .wrap{animation:navShrink linear both;animation-timeline:scroll(root);animation-range:0 180px}
+ @keyframes navShrink{to{min-height:56px;background:rgba(251,250,243,.94);box-shadow:0 22px 46px -26px rgba(0,0,0,.5)}}
+}
+@media (max-width:1080px){.nav{padding-top:10px}.nav .wrap{min-height:58px;padding:0 8px 0 18px;max-width:calc(100% - 20px)}.nav .navlogo img{height:32px}}
+@media (prefers-reduced-motion:reduce){.nav .wrap{animation:none!important}}
+@media (max-width:1080px){.tbm-side2{align-items:flex-start}}
 @media (max-width:1080px){.hero.hx11 .hx11-shade{background:linear-gradient(0deg,rgba(1,8,5,.35),rgba(1,8,5,.82) 70%)}}
 @media (prefers-reduced-motion:reduce){.hx11-video video{display:none}}
 @media (max-width:1080px){.hx11-shade{background:linear-gradient(0deg,rgba(1,8,5,.2),rgba(1,8,5,.75) 70%)}}
@@ -1641,7 +1777,7 @@ ol.steps{list-style:none;padding:0}
 </div>
 </div>
 <a href="Contact.dc.html" class="btn btn-p hide-m" style="min-height:46px;padding:0 22px"><span class="bl"><span>Contact Us</span></span></a>
-<button class="icbtn menubtn" aria-label="Open menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"></path></svg></button>
+<button class="icbtn menubtn" aria-label="Open menu" aria-expanded="{{navExp}}" aria-controls="mnav" onClick="{{toggleNav}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"></path></svg></button>
 </div>
 </div>
 <span class="progress" aria-hidden="true"></span>
@@ -1678,6 +1814,21 @@ ol.steps{list-style:none;padding:0}
 <sc-if value="{{ldQuick}}" hint-placeholder-val="{{ true }}"><img class="ld-img ld-still" src="/_blob/288706c2de7e68518f3e992220e72c92" alt=""></sc-if>
 </div>
 <!-- /loader -->
+<sc-if value="{{navOpen}}" hint-placeholder-val="{{ false }}">
+<div class="mnav-bg" onClick="{{closeNav}}"></div>
+<div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="Menu" onKeyDown="{{navKey}}">
+<div class="mn-top"><span class="mn-t">Menu</span><button type="button" class="mn-x" onClick="{{closeNav}}" aria-label="Close menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
+<div class="mn-body">
+<div class="mn-g mn-home"><ul><li><a href="#top" onClick="{{closeNav}}"><span class="mn-hi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"></path><path d="M5 10v10h14V10"></path><path d="M10 20v-6h4v6"></path></svg>Home</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li></ul></div>
+<div class="mn-g"><p class="mn-h">About Us</p><ul><li><a href="About-Story.dc.html" onClick="{{closeNav}}">LO-CARB's story<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="About-Certificates.dc.html" onClick="{{closeNav}}">Certificates<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="About-Board.dc.html" onClick="{{closeNav}}">Board of directors<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li></ul></div><div class="mn-g"><p class="mn-h">Our Solutions</p><ul><li><a href="Solution-IFRS.dc.html" onClick="{{closeNav}}">IFRS Standards<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Solution-CarbonCal.dc.html" onClick="{{closeNav}}">CarbonCal + Carbon Camp<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Solution-ISSB.dc.html" onClick="{{closeNav}}">ISSB training<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Solution-CarbonScout.dc.html" onClick="{{closeNav}}">Carbon Scout<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Solution-Reporting.dc.html" onClick="{{closeNav}}">Reporting &amp; consulting<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li></ul></div><div class="mn-g"><p class="mn-h">Blog</p><ul><li><a href="Blog.dc.html" onClick="{{closeNav}}">All posts<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Blog-Portfolio.dc.html" onClick="{{closeNav}}">Client stories<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Blog-Knowledge.dc.html" onClick="{{closeNav}}">Knowledge base<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li><li><a href="Blog-News.dc.html" onClick="{{closeNav}}">News &amp; events<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li></ul></div>
+<div class="mn-tools">
+<div class="mn-tool"><span>Language</span><div class="mn-seg"><button type="button" class="{{thOn}}" onClick="{{pickTH}}" lang="th">ไทย</button><button type="button" class="{{enOn}}" onClick="{{pickEN}}">English</button></div></div>
+<div class="mn-tool"><span>Text size</span><div class="mn-seg"><button type="button" class="{{szS}}" onClick="{{pickS}}" aria-label="Smaller text"><i style="font-size:12px">A</i></button><button type="button" class="{{szM}}" onClick="{{pickM}}" aria-label="Default text size"><i style="font-size:15px">A</i></button><button type="button" class="{{szL}}" onClick="{{pickL}}" aria-label="Larger text"><i style="font-size:18px">A</i></button></div></div>
+</div>
+</div>
+<div class="mn-foot"><a href="Contact.dc.html" class="btn btn-p" onClick="{{closeNav}}"><span class="bl"><span>Contact Us</span></span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><a href="mailto:contact@locarb.green" class="mn-mail">contact@locarb.green</a></div>
+</div>
+</sc-if>
 <!-- /search -->
 
 <!-- 1 · HERO — animated wind-farm scene (CSS/SVG), cursor spotlight + parallax, readable SEO copy -->
@@ -1729,7 +1880,7 @@ ol.steps{list-style:none;padding:0}
 <section class="tb2 tbm" aria-labelledby="tb2-h">
 <div class="wrap tbm-head rv">
 <div><p class="label"><span class="ln"></span>Our clients</p><h2 class="display h2" id="tb2-h" style="font-size:calc(clamp(26px,2.4vw,38px)*var(--s));max-width:22ch">Clients across Thailand’s <span class="it" style="color:var(--forest)">public and private</span> sectors</h2></div>
-<div class="tbm-side"><div class="tb2-stats"><div><b>14</b><span>Organisations</span></div><div><b>5</b><span>Sectors</span></div></div><a href="Blog-Portfolio.dc.html" class="tlink">See client stories <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
+<div class="tbm-side tbm-side2"><div class="tbm-facts"><p class="tbm-f"><b>14</b><span>organisations</span></p><span class="tbm-div" aria-hidden="true"></span><p class="tbm-f"><b>5</b><span>sectors</span></p></div><a href="Blog-Portfolio.dc.html" class="tlink">See client stories <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
 </div>
 <div class="tbm-rows rv" aria-label="Client list">
 <div class="tbm-m"><ul class="tbm-t" role="list"><li class="tm-sec"><span>Public sector</span></li><li class="tm-c" aria-label="Industrial Estate Authority of Thailand"><span class="tm-ab">IEAT</span><span class="tm-tip" aria-hidden="true">Industrial Estate Authority of Thailand</span></li><li class="tm-c" aria-label="Rubber Authority of Thailand"><span class="tm-ab">RAOT</span><span class="tm-tip" aria-hidden="true">Rubber Authority of Thailand</span></li><li class="tm-c" aria-label="Digital Economy Promotion Agency"><span class="tm-ab">depa</span><span class="tm-tip" aria-hidden="true">Digital Economy Promotion Agency</span></li><li class="tm-c" aria-label="Tourism Authority of Thailand"><span class="tm-ab">TAT</span><span class="tm-tip" aria-hidden="true">Tourism Authority of Thailand</span></li><li class="tm-sec"><span>Energy</span></li><li class="tm-c" aria-label="National Power Supply PCL"><span class="tm-ab">NPS</span><span class="tm-tip" aria-hidden="true">National Power Supply PCL</span></li><li class="tm-c" aria-label="Electricity Generating Authority of Thailand"><span class="tm-ab">EGAT</span><span class="tm-tip" aria-hidden="true">Electricity Generating Authority of Thailand</span></li><li class="tm-sec"><span>Industrial &amp; manufacturing</span></li><li class="tm-c" aria-label="304 Industrial Park"><span class="tm-ab">304 IP</span><span class="tm-tip" aria-hidden="true">304 Industrial Park</span></li><li class="tm-c" aria-label="Union Chemical and Equipment Co., Ltd."><span class="tm-ab">UC&amp;E</span><span class="tm-tip" aria-hidden="true">Union Chemical and Equipment Co., Ltd.</span></li><li class="tm-c" aria-label="Petchsrivichai Enterprise PCL"><span class="tm-ab">PCE</span><span class="tm-tip" aria-hidden="true">Petchsrivichai Enterprise PCL</span></li><li class="tm-sec"><span>Services</span></li><li class="tm-c" aria-label="Airports of Thailand PCL"><span class="tm-ab">AOT</span><span class="tm-tip" aria-hidden="true">Airports of Thailand PCL</span></li><li class="tm-c" aria-label="Thailand Privilege Card Co., Ltd."><span class="tm-ab">TPC</span><span class="tm-tip" aria-hidden="true">Thailand Privilege Card Co., Ltd.</span></li><li class="tm-sec"><span>Financial</span></li><li class="tm-c" aria-label="SME Development Bank"><span class="tm-ab">SME D Bank</span><span class="tm-tip" aria-hidden="true">SME Development Bank</span></li><li class="tm-c" aria-label="Bank for Agriculture and Agricultural Cooperatives"><span class="tm-ab">BAAC</span><span class="tm-tip" aria-hidden="true">Bank for Agriculture and Agricultural Cooperatives</span></li><li class="tm-c" aria-label="SCBX PCL"><span class="tm-ab">SCBX</span><span class="tm-tip" aria-hidden="true">SCBX PCL</span></li><li class="tm-sec" aria-hidden="true"><span>Public sector</span></li><li class="tm-c" aria-hidden="true" aria-label="Industrial Estate Authority of Thailand"><span class="tm-ab">IEAT</span><span class="tm-tip" aria-hidden="true">Industrial Estate Authority of Thailand</span></li><li class="tm-c" aria-hidden="true" aria-label="Rubber Authority of Thailand"><span class="tm-ab">RAOT</span><span class="tm-tip" aria-hidden="true">Rubber Authority of Thailand</span></li><li class="tm-c" aria-hidden="true" aria-label="Digital Economy Promotion Agency"><span class="tm-ab">depa</span><span class="tm-tip" aria-hidden="true">Digital Economy Promotion Agency</span></li><li class="tm-c" aria-hidden="true" aria-label="Tourism Authority of Thailand"><span class="tm-ab">TAT</span><span class="tm-tip" aria-hidden="true">Tourism Authority of Thailand</span></li><li class="tm-sec" aria-hidden="true"><span>Energy</span></li><li class="tm-c" aria-hidden="true" aria-label="National Power Supply PCL"><span class="tm-ab">NPS</span><span class="tm-tip" aria-hidden="true">National Power Supply PCL</span></li><li class="tm-c" aria-hidden="true" aria-label="Electricity Generating Authority of Thailand"><span class="tm-ab">EGAT</span><span class="tm-tip" aria-hidden="true">Electricity Generating Authority of Thailand</span></li><li class="tm-sec" aria-hidden="true"><span>Industrial &amp; manufacturing</span></li><li class="tm-c" aria-hidden="true" aria-label="304 Industrial Park"><span class="tm-ab">304 IP</span><span class="tm-tip" aria-hidden="true">304 Industrial Park</span></li><li class="tm-c" aria-hidden="true" aria-label="Union Chemical and Equipment Co., Ltd."><span class="tm-ab">UC&amp;E</span><span class="tm-tip" aria-hidden="true">Union Chemical and Equipment Co., Ltd.</span></li><li class="tm-c" aria-hidden="true" aria-label="Petchsrivichai Enterprise PCL"><span class="tm-ab">PCE</span><span class="tm-tip" aria-hidden="true">Petchsrivichai Enterprise PCL</span></li><li class="tm-sec" aria-hidden="true"><span>Services</span></li><li class="tm-c" aria-hidden="true" aria-label="Airports of Thailand PCL"><span class="tm-ab">AOT</span><span class="tm-tip" aria-hidden="true">Airports of Thailand PCL</span></li><li class="tm-c" aria-hidden="true" aria-label="Thailand Privilege Card Co., Ltd."><span class="tm-ab">TPC</span><span class="tm-tip" aria-hidden="true">Thailand Privilege Card Co., Ltd.</span></li><li class="tm-sec" aria-hidden="true"><span>Financial</span></li><li class="tm-c" aria-hidden="true" aria-label="SME Development Bank"><span class="tm-ab">SME D Bank</span><span class="tm-tip" aria-hidden="true">SME Development Bank</span></li><li class="tm-c" aria-hidden="true" aria-label="Bank for Agriculture and Agricultural Cooperatives"><span class="tm-ab">BAAC</span><span class="tm-tip" aria-hidden="true">Bank for Agriculture and Agricultural Cooperatives</span></li><li class="tm-c" aria-hidden="true" aria-label="SCBX PCL"><span class="tm-ab">SCBX</span><span class="tm-tip" aria-hidden="true">SCBX PCL</span></li></ul></div>
@@ -1824,11 +1975,11 @@ ol.steps{list-style:none;padding:0}
 </div>
 <div class="bx-row">
 <article class="bx-c bx-feat rv">
-<a href="Blog-Story.dc.html" class="bx-img" tabindex="-1" aria-hidden="true"><img src="/_blob/acea1900cc76bb1ae25f3140c738e2dd" alt="" loading="lazy"><span class="bx-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></a>
-<a href="Blog-Portfolio.dc.html" class="bx-cat bx-catpill">Client story · IFRS</a>
-<h3 class="bx-t"><a href="Blog-Story.dc.html">[Client name]: IFRS S1 &amp; S2 readiness in [X] weeks</a></h3>
-<p class="bx-x">[Two-line summary of a verified client story, approved by the client.]</p>
-<div class="bx-meta"><time datetime="2026-10-14">14 Oct 2026</time><button class="bx-pv" onClick="{{open0}}" aria-label="Quick preview: [Client name] client story"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></button></div>
+<a href="https://www.nationthailand.com/pr-news/pr-news/40070816" class="bx-img" tabindex="-1" aria-hidden="true" target="_blank" rel="noopener"><img src="/_blob/47bbf8f5b3c6f8b5430865f4e407beb9" alt="LO-CARB team and guests at a LO-CARB press event, standing in front of the green LO-CARB backdrop" loading="lazy"><span class="bx-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></a>
+<a href="Blog-News.dc.html" class="bx-cat bx-catpill">News &amp; events · Media</a>
+<h3 class="bx-t"><a href="https://www.nationthailand.com/pr-news/pr-news/40070816" target="_blank" rel="noopener">LO-CARB in The Nation Thailand</a></h3>
+<p class="bx-x">Press coverage of LO-CARB’s event with partners and guests. Read the full story on The Nation Thailand.</p>
+<div class="bx-meta"><span class="bx-src">The Nation Thailand</span><a class="bx-pv bx-ext" href="https://www.nationthailand.com/pr-news/pr-news/40070816" target="_blank" rel="noopener" aria-label="Read on The Nation Thailand (opens in a new tab)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></a></div>
 </article>
 <article class="bx-c  rv">
 <a href="Blog-Article.dc.html" class="bx-img" tabindex="-1" aria-hidden="true"><img src="/_blob/8f8174b9c50e05e0172f98487b371cb0" alt="" loading="lazy"><span class="bx-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></a>
@@ -1845,11 +1996,11 @@ ol.steps{list-style:none;padding:0}
 <div class="bx-meta"><time datetime="2026-09-19">19 Sep 2026</time><button class="bx-pv" onClick="{{open2}}" aria-label="Quick preview: [Client name]: measuring Scope 1–3 with CarbonCal"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></button></div>
 </article>
 <article class="bx-c  rv">
-<a href="Blog-Article.dc.html" class="bx-img" tabindex="-1" aria-hidden="true"><img src="/_blob/b1a0c09a559090138614b3c5c426b977" alt="" loading="lazy"><span class="bx-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></a>
-<a href="Blog-News.dc.html" class="bx-cat bx-catpill">News &amp; events · ISSB</a>
-<h3 class="bx-t"><a href="Blog-Article.dc.html">ISSB for Boards workshop returns to Bangkok on 21 Nov</a></h3>
+<a href="https://www.pptvhd36.com/news/%E0%B9%84%E0%B8%A5%E0%B8%9F%E0%B9%8C%E0%B8%AA%E0%B9%84%E0%B8%95%E0%B8%A5%E0%B9%8C/263265" class="bx-img" tabindex="-1" aria-hidden="true" target="_blank" rel="noopener"><img src="/_blob/2a5cb2eef146155225ad94f3e2fcd853" alt="LO-CARB team and guests at a LO-CARB press event" loading="lazy"><span class="bx-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></a>
+<a href="Blog-News.dc.html" class="bx-cat bx-catpill">News &amp; events · Media</a>
+<h3 class="bx-t"><a href="https://www.pptvhd36.com/news/%E0%B9%84%E0%B8%A5%E0%B8%9F%E0%B9%8C%E0%B8%AA%E0%B9%84%E0%B8%95%E0%B8%A5%E0%B9%8C/263265" target="_blank" rel="noopener">LO-CARB on PPTV HD 36</a></h3>
 
-<div class="bx-meta"><time datetime="2026-09-05">5 Sep 2026</time><button class="bx-pv" onClick="{{open3}}" aria-label="Quick preview: ISSB for Boards workshop returns to Bangkok on 21 Nov"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></button></div>
+<div class="bx-meta"><span class="bx-src">PPTV HD 36</span><a class="bx-pv bx-ext" href="https://www.pptvhd36.com/news/%E0%B9%84%E0%B8%A5%E0%B8%9F%E0%B9%8C%E0%B8%AA%E0%B9%84%E0%B8%95%E0%B8%A5%E0%B9%8C/263265" target="_blank" rel="noopener" aria-label="Read on PPTV HD 36 (opens in a new tab)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></a></div>
 </article>
 </div>
 </div>
@@ -1880,7 +2031,7 @@ ol.steps{list-style:none;padding:0}
 <div class="wrap">
 <div class="f3-top">
 <div class="f3-brand">
-<img class="f2-logo" src="/_blob/0a7364de43a8ab52180d607e6a495657" alt="LO-CARB" width="96" height="64">
+<img class="f2-logo" src="/_blob/6fb07855b3a66662efda15fb53c6e65f" alt="LO-CARB" width="96" height="64">
 <p class="f3-desc">LO-CARB is a sustainability consultancy in Thailand. We believe sustainability is the new growth core, so we help organizations cut emissions, reduce risk and turn sustainability into business growth.</p>
 <a href="Solution-IFRS.dc.html" class="f3-badge"><span class="f2-seal">1<em>st</em></span><span>Thailand's first IFRS Sustainability Alliance member</span></a>
 </div>

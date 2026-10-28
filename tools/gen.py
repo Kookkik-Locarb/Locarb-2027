@@ -1,6 +1,6 @@
 import re, json, os
 ROOT='/mnt/user-data/outputs/artifacts/f4e40824-ae7d-4cfb-9d09-67115159c811/project/'
-CSS='/_blob/c8a5ee2e0794924a909918c9217777e6'
+CSS='/_blob/3f83959260dd1258040d746104200b96'
 HERO_IMG='/_blob/76a10b9728d986483bbe8ab87e4dd874'
 HAND_IMG='/_blob/070ecf4ba0bce5a6105896c061bf806d'
 main=open(ROOT+'Main.dc.html').read()
@@ -183,12 +183,15 @@ def banner(txt):
 
 def pteaser(cv,cat,title,num,numtxt,href='Blog-Story.dc.html'):
     return '''<a href="'''+href+'''" class="pteaser rv">
-<span class="cv '''+cv+'''"><span class="cvl">Portfolio</span></span>
+'''+((('<span class="cv cvimg"><img src="%s" alt="" loading="lazy"><span class="cvl">Portfolio</span></span>'%_postimg(title)) if ('_postimg' in globals() and _postimg(title)) else ('<span class="cv '+cv+'"><span class="cvl">Portfolio</span></span>')))+'''
 <div><span class="cat">'''+cat+'''</span><h3 class="ptitle2">'''+title+'''</h3>
 <div class="resnum"><b>'''+num+'''</b><span>'''+numtxt+'''</span></div>
 <span class="tlink" style="margin-top:20px">Read the story '''+AR+'''</span></div>
 </a>'''
 
+EARLY_IMG={'[Client name]: IFRS S1 & S2 readiness in [X] weeks': '/_blob/acea1900cc76bb1ae25f3140c738e2dd', 'What IFRS S2 means for SET-listed companies': '/_blob/8f8174b9c50e05e0172f98487b371cb0', '[Client name]: measuring Scope 1–3 with CarbonCal': '/_blob/047a45f90dd489c5c0720e07750cf2e7', 'IFRS S1 vs S2: what each standard asks for': '/_blob/abf3912d1a0616028ddbd2bc03f612ad', 'ISSB for Boards workshop returns to Bangkok on 21 Nov': '/_blob/b1a0c09a559090138614b3c5c426b977', '[Client name]: tracking plantation carbon with Carbon Scout': '/_blob/f04f71502a34190bfb355066c95eb830', 'Scope 1, 2 and 3 emissions explained': '/_blob/edb5ae5e167e8554cada59c2b4664212', '[Client name]: a first sustainability report in one cycle': '/_blob/020d21a38d37570d4a214c8bf020799d', 'LO-CARB and [Client name] team up on farmland carbon': '/_blob/886cc0ad2d233798f21242784066a3e7', 'How to start collecting Scope 3 supplier data': '/_blob/b4f421a9c4705fb253837a88078000d8', '[Client name]: ISSB training for the board': '/_blob/662ab3a2fa90fca5090fd3badfb4c529', 'CarbonCal adds Scope 3 category templates': '/_blob/5e3500e8b05b65d35b9695f4a30d8fac'}
+def _postimg(title):
+    return EARLY_IMG.get(title.replace("&amp;","&")) or EARLY_IMG.get(title)
 DATES=['14 Oct 2026','2 Oct 2026','19 Sep 2026','5 Sep 2026','22 Aug 2026','8 Aug 2026','25 Jul 2026','11 Jul 2026']
 DI=[0]
 def nd():
@@ -196,7 +199,9 @@ def nd():
 def related(posts):
     out='<div class="postgrid">'
     for cv,cat,t,h in posts:
-        out+='<a href="%s" class="pc rv"><span class="cv %s"></span><span class="cat">%s</span><span class="t">%s</span><span class="pmeta">%s</span></a>'%(h,cv,cat,t,nd())
+        im_=_postimg(t) if '_postimg' in globals() else None
+        cvh=('<span class="cv cvimg"><img src="%s" alt="" loading="lazy"></span>'%im_) if im_ else '<span class="cv %s"></span>'%cv
+        out+='<a href="%s" class="pc rv">%s<span class="cat">%s</span><span class="t">%s</span><span class="pmeta">%s</span></a>'%(h,cvh,cat,t,nd())
     return out+'</div>'
 
 def sec(cls,inner):
@@ -228,31 +233,53 @@ def ahero(cr,lab,h1,lead,active,vis=''):
 </section>'''
 ACTA=lambda p: pcta('Read our blog or <span class="it" style="color:#8FE3B0">talk</span> to us',p,'Contact Us','Contact.dc.html','Read our blog','Blog.dc.html')
 
-# ---------- ABOUT: STORY ----------
-vis='''<div class="ahero-vis rise d2" aria-hidden="true"><span class="ahero-glow"></span><img src="'''+HAND_CUT+'''" alt=""><span class="aseal"><small>Est.</small><b>2021</b><span>Bangkok</span></span></div>'''
-body=ahero([('About Us','About-Story.dc.html'),("LO-CARB's story",None)],'About LO-CARB','Our <span class="it" style="color:var(--forest)">story</span>',
- 'Founded in 2021, LO-CARB is a sustainability consultancy that sees sustainability as the heart of business, not a trend or CSR. We combine science, technology and business to help Thai organizations cut emissions, meet global standards and grow.','About-Story.dc.html',vis).replace('CURVEFILL','#000000')
-# Mission — black band
-body+='''<section class="amission"><div class="wrap amission-grid">
-<div class="rv">'''+label('Mission',True)+'''<p class="amission-h">We put the world <span class="it">on a carbon diet.</span></p></div>
-<p class="amission-p rv2">We map a clear path to lower emissions while driving business performance, for organizations from the public to the private sector, large and small.</p>
+# ---------- ABOUT: STORY (layout v3 — same content) ----------
+HERO_PHOTO='/_blob/76a10b9728d986483bbe8ab87e4dd874'
+body='''<section class="os-hero2">
+<div class="os-hero2-bg" aria-hidden="true"><img src="'''+HERO_PHOTO+'''" alt=""></div>
+<div class="os-hero2-shade" aria-hidden="true"></div>
+<div class="wrap os-hero2-in">
+'''+crumbs([('About Us','About-Story.dc.html'),("LO-CARB's story",None)])+'''
+<div class="os-hero2-copy">
+'''+label('About LO-CARB',True)+'''
+<h1 class="display os-h1b rise">Our <span class="it">story</span></h1>
+<p class="os-lead2 rise d2">Founded in 2021, LO-CARB is a sustainability consultancy that sees sustainability as the heart of business, not a trend or CSR. We combine science, technology and business to help Thai organizations cut emissions, meet global standards and grow.</p>
+'''+asub('About-Story.dc.html')+'''
+</div>
+</div>
+<span class="aseal os-seal2" aria-hidden="true"><small>Est.</small><b>2021</b><span>Bangkok</span></span>
+<svg class="acurve" viewBox="0 0 1440 116" preserveAspectRatio="none" aria-hidden="true"><path d="M0 116H1440V44C1080 120 360 120 0 44Z" fill="#0A7D3F"></path></svg>
+</section>'''
+# Mission — green, centred statement
+body+='''<section class="os-mission"><div class="wrap os-mission-in rv">
+'''+label('Mission',True).replace('class="label"','class="label" style="justify-content:center"',1)+'''
+<p class="os-mission-h">We put the world <span class="it">on a carbon diet.</span></p>
+<p class="os-mission-p">We map a clear path to lower emissions while driving business performance, for organizations from the public to the private sector, large and small.</p>
 </div></section>'''
-# Milestones — horizontal timeline
+# Milestones — sticky heading + vertical timeline
 MS=[('2021','LO-CARB founded',False),('[Year]','Launched CarbonCal and Carbon Camp',True),('2026',"Became Thailand’s first IFRS Sustainability Alliance member",False),('[Year]','[Other milestone]',True)]
-body+='''<section class="psec amile"><div class="wrap">'''+sechead('Milestones','How we got here')+'''<ol class="atl" role="list">'''+''.join('<li class="rv%s"><span class="atl-dot" aria-hidden="true"></span><b>%s</b><p>%s</p></li>'%(' tbc' if tbc else '',y,h) for y,h,tbc in MS)+'''</ol></div></section>'''
-# We believe — sand
-body+='''<section class="psec sand abelieve"><div class="wrap abelieve-grid">
-<div class="rv">'''+label('We believe')+'''<p class="abelieve-h"><span class="aq" aria-hidden="true">“</span>Sustainability is the new <span class="it">growth core.</span></p></div>
-<p class="abelieve-p rv2">We don’t see it as a trend or CSR, but as the heart of the business: it drives performance, reduces risk, meets customer demand and opens local and global opportunities.</p>
+body+='''<section class="psec os-mile"><div class="wrap os-mile-grid">
+<div class="os-mile-head">'''+label('Milestones')+'''<h2 class="display h2">How we got here</h2></div>
+<ol class="os-tl" role="list">'''+''.join('<li class="rv%s"><span class="os-tl-y">%s</span><span class="os-tl-dot" aria-hidden="true"></span><p>%s</p></li>'%(' tbc' if tbc else '',y,h) for y,h,tbc in MS)+'''</ol>
 </div></section>'''
-# 3 DNAs
+# We believe — black, big statement over a two-column split
+body+='''<section class="os-believe"><div class="wrap">
+<div class="rv">'''+label('We believe',True)+'''</div>
+<p class="os-believe-h rv">Sustainability is the new <span class="it">growth core.</span></p>
+<div class="os-believe-row rv2"><span class="os-believe-rule" aria-hidden="true"></span><p class="os-believe-p">We don’t see it as a trend or CSR, but as the heart of the business: it drives performance, reduces risk, meets customer demand and opens local and global opportunities.</p></div>
+</div></section>'''
+# 3 DNAs — editorial columns with oversized numerals
 DNA=[('growth','Sustainability-rooted','We understand each sector’s challenges and find the smoothest path to transformation.'),('bolt','Technology-driven','We use technology to solve problems more efficiently than traditional methods.'),('story','Creative thinkers','We make sustainability simple, relevant and practical.')]
-body+='''<section class="psec adna"><div class="wrap">'''+sechead('Our DNA','Three things that make LO-CARB')+'''<ol class="adna-g" role="list">'''+''.join('<li class="rv"><div class="adna-top"><span class="adna-n">0%d</span><span class="adna-ic">%s</span></div><h3>%s</h3><p>%s</p></li>'%(i+1,ic(k,24),h,d) for i,(k,h,d) in enumerate(DNA))+'''</ol></div></section>'''
-# Key numbers — green band
-KN=['clients across 5 sectors','organizations using CarbonCal','tCO₂e measured','people trained through Carbon Camp','years in sustainability consulting']
-body+='''<section class="anum"><div class="wrap">'''+label('Key numbers')+'''<h2 class="display h2 anum-h">LO-CARB in numbers</h2><ul class="anum-g" role="list">'''+''.join('<li class="rv"><b>[x]</b><span>%s</span></li>'%k for k in KN)+'''</ul><p class="anum-note">Figures to be confirmed by LO-CARB.</p></div></section>'''
+body+='''<section class="psec os-dna"><div class="wrap">'''+sechead('Our DNA','Three things that make LO-CARB')+'''<ol class="os-dna-g" role="list">'''+''.join('<li class="rv"><span class="os-dna-n">0%d</span><span class="os-dna-ic">%s</span><h3>%s</h3><p>%s</p></li>'%(i+1,ic(k,22),h,d) for i,(k,h,d) in enumerate(DNA))+'''</ol></div></section>'''
+# Key numbers — bento
+KN=['[x] clients across 5 sectors','[x] organizations using CarbonCal','[x] tCO₂e measured','[x] people trained through Carbon Camp','[x] years in sustainability consulting']
+body+='''<section class="psec sand os-num"><div class="wrap">
+<div class="os-num-head">'''+label('Key numbers')+'''<h2 class="display h2">LO-CARB in numbers</h2></div>
+<ul class="os-num-g" role="list">'''+''.join('<li class="rv%s"><p class="anum-s">%s</p></li>'%(' os-num-lead' if i==0 else '',k) for i,k in enumerate(KN))+'''</ul>
+<p class="anum-note">Figures to be confirmed by LO-CARB.</p>
+</div></section>'''
 body+=ACTA('See how we think about IFRS and carbon, or tell us what you need.')
-page('About-Story.dc.html',"LO-CARB's story",'about',body,logic(),4300); pages.append(('About-Story.dc.html',"About · Story",4300,'about'))
+page('About-Story.dc.html',"LO-CARB's story",'about',body,logic(),4600); pages.append(('About-Story.dc.html',"About · Story",4600,'about'))
 
 # ---------- ABOUT: CERTIFICATES ----------
 def certimg(txt): return '<span class="acert-img" aria-hidden="true"><span class="acert-paper"><i></i><i></i><i></i><em>%s</em></span></span>'%txt
@@ -382,43 +409,77 @@ product('Solution-CarbonScout.dc.html','Carbon Scout','Carbon Scout',
 
 # ---------- BLOG HUB + CATEGORIES ----------
 POSTS=[
- {'cv':'cv1','cat':'Portfolio','tag':'IFRS','t':'[Client name]: IFRS S1 & S2 readiness in [X] weeks','h':'Blog-Story.dc.html','d':'14 Oct 2026'},
- {'cv':'cv4','cat':'Knowledge base','tag':'IFRS','t':'What IFRS S2 means for SET-listed companies','h':'Blog-Article.dc.html','d':'2 Oct 2026'},
- {'cv':'cv2','cat':'Portfolio','tag':'CarbonCal','t':'[Client name]: measuring Scope 1–3 with CarbonCal','h':'Blog-Story.dc.html','d':'19 Sep 2026'},
- {'cv':'cv7','cat':'Knowledge base','tag':'IFRS','t':'IFRS S1 vs S2: what each standard asks for','h':'Blog-Article.dc.html','d':'12 Sep 2026'},
- {'cv':'cv3','cat':'News & events','tag':'ISSB','t':'ISSB for Boards workshop returns to Bangkok on 21 Nov','h':'Blog-Article.dc.html','d':'5 Sep 2026'},
- {'cv':'cv6','cat':'Portfolio','tag':'Carbon Scout','t':'[Client name]: tracking plantation carbon with Carbon Scout','h':'Blog-Story.dc.html','d':'28 Aug 2026'},
- {'cv':'cv5','cat':'Knowledge base','tag':'CarbonCal','t':'Scope 1, 2 and 3 emissions explained','h':'Blog-Article.dc.html','d':'22 Aug 2026'},
- {'cv':'cv8','cat':'Portfolio','tag':'Reporting','t':'[Client name]: a first sustainability report in one cycle','h':'Blog-Story.dc.html','d':'8 Aug 2026'},
- {'cv':'cv2','cat':'News & events','tag':'Carbon Scout','t':'LO-CARB and [Client name] team up on farmland carbon','h':'Blog-Article.dc.html','d':'1 Aug 2026'},
- {'cv':'cv1','cat':'Knowledge base','tag':'CarbonCal','t':'How to start collecting Scope 3 supplier data','h':'Blog-Article.dc.html','d':'25 Jul 2026'},
- {'cv':'cv4','cat':'Portfolio','tag':'ISSB','t':'[Client name]: ISSB training for the board','h':'Blog-Story.dc.html','d':'18 Jul 2026'},
- {'cv':'cv7','cat':'News & events','tag':'CarbonCal','t':'CarbonCal adds Scope 3 category templates','h':'Blog-Article.dc.html','d':'11 Jul 2026'}]
+ {'img':'/_blob/acea1900cc76bb1ae25f3140c738e2dd','cv':'cv1','cat':'Portfolio','tag':'IFRS','t':'[Client name]: IFRS S1 & S2 readiness in [X] weeks','h':'Blog-Story.dc.html','d':'14 Oct 2026'},
+ {'img':'/_blob/8f8174b9c50e05e0172f98487b371cb0','cv':'cv4','cat':'Knowledge base','tag':'IFRS','t':'What IFRS S2 means for SET-listed companies','h':'Blog-Article.dc.html','d':'2 Oct 2026'},
+ {'img':'/_blob/047a45f90dd489c5c0720e07750cf2e7','cv':'cv2','cat':'Portfolio','tag':'CarbonCal','t':'[Client name]: measuring Scope 1–3 with CarbonCal','h':'Blog-Story.dc.html','d':'19 Sep 2026'},
+ {'img':'/_blob/abf3912d1a0616028ddbd2bc03f612ad','cv':'cv7','cat':'Knowledge base','tag':'IFRS','t':'IFRS S1 vs S2: what each standard asks for','h':'Blog-Article.dc.html','d':'12 Sep 2026'},
+ {'img':'/_blob/b1a0c09a559090138614b3c5c426b977','cv':'cv3','cat':'News & events','tag':'ISSB','t':'ISSB for Boards workshop returns to Bangkok on 21 Nov','h':'Blog-Article.dc.html','d':'5 Sep 2026'},
+ {'img':'/_blob/f04f71502a34190bfb355066c95eb830','cv':'cv6','cat':'Portfolio','tag':'Carbon Scout','t':'[Client name]: tracking plantation carbon with Carbon Scout','h':'Blog-Story.dc.html','d':'28 Aug 2026'},
+ {'img':'/_blob/edb5ae5e167e8554cada59c2b4664212','cv':'cv5','cat':'Knowledge base','tag':'CarbonCal','t':'Scope 1, 2 and 3 emissions explained','h':'Blog-Article.dc.html','d':'22 Aug 2026'},
+ {'img':'/_blob/020d21a38d37570d4a214c8bf020799d','cv':'cv8','cat':'Portfolio','tag':'Reporting','t':'[Client name]: a first sustainability report in one cycle','h':'Blog-Story.dc.html','d':'8 Aug 2026'},
+ {'img':'/_blob/886cc0ad2d233798f21242784066a3e7','cv':'cv2','cat':'News & events','tag':'Carbon Scout','t':'LO-CARB and [Client name] team up on farmland carbon','h':'Blog-Article.dc.html','d':'1 Aug 2026'},
+ {'img':'/_blob/b4f421a9c4705fb253837a88078000d8','cv':'cv1','cat':'Knowledge base','tag':'CarbonCal','t':'How to start collecting Scope 3 supplier data','h':'Blog-Article.dc.html','d':'25 Jul 2026'},
+ {'img':'/_blob/662ab3a2fa90fca5090fd3badfb4c529','cv':'cv4','cat':'Portfolio','tag':'ISSB','t':'[Client name]: ISSB training for the board','h':'Blog-Story.dc.html','d':'18 Jul 2026'},
+ {'img':'/_blob/5e3500e8b05b65d35b9695f4a30d8fac','cv':'cv7','cat':'News & events','tag':'CarbonCal','t':'CarbonCal adds Scope 3 category templates','h':'Blog-Article.dc.html','d':'11 Jul 2026'}]
 TAGS=['All','IFRS','CarbonCal','ISSB','Carbon Scout','Reporting']
+BLOG_MEDIA=[{'img':'/_blob/47bbf8f5b3c6f8b5430865f4e407beb9','cat':'News & events','tag':'Media','t':'LO-CARB in The Nation Thailand','h':'https://www.nationthailand.com/pr-news/pr-news/40070816','d':'The Nation Thailand','ext':True},
+            {'img':'/_blob/2a5cb2eef146155225ad94f3e2fcd853','cat':'News & events','tag':'Media','t':'LO-CARB on PPTV HD 36','h':'https://www.pptvhd36.com/news/%E0%B9%84%E0%B8%A5%E0%B8%9F%E0%B9%8C%E0%B8%AA%E0%B9%84%E0%B8%95%E0%B8%A5%E0%B9%8C/263265','d':'PPTV HD 36','ext':True}]
 def bloghub(fname,tab,cat,h1,lead,feat,h):
-    tabs=[('All','Blog.dc.html'),('Portfolio','Blog-Portfolio.dc.html'),('Knowledge base','Blog-Knowledge.dc.html'),('News &amp; events','Blog-News.dc.html')]
-    tb='<nav class="ftabs" aria-label="Blog categories">'+''.join('<a href="%s"%s>%s</a>'%(hh,' class="on" aria-current="page"' if t==tab else '',t) for t,hh in tabs)+'</nav>'
-    cr=[('Blog','Blog.dc.html'),(tab,None)] if tab!='All' else [('Blog',None)]
-    body=phero(cr,'Blog',h1,lead)
-    inner='<div style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:64px">'+tb+'<div class="chips"><span class="lb">SOLUTION</span><sc-for list="{{chips}}" as="c" hint-placeholder-count="6"><button class="chip {{c.cls}}" onClick="{{c.pick}}">{{c.label}}</button></sc-for></div></div>'
-    if feat:
-        inner+='<a href="Blog-Story.dc.html" class="featpost rv"><span class="cv cv1"><span class="cvl">Featured</span></span><div><span class="cat">Portfolio · IFRS</span><h2 class="ptitle2">[Client name]: IFRS S1 &amp; S2 readiness in [X] weeks</h2><p class="p muted" style="margin-top:16px">[Two-line summary of a verified client story, approved by the client.]</p><span class="pmeta" style="display:block;margin-top:16px">14 Oct 2026</span><span class="tlink" style="margin-top:12px">Read the story '+AR+'</span></div></a>'
-    inner+='<sc-if value="{{hasPosts}}" hint-placeholder-val="{{ true }}"><div class="postgrid"><sc-for list="{{posts}}" as="p" hint-placeholder-count="6"><a href="{{p.h}}" class="pc"><span class="cv {{p.cv}}"><span class="cvl">{{p.tag}}</span></span><span class="cat">{{p.cat}}</span><span class="t">{{p.t}}</span><span class="pmeta">{{p.d}}</span></a></sc-for></div></sc-if>'
-    inner+='<sc-if value="{{noPosts}}" hint-placeholder-val="{{ false }}"><p class="empty">No posts for this solution yet. Try another filter.</p></sc-if>'
-    inner+='<nav class="pager" aria-label="Pages"><a href="#" class="pg on">1</a><a href="#" class="pg">2</a><a href="#" class="pg">3</a><a href="#" class="pg">→</a></nav>'
-    body+='<section class="psec" style="padding-top:24px"><div class="wrap">'+inner+'</div></section>'
+    CATS=[('All',None,'Blog.dc.html'),('Client stories','Portfolio','Blog-Portfolio.dc.html'),('Knowledge base','Knowledge base','Blog-Knowledge.dc.html'),('News & events','News & events','Blog-News.dc.html')]
+    ci=[c[1] for c in CATS].index(cat)
+    crumb=[('Blog','Blog.dc.html'),(CATS[ci][0].replace('&','&amp;'),None)] if ci else [('Blog',None)]
+    UPR='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg>'
+    card='<a href="{{p.h}}" class="bh-card" target="{{p.tgt}}" rel="{{p.rel}}"><span class="bh-img"><img src="{{p.img}}" alt="" loading="lazy"></span><span class="bh-meta"><span class="bh-cat">{{p.catLabel}}</span><i class="bh-dot" aria-hidden="true"></i><span>{{p.tag}}</span></span><span class="bh-t">{{p.t}}</span><span class="bh-d">{{p.d}}<span class="bh-go">'+UPR+'</span></span></a>'
+    featm=lambda tag: '<'+tag+' class="bh-feat" aria-label="Featured"><a href="{{feat.h}}" class="bh-feat-img" target="{{feat.tgt}}" rel="{{feat.rel}}" tabindex="-1" aria-hidden="true"><img src="{{feat.img}}" alt=""></a><div class="bh-feat-b"><span class="bh-flag">Featured</span><span class="bh-meta"><span class="bh-cat">{{feat.catLabel}}</span><i class="bh-dot" aria-hidden="true"></i><span>{{feat.tag}}</span></span><h2 class="bh-feat-t"><a href="{{feat.h}}" target="{{feat.tgt}}" rel="{{feat.rel}}">{{feat.t}}</a></h2><span class="bh-d">{{feat.d}}</span><a href="{{feat.h}}" class="tlink" target="{{feat.tgt}}" rel="{{feat.rel}}">Read more '+AR+'</a></div></'+tag+'>'
+    body='''<section class="bh-hero"><div class="wrap">'''+crumbs(crumb)+'''
+<div class="bh-hero-grid"><div>'''+label('Blog')+'''<h1 class="display bh-h1 rise">Insights &amp; <span class="it" style="color:var(--forest)">client stories</span></h1></div>
+<p class="bh-lead rise d2">Client stories, explainers on IFRS, ISSB and carbon, and news from the LO-CARB team.</p></div>
+</div></section>
+<section class="psec bh-body"><div class="wrap">
+<div class="bh-bar">
+<div class="bh-tabs" role="tablist" aria-label="Blog categories" style="--i:{{tabIndex}}"><span class="bh-ink" aria-hidden="true"></span><sc-for list="{{tabs}}" as="x" hint-placeholder-count="4"><button type="button" role="tab" aria-selected="{{x.sel}}" class="bh-tab {{x.cls}}" onClick="{{x.pick}}">{{x.label}}</button></sc-for></div>
+<div class="bh-dd" onMouseLeave="{{closeSol}}" onKeyDown="{{solKey}}"><button type="button" class="bh-ddb {{solActive}}" aria-haspopup="listbox" aria-expanded="{{solExp}}" onClick="{{toggleSol}}"><span class="bh-lb">Solution</span><b>{{tagLabel}}</b><svg class="nu-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{solOpen}}" hint-placeholder-val="{{ false }}"><div class="nu-menu bh-menu" role="listbox" aria-label="Solution"><sc-for list="{{chips}}" as="c" hint-placeholder-count="6"><button type="button" role="option" aria-selected="{{c.pr}}" class="nu-opt {{c.cls}}" onClick="{{c.pick}}">{{c.label}}<svg class="nu-ck" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></button></sc-for></div></sc-if></div>
+</div>
+<p class="bh-count"><b>{{count}}</b> <span>posts</span></p>
+<sc-if value="{{featA}}" hint-placeholder-val="{{ true }}">'''+featm('article')+'''</sc-if>
+<sc-if value="{{featB}}" hint-placeholder-val="{{ false }}">'''+featm('section')+'''</sc-if>
+<sc-if value="{{gridA}}" hint-placeholder-val="{{ true }}"><div class="bh-grid"><sc-for list="{{posts}}" as="p" hint-placeholder-count="6">'''+card+'''</sc-for></div></sc-if>
+<sc-if value="{{gridB}}" hint-placeholder-val="{{ false }}"><section class="bh-grid" aria-label="Posts"><sc-for list="{{posts}}" as="p" hint-placeholder-count="6">'''+card+'''</sc-for></section></sc-if>
+<sc-if value="{{noPosts}}" hint-placeholder-val="{{ false }}"><p class="empty bh-empty">No posts for this solution yet. Try another filter.</p></sc-if>
+<sc-if value="{{hasMore}}" hint-placeholder-val="{{ true }}"><div class="bh-more"><button type="button" class="btn btn-od" onClick="{{more}}"><span class="bl"><span>Load more</span></span></button></div></sc-if>
+</div></section>'''
     body+=pcta('Talk to us about a project <span class="it" style="color:#8FE3B0">like these</span>','Tell us your goal and we will point you to the right solution.','Contact Us','Contact.dc.html','Explore solutions','Main.dc.html')
-    plist=[p for p in POSTS if cat is None or p['cat']==cat]
-    js=logic("{ tag: 'All' }",'''const P = '''+json.dumps(plist)+''';
+    plist=BLOG_MEDIA[:1]+POSTS[:2]+BLOG_MEDIA[1:]+POSTS[2:]
+    js=logic("{ ci: %d, tag: 'All', limit: 6 }"%ci,'''const P = '''+json.dumps(plist,ensure_ascii=False)+''';
     const T = '''+json.dumps(TAGS)+''';
-    const list = P.filter((p) => st.tag === 'All' || p.tag === st.tag);
-    const extra = { chips: T.map((t) => ({ label: t, cls: st.tag === t ? 'on' : '', pick: () => this.setState({ tag: t }) })), posts: list, hasPosts: list.length > 0, noPosts: list.length === 0 };''')
+    const CATS = '''+json.dumps([[c[0],c[1]] for c in CATS])+''';
+    const FILES = ['Blog.html', 'Blog-Portfolio.html', 'Blog-Knowledge.html', 'Blog-News.html'];
+    const CL = { 'Portfolio': 'Client story', 'Knowledge base': 'Knowledge base', 'News & events': 'News & events' };
+    const ci = st.ci, cc = CATS[ci][1];
+    const deco = (p) => Object.assign({}, p, { catLabel: CL[p.cat] || p.cat, tgt: p.ext ? '_blank' : '', rel: p.ext ? 'noopener' : '' });
+    const list = P.filter((p) => (!cc || p.cat === cc) && (st.tag === 'All' || p.tag === st.tag)).map(deco);
+    const ft = list[0], rest = list.slice(1), shown = rest.slice(0, st.limit), flip = !!this._flip;
+    const go = (patch) => { this._flip = !this._flip; this.setState(Object.assign({ limit: 6, solOpen: false }, patch)); };
+    const extra = {
+      tabs: CATS.map((x, i) => ({ label: x[0], cls: i === ci ? 'on' : '', sel: i === ci ? 'true' : 'false', pick: () => { if (i === ci) return; go({ ci: i }); try { const pth = location.pathname; if (/\\.html$/.test(pth) && !/\\.dc\\.html$/.test(pth)) history.replaceState(null, '', FILES[i]); } catch (e) {} } })),
+      tabIndex: String(ci),
+      chips: T.map((x) => ({ label: x === 'All' ? 'All solutions' : x, cls: st.tag === x ? 'on' : '', pr: st.tag === x ? 'true' : 'false', pick: () => { if (st.tag !== x) go({ tag: x, solOpen: false }); else this.setState({ solOpen: false }); } })),
+      tagLabel: st.tag === 'All' ? 'All solutions' : st.tag, solActive: (st.tag !== 'All' ? 'is-set ' : '') + (st.solOpen ? 'open' : ''),
+      solOpen: !!st.solOpen, solExp: st.solOpen ? 'true' : 'false',
+      toggleSol: () => this.setState({ solOpen: !st.solOpen }), closeSol: () => { if (st.solOpen) this.setState({ solOpen: false }); },
+      solKey: (e) => { if (e && e.key === 'Escape') this.setState({ solOpen: false }); },
+      count: String(list.length),
+      feat: ft || {}, featA: !!ft && !flip, featB: !!ft && flip,
+      posts: shown, gridA: shown.length > 0 && !flip, gridB: shown.length > 0 && flip,
+      noPosts: list.length === 0, hasMore: rest.length > st.limit,
+      more: () => this.setState({ limit: st.limit + 6 })
+    };''')
     page(fname,'Blog' if tab=='All' else tab.replace('&amp;','&'),'blog',body,js,h)
     pages.append((fname,'Blog · '+tab.replace('&amp;','&'),h,'blog'))
-bloghub('Blog.dc.html','All',None,'Insights &amp; <span class="it" style="color:#0B7A3E">client stories</span>','Client stories, explainers on IFRS, ISSB and carbon, and news from the LO-CARB team.',True,4300)
-bloghub('Blog-Portfolio.dc.html','Portfolio','Portfolio','Client <span class="it" style="color:#0B7A3E">stories</span>','Named clients, the challenge they faced and the results they got. Grouped by solution so you can find peers.',False,3500)
-bloghub('Blog-Knowledge.dc.html','Knowledge base','Knowledge base','Knowledge <span class="it" style="color:#0B7A3E">base</span>','Plain-language explainers on IFRS S1 &amp; S2, ISSB and carbon accounting.',False,3500)
-bloghub('Blog-News.dc.html','News &amp; events','News & events','News &amp; <span class="it" style="color:#0B7A3E">events</span>','Updates, workshops and announcements from LO-CARB.',False,3200)
+bloghub('Blog.dc.html','All',None,'','',True,3400)
+bloghub('Blog-Portfolio.dc.html','Portfolio','Portfolio','','',False,3400)
+bloghub('Blog-Knowledge.dc.html','Knowledge base','Knowledge base','','',False,3400)
+bloghub('Blog-News.dc.html','News &amp; events','News & events','','',False,3400)
 
 # ---------- PORTFOLIO STORY (template) ----------
 body='''<section class="phero"><div class="wrap">'''+crumbs([('Blog','Blog.dc.html'),('Portfolio','Blog-Portfolio.dc.html'),('[Client name]',None)])+'''
@@ -427,7 +488,7 @@ body='''<section class="phero"><div class="wrap">'''+crumbs([('Blog','Blog.dc.ht
 <h1 class="display ph1 rise" style="font-size:calc(clamp(36px,4.2vw,68px)*var(--s))">[Headline result, approved by the client]</h1></div>
 <div class="rise d2"><div class="tagrow"><span class="tag g">IFRS Standards</span><span class="tag">Portfolio</span></div><p class="pmeta" style="margin-top:16px">14 Oct 2026</p></div>
 </div></div></section>
-<div class="wrap"><span class="cv cv4 rv" style="aspect-ratio:21/9;border-radius:28px"></span></div>
+<div class="wrap"><span class="cv cvimg rv" style="aspect-ratio:21/9;border-radius:28px"><img src="/_blob/acea1900cc76bb1ae25f3140c738e2dd" alt=""></span></div>
 '''+sec('', '''<div class="art"><div class="prose">
 <h2>The challenge</h2><p>[The challenge: what the client needed and why it was hard. Verified case content, approved by the client.]</p>
 <h2>The solution</h2><p>We ran the six-step <a href="Solution-IFRS.dc.html">IFRS Standards</a> service: from gap analysis to disclosure. [Project details to confirm.]</p><p>[How the platform and training were used. Verified case content.]</p>
@@ -443,7 +504,7 @@ body='''<section class="phero"><div class="wrap">'''+crumbs([('Blog','Blog.dc.ht
 <div style="max-width:960px">'''+label('Knowledge base · IFRS')+'''<h1 class="display ph1 rise" style="font-size:calc(clamp(36px,4.4vw,72px)*var(--s))">What IFRS S2 means for <span class="it" style="color:#0B7A3E">SET-listed</span> companies</h1>
 <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center;margin-top:28px" class="pmeta"><span>2 Oct 2026</span><span>·</span><span>By [Author name]</span></div></div>
 </div></section>
-<div class="wrap"><span class="cv cv2 rv" style="aspect-ratio:21/9;border-radius:28px"></span></div>
+<div class="wrap"><span class="cv cvimg rv" style="aspect-ratio:21/9;border-radius:28px"><img src="/_blob/8f8174b9c50e05e0172f98487b371cb0" alt=""></span></div>
 '''+sec('', '''<div class="art"><div>
 <div class="takeaway rv">'''+label('Key takeaways')+'''<ul><li>'''+CHK+'''<span>IFRS S2 covers four areas: governance, strategy, risk management, and metrics and targets.</span></li><li>'''+CHK+'''<span>You will need Scope 1, 2 and 3 emissions, plus a view of climate risks under different scenarios.</span></li><li>'''+CHK+'''<span>Start with a gap analysis: most companies already hold part of the data, just not in one place.</span></li></ul></div>
 <div class="prose"><h2>What IFRS S2 asks for</h2><p>IFRS S2 is the ISSB's climate standard. It asks companies to explain how climate-related risks and opportunities could affect their cash flows, access to finance and cost of capital.</p><p>Disclosures are grouped into four areas that will look familiar to anyone who has used TCFD: governance, strategy, risk management, and metrics and targets.</p><h2>Why it matters for SET-listed companies</h2><p>Investors increasingly compare companies on the same climate metrics. A clear, consistent disclosure makes it easier for them to price your risk, and harder to overlook your progress.</p>

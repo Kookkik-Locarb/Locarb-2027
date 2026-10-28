@@ -34,7 +34,7 @@ client-story template, article template) · Contact Us.
 On a normal host they stop at the logo animation. **Deploy `site/` instead**: plain HTML, CSS and JS that
 render the same pages (TH/EN switch, search, cookie notice, logo intro once per visit, forms, hero video).
 
-Vercel: import the repo, Framework Preset **Other**, no build command. The root `vercel.json` sets `site` as Output Directory. Keep Vercel Root Directory at the repository root (blank), Framework Preset Other, and no build command. Old /design/*.dc.html URLs redirect to the new HTML pages.
+Vercel: import the repo, Framework Preset **Other**, no build command. Keep Root Directory at the repository root (blank). The root `vercel.json` sets Output Directory to `site` and redirects old `/design/*.dc.html` URLs to the exported pages.
 
 To rebuild `site/` after design changes: `python3 tools/export.py` (paths at the top of the script).
 `site/assets/morphdom.js` is morphdom 2.7.4 (MIT).
